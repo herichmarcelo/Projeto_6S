@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Área de Auditoria</title>
+
+    <!-- Adicione os links necessários para o Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            max-width: 500px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+        }
+
+        .btn-area {
+            width: 200px;
+            height: 50px;
+            font-size: 18px;
+            margin: 10px;
+            border-radius: 5px;
+        }
+
+        .rodape {
+            margin-top: 50px;
+        }
+
+        .btn-patio {
+            width: 200px;
+            height: 50px;
+            background-color: #ffc107; /* Cor de fundo amarela */
+            color: #000000; /* Cor do texto preta */
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            margin-right: 10px; /* Ajuste o valor conforme necessário */
+            margin-bottom: 10px; /* Espaço vertical entre os botões */
+        }
+        .btn-administrativo {
+            width: 200px;
+            height: 50px;
+            background-color: #404fbd; /* Cor de fundo amarela */
+            color: #000000; /* Cor do texto preta */
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            margin-right: 10px; /* Ajuste o valor conforme necessário */
+            margin-bottom: 10px; /* Espaço vertical entre os botões */
+        }
+        .btn-manutencao {
+            width: 200px;
+            height: 50px;
+            background-color: #9c26ce; /* Cor de fundo amarela */
+            color: #000000; /* Cor do texto preta */
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            margin-right: 10px; /* Ajuste o valor conforme necessário */
+            margin-bottom: 10px; /* Espaço vertical entre os botões */
+        }
+
+        .btn-caldeira {
+            width: 200px;
+            height: 50px;
+            background-color: #0793ff; /* Cor de fundo amarela */
+            color: #000000; /* Cor do texto preta */
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            margin-right: 10px; /* Ajuste o valor conforme necessário */
+            margin-bottom: 10px; /* Espaço vertical entre os botões */
+        }
+
+        .btn-producao {
+            width: 200px;
+            height: 50px;
+            background-color: #b25035; /* Cor de fundo amarela */
+            color: #000000; /* Cor do texto preta */
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            margin-right: 10px; /* Ajuste o valor conforme necessário */
+            margin-bottom: 10px; /* Espaço vertical entre os botões */
+        }
+
+        .btn-ffo {
+            width: 200px;
+            height: 50px;
+            background-color: #4bac56; /* Cor de fundo amarela */
+            color: #000000; /* Cor do texto preta */
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            margin-right: 10px; /* Ajuste o valor conforme necessário */
+            margin-bottom: 10px; /* Espaço vertical entre os botões */
+        }
+                /* Estilos para os botões Sair e Voltar */
+        .btn-sair {
+            background-color: #ff0000; /* Cor de fundo vermelha */
+            color: #ffffff; /* Cor do texto branca */
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            margin-right: 10px;
+        }
+
+        .btn-voltar {
+            background-color: #ffc107; /* Cor de fundo amarela */
+            color: #000000; /* Cor do texto preta */
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+        }
+    </style>
+</head>
+<body>
+  <center>  <img src="../static/assets/logo.png" alt="Logo da Empresa" style="width: 260px ; max-height: 146px;">  </center>  
+    <div class="container">
+        <!-- Adiciona a imagem acima do título -->
+        <h2>Área de Auditoria</h2>
+        <h2>Selecione a área para auditar</h2>
+
+        <!-- Botões para as áreas de auditoria -->
+        <div>
+            <a href="#" class="btn btn-primary btn-administrativo">🖊️ADMINISTRATIVO</a>
+            <a href="#" class="btn btn-success btn-manutencao">🛠️MANUTENÇÃO</a>
+            <a href="{{ url_for('auditorias.patio') }}" class="btn btn-primary btn-patio">🌳PÁTIO</a>
+            <a href="#" class="btn btn-success btn-caldeira">🍵CALDEIRA</a>
+            <a href="#" class="btn btn-primary btn-ffo">🔧FFO</a>
+            <a href="#" class="btn btn-danger btn-producao">🐔PRODUÇÃO</a>
+            <!-- Adicione mais áreas conforme necessário -->
+        </div>
+
+           <!-- Botões Sair e Voltar -->
+        <div>
+            <a href="{{ url_for('centro_usuario') }}" class="btn btn-voltar">Voltar</a>
+            <a href="{{ url_for('logout') }}" class="btn btn-sair">Sair</a>
+
+        </div>
+
+        <!-- Rodapé -->
+        <div class="rodape">
+            <p>&copy; Bello Alimentos 2024 Powered by Luiz Santos e Herich Marcelo</p>
+        </div>
+    </div>
+
+    <!-- Adicione os scripts necessários no final do corpo da página -->
+    <!-- Adicione os scripts do Bootstrap JS e Popper.js -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.8/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,6 @@
+{
+    "python.analysis.extraPaths": [
+        "./templates"
+    ],
+    "python.analysis.typeCheckingMode": "basic"
+}

@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checklist Auditoria 6S</title>
+    <style>
+        /* Adicione estilos conforme necessário */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f4;
+            margin: 20px;
+        }
+
+        form {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1, h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+            color: #555;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+        }
+
+        .emoji-group {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+
+        .emoji-btn {
+            flex: 1;
+            padding: 10px;
+            cursor: pointer;
+            transition: transform 0.2s;
+            border-radius: 8px;
+            border: 2px solid #ccc;
+        }
+
+        .emoji-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .emoji-selected {
+            background-color: green;
+            border-color: green;
+            color: white;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .comment-section {
+            margin-top: 15px;
+        }
+
+        .comment-section label {
+            display: block;
+            margin-top: 10px;
+            color: #555;
+        }
+
+        .image-upload {
+            margin-top: 10px;
+        }
+
+        .image-upload label {
+            display: block;
+            margin-top: 10px;
+            color: #555;
+        }
+
+        .uploaded-images {
+            margin-top: 10px;
+        }
+
+        .uploaded-images img {
+            max-width: 100%;
+            margin-top: 10px;
+            border-radius: 8px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <img src="https://www.belloalimentos.com.br/uploads/novalogo.png" alt="Bello Alimentos Logo" style="display: block; margin: 0 auto; max-width: 100%;">
+
+    <h1>Checklist Auditoria 6S PATIO</h1>
+    <form id="auditoriaForm">
+        <!-- Informações sobre o setor auditado -->
+         <label for="setor_auditado">Setor Auditado:</label>
+         <input type="text" name="setor_auditado" required>
+ 
+         <label for="data_auditoria">Data da Auditoria:</label>
+         <input type="date" name="data_auditoria" required>
+ 
+         <label for="representante_setor">Representante do Setor:</label>
+         <input type="text" name="representante_setor" required>
+ 
+         <label for="auditores">Dupla de Auditores:</label>
+         <input type="text" name="auditores" required>
+
+        <!-- Seção SENSO DE UTILIZAÇÃO -->
+        <h2>SENSO DE UTILIZAÇÃO</h2>
+
+        <!-- Pergunta 1 -->
+        <label>Pergunta 1: Existem materiais ou equipamentos que não estão sendo utilizados sobre as mesas e bancadas?</label>
+        <div class="emoji-group" id="pergunta_1">
+            <div class="emoji-btn" onclick="toggleEmoji(this, 'bom')">😃 Bom</div>
+            <div class="emoji-btn" onclick="toggleEmoji(this, 'medio')">😐 Médio</div>
+            <div class="emoji-btn" onclick="toggleEmoji(this, 'ruim')">😟 Ruim</div>
+        </div>
+        <!-- Restante da pergunta 1 (comentário e upload de fotos) -->
+        <div id="comentario_pergunta_1" class="comment-section hidden">
+            <label for="comentario_pergunta_1">Comentário (caso a resposta seja Médio ou Ruim - Pergunta 1):</label>
+            <textarea name="comentario_pergunta_1"></textarea>
+        </div>
+        <div id="upload_foto_pergunta_1" class="image-upload hidden">
+            <label for="upload_foto_pergunta_1">Faça o upload de fotos (caso necessário):</label>
+            <input type="file" name="upload_foto_pergunta_1" accept="image/jpeg, image/png" onchange="handleImageUpload(this, 'pergunta_1')">
+            <div class="uploaded-images" id="uploaded_images_pergunta_1"></div>
+        </div>
+
+        <!-- Pergunta 2 -->
+        <label>Pergunta 2: Existem equipamentos/mobiliários, ferramentas ou algum elemento de estrutura física do setor necessitando de reparo, enferrujados, velhos ou que precisa ser trocado?</label>
+        <div class="emoji-group" id="pergunta_2">
+            <div class="emoji-btn" onclick="toggleEmoji(this, 'bom')">😃 Bom</div>
+            <div class="emoji-btn" onclick="toggleEmoji(this, 'medio')">😐 Médio</div>
+            <div class="emoji-btn" onclick="toggleEmoji(this, 'ruim')">😟 Ruim</div>
+        </div>
+        <!-- Restante da pergunta 2 (comentário e upload de fotos) -->
+        <div id="comentario_pergunta_2" class="comment-section hidden">
+            <label for="comentario_pergunta_2">Comentário (caso a resposta seja Médio ou Ruim - Pergunta 2):</label>
+            <textarea name="comentario_pergunta_2"></textarea>
+        </div>
+        <div id="upload_foto_pergunta_2" class="image-upload hidden">
+            <label for="upload_foto_pergunta_2">Faça o upload de fotos (caso necessário):</label>
+            <input type="file" name="upload_foto_pergunta_2" accept="image/jpeg, image/png" onchange="handleImageUpload(this, 'pergunta_2')">
+            <div class="uploaded-images" id="uploaded_images_pergunta_2"></div>
+        </div>
+
+        <!-- Adicione as perguntas para as outras seções aqui -->
+
+        <button type="button" onclick="submitForm()">Enviar</button>
+    </form>
+
+    <script>
+        // Variáveis para armazenar as seleções feitas nas perguntas
+        const selecoesPergunta1 = { resposta: null, comentario: null, imagens: [] };
+        const selecoesPergunta2 = { resposta: null, comentario: null, imagens: [] };
+
+        function toggleEmoji(emojiBtn, resposta) {
+            const perguntaId = emojiBtn.parentNode.id;
+
+            // Limpa as seleções anteriores
+            clearSelections(perguntaId);
+
+            // Atualiza a seleção
+            emojiBtn.classList.add('emoji-selected');
+            updateSelection(resposta, perguntaId);
+        }
+
+        function clearSelections(perguntaId) {
+            const emojis = document.querySelectorAll(`#${perguntaId} .emoji-btn`);
+            emojis.forEach(btn => btn.classList.remove('emoji-selected'));
+        }
+
+        function updateSelection(resposta, perguntaId) {
+            switch (perguntaId) {
+                case 'pergunta_1':
+                    selecoesPergunta1.resposta = resposta;
+                    break;
+                case 'pergunta_2':
+                    selecoesPergunta2.resposta = resposta;
+                    break;
+                // Adicione casos para outras perguntas conforme necessário
+            }
+
+            // Atualiza a visibilidade dos campos adicionais
+            updateAdditionalFields(perguntaId);
+        }
+
+        function updateAdditionalFields(perguntaId) {
+            const formData = new FormData(document.getElementById('auditoriaForm'));
+            const comentarioSection = document.getElementById(`comentario_${perguntaId}`);
+            const uploadSection = document.getElementById(`upload_foto_${perguntaId}`);
+            const uploadedImagesSection = document.getElementById(`uploaded_images_${perguntaId}`);
+
+            switch (perguntaId) {
+                case 'pergunta_1':
+                    if (selecoesPergunta1.resposta === 'ruim' || selecoesPergunta1.resposta === 'medio') {
+                        comentarioSection.classList.remove('hidden');
+                        uploadSection.classList.remove('hidden');
+                        showUploadedImages(selecoesPergunta1.imagens, uploadedImagesSection);
+                    } else {
+                        comentarioSection.classList.add('hidden');
+                        uploadSection.classList.add('hidden');
+                        clearUploadedImages(uploadedImagesSection);
+                    }
+                    break;
+                case 'pergunta_2':
+                    if (selecoesPergunta2.resposta === 'ruim' || selecoesPergunta2.resposta === 'medio') {
+                        comentarioSection.classList.remove('hidden');
+                        uploadSection.classList.remove('hidden');
+                        showUploadedImages(selecoesPergunta2.imagens, uploadedImagesSection);
+                    } else {
+                        comentarioSection.classList.add('hidden');
+                        uploadSection.classList.add('hidden');
+                        clearUploadedImages(uploadedImagesSection);
+                    }
+                    break;
+                // Adicione casos para outras perguntas conforme necessário
+            }
+        }
+
+        function showUploadedImages(images, container) {
+            clearUploadedImages(container);
+
+            images.forEach(image => {
+                const imgElement = document.createElement('img');
+                imgElement.src = image;
+                container.appendChild(imgElement);
+            });
+        }
+
+        function clearUploadedImages(container) {
+            container.innerHTML = '';
+        }
+
+        function handleImageUpload(input, perguntaId) {
+            const imagesContainer = document.getElementById(`uploaded_images_${perguntaId}`);
+
+            // Limpa imagens anteriores
+            clearUploadedImages(imagesContainer);
+
+            const files = input.files;
+            for (const file of files) {
+                // Simula o upload e adiciona a imagem ao contêiner
+                const imgElement = document.createElement('img');
+                imgElement.src = URL.createObjectURL(file);
+                imagesContainer.appendChild(imgElement);
+
+                // Armazena a imagem na seleção apropriada
+                switch (perguntaId) {
+                    case 'pergunta_1':
+                        selecoesPergunta1.imagens.push(URL.createObjectURL(file));
+                        break;
+                    case 'pergunta_2':
+                        selecoesPergunta2.imagens.push(URL.createObjectURL(file));
+                        break;
+                    // Adicione casos para outras perguntas conforme necessário
+                }
+            }
+        }
+
+        function submitForm() {
+        // Coleta os dados do formulário
+        const formData = new FormData(document.getElementById('auditoriaForm'));
+
+        // Envia os dados para o servidor
+        fetch('/submit', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.text())
+        .then(message => {
+            alert(message); // Exibe uma mensagem retornada pelo servidor
+            window.location.reload(); // Recarrega a página após o envio dos dados
+        })
+        .catch(error => {
+            console.error('Erro ao enviar os dados:', error);
+            alert('Ocorreu um erro ao enviar os dados. Por favor, tente novamente.');
+        });
+    }
+
+            // Gera o CSV e fornece um link para download
+            generateCSV(formData);
+        
+
+        function generateCSV(formData) {
+            // Cria um array com os cabeçalhos do CSV
+            const headers = Object.keys(formData);
+
+            // Cria uma string CSV com os dados
+            const csvContent = headers.join(',') + '\n' +
+                headers.map(header => formData[header]).join(',');
+
+            // Cria um Blob com o conteúdo CSV
+            const blob = new Blob([csvContent], { type: 'text/csv' });
+
+            // Cria um link para download e simula o clique nele
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = 'respostas_auditoria.csv';
+            link.click();
+        }
+    </script>
+</body>
+</html>

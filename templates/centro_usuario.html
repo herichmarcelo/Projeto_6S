@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel de Auditores</title>
+
+    <!-- Adicione os links necessários para o Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .dados-usuario {
+            text-align: center;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            margin-bottom: 10px;
+        }
+
+        img {
+            width: 150px; /* Ajuste o tamanho conforme necessário */
+            height: 150px; /* Ajuste o tamanho conforme necessário */
+            border-radius: 50%;
+            display: block;
+            margin: 0 auto 20px; /* Centraliza a imagem e adiciona margem na parte inferior */
+        }
+
+        .botoes {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .botoes a {
+            margin: 5px;
+        }
+        .logo-img {
+            width: 260px;
+            height: 146px;
+            border-radius: 0%;
+            /* Adicione outras propriedades de estilo conforme necessário */
+        }
+        .btn-area-auditar {
+            width: 200px;
+            height: 50px;
+            font-size: 20px;
+            background-color: #4bac56; /* Cor de fundo amarela */
+            color: #000000; /* Cor do texto preta */
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            margin-right: 10px; /* Ajuste o valor conforme necessário */
+            margin-bottom: 10px; /* Espaço vertical entre os botões */
+        }
+        .btn-dashboard {
+            width: 200px;
+            height: 50px;
+            font-size: 20px;
+            background-color: #1f5de2; /* Cor de fundo amarela */
+            color: #000000; /* Cor do texto preta */
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            margin-right: 10px; /* Ajuste o valor conforme necessário */
+            margin-bottom: 10px; /* Espaço vertical entre os botões */
+        }
+        .btn-sair {
+            width: 200px;
+            height: 50px;
+            font-size: 20px;
+            background-color: #ee0d0d; /* Cor de fundo amarela */
+            color: #000000; /* Cor do texto preta */
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            margin-right: 10px; /* Ajuste o valor conforme necessário */
+            margin-bottom: 10px; /* Espaço vertical entre os botões */
+        }
+    </style>
+
+</head>
+<body>
+    
+    <img class="logo-img" src="../static/assets/logo.png" alt="Logo da Empresa">
+    <center> <h2>Painel de Auditores</h2> </center>
+    <div class="container">
+        <div>
+            <center><p>Bem-vindo, {{ usuario }}!</p></center>
+
+            <!-- Adiciona a verificação para a existência da foto do usuário -->
+            {% if foto_usuario %}
+                <img id="profile-img" src="{{ url_for('static', filename='assets/' + foto_usuario) }}" alt="Foto do Usuário" onclick="abrirCarregarFoto()">
+            {% else %}
+                <p>Nenhuma foto disponível.</p>
+            {% endif %}
+
+        </div>
+
+        <div class="botoes">
+            <h3>Suas Opções:</h3>
+            
+            <!-- Adiciona um botão para acessar a área de auditoria -->
+            <a href="{{ url_for('area_auditoria') }}" class="btn btn-success btn-area-auditar">Área de Auditoria</a>
+
+            <!-- Adiciona um botão para acessar o dashboard -->
+            <a href="{{ url_for('dashboard') }}" class="btn btn-warning btn-dashboard">Dashboard</a>
+
+            <!-- Adiciona um botão de logout -->
+            <a href="{{ url_for('logout') }}" class="btn btn-danger btn-sair">Sair</a>
+        </div>
+
+        <!-- Exibição dos dados do usuário (substitua por suas próprias variáveis e informações) -->
+        <div class="dados-usuario">
+            <h3>Seus Dados:</h3>
+            <p><strong>Nome:</strong> {{ usuario }}</p>
+            <p><strong>Tipo de Usuário:</strong> {{ tipo_usuario }}</p>
+            <p><strong>E-mail:</strong> {{ email_usuario }}</p>
+        </div>
+
+        <!-- Adiciona um input de arquivo oculto para carregar a foto -->
+        <input type="file" id="file-input" style="display: none;" onchange="carregarFoto(this)">
+    </div>
+    
+
+    <!-- Adicione os scripts necessários no final do corpo da página -->
+    <!-- Adicione os scripts do Bootstrap JS e Popper.js -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.8/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        function abrirCarregarFoto() {
+            document.getElementById('file-input').click();
+        }
+
+        function carregarFoto(input) {
+            const file = input.files[0];
+
+            if (file) {
+                const reader = new FileReader();
+
+                reader.onload = function (e) {
+                    document.getElementById('profile-img').src = e.target.result;
+
+                    // Adicionando o nome do usuário à imagem
+                    const usuario = "{{ usuario }}";
+                    const nomeArquivo = `${usuario}_foto.jpg`;
+
+                    // Chamando a rota do Flask para salvar a foto no servidor
+                    salvarFoto(nomeArquivo, file);
+                };
+
+                reader.readAsDataURL(file);
+            }
+        }
+
+        function salvarFoto(nomeArquivo, file) {
+            const formData = new FormData();
+            formData.append('nome_arquivo', nomeArquivo);
+            formData.append('file', file);
+
+            fetch("{{ url_for('upload_foto') }}", {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => console.log(data))
+            .catch(error => console.error('Erro:', error));
+        }
+    </script>
+</body>
+</html>
