@@ -102,7 +102,7 @@
 
             <!-- Adiciona a verificação para a existência da foto do usuário -->
             {% if foto_usuario %}
-                <img id="profile-img" src="{{ url_for('static', filename='assets/' + foto_usuario) }}" alt="Foto do Usuário" onclick="abrirCarregarFoto()">
+            <img id="profile-img" src="../static/assets/{{ usuario }}_foto.jpg" alt="Foto do Usuário" onclick="abrirCarregarFoto()">
             {% else %}
                 <p>Nenhuma foto disponível.</p>
             {% endif %}

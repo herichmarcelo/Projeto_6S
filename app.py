@@ -86,7 +86,7 @@ def upload_foto():
             file = request.files.get('file')
 
             if file:
-                file.save(os.path.join('static/assets', nome_arquivo))
+                file.save(os.path.join('../static/assets', nome_arquivo))
                 return jsonify({'status': 'success', 'mensagem': 'Foto carregada com sucesso'})
             else:
                 return jsonify({'status': 'error', 'mensagem': 'Erro ao carregar foto'})
