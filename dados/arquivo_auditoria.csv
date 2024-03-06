@@ -1,7 +1,8 @@
-Setor,Data,Responsavel,Auditores,sit.perg1,Com.Perg2,Foto.Perg1,sit.perg2,Com.perg2,foto.perg2,,,
-Setor 1,2024-01-30,Ana,João e Maria,bom,comentario 1,blob:http://127.0.0.1:5000/ce1982c8-4f24-418d-a9fe-a58bf0946299,bom,comentario 1,,,,
-Setor 2,2024-01-31,Maria,João e Maria,medio,comentario 1,blob:http://127.0.0.1:5000/ce1982c8-4f24-418d-a9fe-a58bf0946299,medio,comentario 1,,,,
-Setor 3,2024-01-31,Pedro,João e Maria,bom,comentario 1,blob:http://127.0.0.1:5000/ce1982c8-4f24-418d-a9fe-a58bf0946299,bom,comentario 1,,,,
-Setor 2,2024-02-05,Paulo,João e Maria,medio,comentario 1,blob:http://127.0.0.1:5000/ce1982c8-4f24-418d-a9fe-a58bf0946299,medio,comentario 1,,,,
-Setor 3,2024-02-06,Alex,João e Maria,bom,comentario 1,blob:http://127.0.0.1:5000/ce1982c8-4f24-418d-a9fe-a58bf0946299,bom,comentario 1,,,,
-Setor 1,2024-02-06,Luiz,João e Maria,medio,comentario 1,blob:http://127.0.0.1:5000/ce1982c8-4f24-418d-a9fe-a58bf0946299,medio,comentario 1,blob:http://127.0.0.1:5000/a94fa858-186d-4edb-af82-81059057090c,medio,comentario 3,blob:http://127.0.0.1:5000/88fd2806-d5a5-4fb7-8a16-93d264bcd8a3,2024-02-24,,,ruim,,medio,,ruim,
+Setor 2,2024-03-05,,,bom,,null,,null,,null,,null,,null,,null,,null,,null,,null,,null,,null,,null,,null,,null,,null,
+,2024-03-05,,,ruim,,blob:http://127.0.0.1/1180397a-868e-4a2d-8e61-b606745be7e6,null,,null,,null,,null,,null,,null,,null,,null,,null,,null,,null,,null,,null,,null,,null,
+Setor 2,2024-03-05,,,ruim,,blob:http://127.0.0.1/013e94ae-d26a-4225-81c2-933aa0b39414,null,,null,,null,,null,,null,,null,,null,,null,,null,,null,,null,,null,,null,,null,,null,
+Setor 2,2024-03-05,,,ruim,,blob:http://127.0.0.1/4f157e7f-42ce-43e5-a1b3-c2a3658de323,null,,null,,null,,null,,null,,null,,null,,null,,null,,null,,null,,null,,null,,null,,null,
+Setor 2,2024-03-05,,,ruim,,blob:http://127.0.0.1/8fb51844-2291-452d-abd4-97ba42bab848,null,,null,,null,,null,,null,,null,,null,,null,,null,,null,,null,,null,,null,,null,,null,
+Setor 2,2024-03-05,,,ruim,,blob:http://127.0.0.1/39e8766b-37a5-4b33-a1e4-cb566930f5d9,null,,null,,null,,null,,null,,null,,null,,null,,null,,null,,null,,null,,null,,null,,null,
+,2024-03-05,,,null,,null,,null,,null,,null,,null,,null,,null,,null,,null,,null,,null,,null,,null,,null,,ruim,,blob:http://127.0.0.1/92b3bbf0-ed01-4131-aa3e-434e6665b05f
+Setor 1,2024-03-05,,,null,,null,,null,,null,,null,,null,,null,,null,,null,,null,,null,,null,,null,,null,,null,,ruim,,blob:http://127.0.0.1/f2cb3ab4-9009-4837-946a-8e79fc64307a

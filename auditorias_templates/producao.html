@@ -149,31 +149,16 @@
 
     <center>
         <h1>Checklist Auditoria 6S</h1>
-        <h1>EXTERNAS </h1>
+        <h1>PRODUÇÃO</h1>
     </center>
     <form id="auditoriaForm">
         <!-- Informações sobre o setor auditado -->
         <label for="setor_auditado">Setor Auditado:</label>
         <select name="setor_auditado" required style="width: 100%; height: 38px; box-sizing: border-box;">
             <option value="" disabled selected hidden>Selecione o setor auditado</option>
-            <option value="ÁREA EXTERNA ALMOXARIFADO-PROJETOS-MANUTENÇÃO">ÁREA EXTERNA ALMOXARIFADO-PROJETOS-MANUTENÇÃO</option>
-            <option value="ÁREA EXTERNA ARÉA DE DESCANSO">ÁREA EXTERNA ARÉA DE DESCANSO</option>
-            <option value="ÁREA EXTERNA ADM">ÁREA EXTERNA ADM</option>
-            <option value="ÁREA EXTERNA CAIXA D'AGUA">ÁREA EXTERNA CAIXA D'AGUA</option>
-            <option value="ÁREA EXTERNA CASINHA DO LIXO">ÁREA EXTERNA CASINHA DO LIXO</option>
-            <option value="ÁREA EXTERNA CALDEIRA">ÁREA EXTERNA CALDEIRA</option>
-            <option value="ÁREA EXTERNA CENTRAL DE RESÍDUOS">ÁREA EXTERNA CENTRAL DE RESÍDUOS</option>
-            <option value="ÁREA EXTERNA DOCA EXPEDIÇÃO">ÁREA EXTERNA DOCA EXPEDIÇÃO</option>
-            <option value="ÁREA EXTERNA DEPÓSITOS">ÁREA EXTERNA DEPÓSITOS</option>
-            <option value="ÁREA EXTERNA FFO">ÁREA EXTERNA FFO</option>
-            <option value="ÁREA EXTERNA LAVAGEM DE CAMINHÃO-PLATAFORMA">ÁREA EXTERNA LAVAGEM DE CAMINHÃO-PLATAFORMA</option>
-            <option value="ÁREA EXTERNA LOGISTICA/BALANÇA/PORTARIA">ÁREA EXTERNA LOGISTICA/BALANÇA/PORTARIA</option>
-            <option value="ÁREA EXTERNA MELHORIAS">ÁREA EXTERNA MELHORIAS</option>
-            <option value="ÁREA EXTERNA OBRAS">ÁREA EXTERNA OBRAS</option>
-            <option value="ÁREA EXTERNA OBRA CIVIL">ÁREA EXTERNA OBRA CIVIL</option>
-            <option value="ÁREA EXTERNA SALA DE MÁQUINAS">ÁREA EXTERNA SALA DE MÁQUINAS</option>
-            
-                                                    
+            <option value="Setor 1">Setor 1</option>
+            <option value="Setor 2">Setor 2</option>
+            <option value="Setor 3">Setor 3</option>
             <!-- Adicione mais opções conforme necessário -->
         </select>
  
@@ -190,7 +175,7 @@
         <h2>SENSO DE UTILIZAÇÃO</h2>
 
             <!-- Pergunta 1 -->
-            <label>Pergunta 1: Existem materiais, objetos ou equipamentos sem utilidade na área ou aguardando descarte?</label>
+            <label>Pergunta 1: Existem materiais ou equipamentos que não estão sendo utilizados sobre as mesas e bancadas?</label>
             <div class="emoji-group" id="pergunta_1">
                 <div class="emoji-btn emoji-bom" onclick="toggleEmoji(this, 'bom')">😃 Bom</div>
                 <div class="emoji-btn emoji-medio" onclick="toggleEmoji(this, 'medio')">😐 Médio</div>
@@ -248,7 +233,7 @@
         <h2>SENSO DE ORGANIZAÇÃO</h2>
 
         <!-- Pergunta 1 -->
-        <label>Pergunta 1: Os materiais e objetos estão em locais adequados, organizados e identificados corretamente?</label>
+        <label>Pergunta 1: Existem materiais ou equipamentos que não estão sendo utilizados sobre as mesas e bancadas?</label>
         <div class="emoji-group" id="pergunta_4">
             <div class="emoji-btn emoji-bom" onclick="toggleEmoji(this, 'bom')">😃 Bom</div>
             <div class="emoji-btn emoji-medio" onclick="toggleEmoji(this, 'medio')">😐 Médio</div>
@@ -266,7 +251,7 @@
         </div>
 
         <!-- Pergunta 2 -->
-        <label>Pergunta 2: Os produtos químicos (Limpeza) estão devidamente identificados, organizados  e guardados em local apropriado quando não estão em uso?</label>
+        <label>Pergunta 2: Existem equipamentos/mobiliários, ferramentas ou algum elemento de estrutura física do setor necessitando de reparo, enferrujados, velhos ou que precisa ser trocado?</label>
         <div class="emoji-group" id="pergunta_5">
             <div class="emoji-btn emoji-bom" onclick="toggleEmoji(this, 'bom')">😃 Bom</div>
             <div class="emoji-btn emoji-medio" onclick="toggleEmoji(this, 'medio')">😐 Médio</div>
@@ -283,50 +268,56 @@
             <div class="uploaded-images" id="uploaded_images_pergunta_5"></div>
         </div>
 
-                <!-- Pergunta 3 -->
-        <label>Pergunta 3:  De modo geral o setor, encontra-se organizado?</label>
-        <div class="emoji-group" id="pergunta_6">
-            <div class="emoji-btn emoji-bom" onclick="toggleEmoji(this, 'bom')">😃 Bom</div>
-            <div class="emoji-btn emoji-medio" onclick="toggleEmoji(this, 'medio')">😐 Médio</div>
-            <div class="emoji-btn emoji-ruim" onclick="toggleEmoji(this, 'ruim')">😟 Ruim</div>
-        </div>
-        <!-- Restante da pergunta 3 (comentário e upload de fotos) -->
-        <div id="comentario_pergunta_6" class="comment-section hidden">
-            <label for="comentario_pergunta_6">Comentário (caso a resposta seja Médio ou Ruim - Pergunta 6):</label>
-            <textarea name="comentario_pergunta_6"></textarea>
-        </div>
-        <div id="upload_foto_pergunta_6" class="image-upload hidden">
-            <label for="upload_foto_pergunta_6">Faça o upload de fotos (caso necessário):</label>
-            <input type="file" name="upload_foto_pergunta_6" accept="image/jpeg, image/png" onchange="handleImageUpload(this, 'pergunta_6')">
-            <div class="uploaded-images" id="uploaded_images_pergunta_6"></div>
-        </div>
+                <!-- Seção SENSO DE LIMPEZA -->
+                <h2>SENSO DE LIMPEZA</h2>
 
-        <!-- Pergunta 4 -->
-        <label>Pergunta 4: Locais em obras são mantidos identificados e isolados?</label>
-        <div class="emoji-group" id="pergunta_7">
-            <div class="emoji-btn emoji-bom" onclick="toggleEmoji(this, 'bom')">😃 Bom</div>
-            <div class="emoji-btn emoji-medio" onclick="toggleEmoji(this, 'medio')">😐 Médio</div>
-            <div class="emoji-btn emoji-ruim" onclick="toggleEmoji(this, 'ruim')">😟 Ruim</div>
-        </div>
-        <!-- Restante da pergunta 4 (comentário e upload de fotos) -->
-        <div id="comentario_pergunta_7" class="comment-section hidden">
-            <label for="comentario_pergunta_7">Comentário (caso a resposta seja Médio ou Ruim - Pergunta 7):</label>
-            <textarea name="comentario_pergunta_7"></textarea>
-        </div>
-        <div id="upload_foto_pergunta_7" class="image-upload hidden">
-            <label for="upload_foto_pergunta_7">Faça o upload de fotos (caso necessário):</label>
-            <input type="file" name="upload_foto_pergunta_7" accept="image/jpeg, image/png" onchange="handleImageUpload(this, 'pergunta_7')">
-            <div class="uploaded-images" id="uploaded_images_pergunta_7"></div>
-        </div>
-    
-        <!-- Pergunta 5 -->
-        <label>Pergunta 5: Existem informações expostas de maneira desordenada ou dispostas em locais inapropriados, remetendo à poluição visual(papeis colados em parede, etc)?</label>
+                <!-- Pergunta 1 -->
+                <label>Pergunta 1: Existem materiais ou equipamentos que não estão sendo utilizados sobre as mesas e bancadas?</label>
+                <div class="emoji-group" id="pergunta_6">
+                    <div class="emoji-btn emoji-bom" onclick="toggleEmoji(this, 'bom')">😃 Bom</div>
+                    <div class="emoji-btn emoji-medio" onclick="toggleEmoji(this, 'medio')">😐 Médio</div>
+                    <div class="emoji-btn emoji-ruim" onclick="toggleEmoji(this, 'ruim')">😟 Ruim</div>
+                </div>
+                <!-- Restante da pergunta 1 (comentário e upload de fotos) -->
+                <div id="comentario_pergunta_6" class="comment-section hidden">
+                    <label for="comentario_pergunta_6">Comentário (caso a resposta seja Médio ou Ruim - Pergunta 6):</label>
+                    <textarea name="comentario_pergunta_6"></textarea>
+                </div>
+                <div id="upload_foto_pergunta_6" class="image-upload hidden">
+                    <label for="upload_foto_pergunta_6">Faça o upload de fotos (caso necessário):</label>
+                    <input type="file" name="upload_foto_pergunta_6" accept="image/jpeg, image/png" onchange="handleImageUpload(this, 'pergunta_6')">
+                    <div class="uploaded-images" id="uploaded_images_pergunta_6"></div>
+                </div>
+        
+                <!-- Pergunta 2 -->
+                <label>Pergunta 2: Existem equipamentos/mobiliários, ferramentas ou algum elemento de estrutura física do setor necessitando de reparo, enferrujados, velhos ou que precisa ser trocado?</label>
+                <div class="emoji-group" id="pergunta_7">
+                    <div class="emoji-btn emoji-bom" onclick="toggleEmoji(this, 'bom')">😃 Bom</div>
+                    <div class="emoji-btn emoji-medio" onclick="toggleEmoji(this, 'medio')">😐 Médio</div>
+                    <div class="emoji-btn emoji-ruim" onclick="toggleEmoji(this, 'ruim')">😟 Ruim</div>
+                </div>
+                <!-- Restante da pergunta 2 (comentário e upload de fotos) -->
+                <div id="comentario_pergunta_7" class="comment-section hidden">
+                    <label for="comentario_pergunta_7">Comentário (caso a resposta seja Médio ou Ruim - Pergunta 7):</label>
+                    <textarea name="comentario_pergunta_7"></textarea>
+                </div>
+                <div id="upload_foto_pergunta_7" class="image-upload hidden">
+                    <label for="upload_foto_pergunta_7">Faça o upload de fotos (caso necessário):</label>
+                    <input type="file" name="upload_foto_pergunta_7" accept="image/jpeg, image/png" onchange="handleImageUpload(this, 'pergunta_7')">
+                    <div class="uploaded-images" id="uploaded_images_pergunta_7"></div>
+                </div>
+
+                        <!-- Seção SENSO DE PADRONIZAÇÃO-->
+        <h2>SENSO DE PADRONIZAÇÃO</h2>
+
+        <!-- Pergunta 1 -->
+        <label>Pergunta 1: Existem materiais ou equipamentos que não estão sendo utilizados sobre as mesas e bancadas?</label>
         <div class="emoji-group" id="pergunta_8">
             <div class="emoji-btn emoji-bom" onclick="toggleEmoji(this, 'bom')">😃 Bom</div>
             <div class="emoji-btn emoji-medio" onclick="toggleEmoji(this, 'medio')">😐 Médio</div>
             <div class="emoji-btn emoji-ruim" onclick="toggleEmoji(this, 'ruim')">😟 Ruim</div>
         </div>
-        <!-- Restante da pergunta 2 (comentário e upload de fotos) -->
+        <!-- Restante da pergunta 1 (comentário e upload de fotos) -->
         <div id="comentario_pergunta_8" class="comment-section hidden">
             <label for="comentario_pergunta_8">Comentário (caso a resposta seja Médio ou Ruim - Pergunta 8):</label>
             <textarea name="comentario_pergunta_8"></textarea>
@@ -336,96 +327,89 @@
             <input type="file" name="upload_foto_pergunta_8" accept="image/jpeg, image/png" onchange="handleImageUpload(this, 'pergunta_8')">
             <div class="uploaded-images" id="uploaded_images_pergunta_8"></div>
         </div>
-        
-        
-                <!-- Seção SENSO DE LIMPEZA -->
-                <h2>SENSO DE LIMPEZA</h2>
 
-                <!-- Pergunta 1 -->
-                <label>Pergunta 1: Os materiais, máquinas e equipamentos estão em boas condições de limpeza?</label>
-                <div class="emoji-group" id="pergunta_9">
-                    <div class="emoji-btn emoji-bom" onclick="toggleEmoji(this, 'bom')">😃 Bom</div>
-                    <div class="emoji-btn emoji-medio" onclick="toggleEmoji(this, 'medio')">😐 Médio</div>
-                    <div class="emoji-btn emoji-ruim" onclick="toggleEmoji(this, 'ruim')">😟 Ruim</div>
-                </div>
-                <!-- Restante da pergunta 1 (comentário e upload de fotos) -->
-                <div id="comentario_pergunta_9" class="comment-section hidden">
-                    <label for="comentario_pergunta_9">Comentário (caso a resposta seja Médio ou Ruim - Pergunta 9):</label>
-                    <textarea name="comentario_pergunta_9"></textarea>
-                </div>
-                <div id="upload_foto_pergunta_9" class="image-upload hidden">
-                    <label for="upload_foto_pergunta_9">Faça o upload de fotos (caso necessário):</label>
-                    <input type="file" name="upload_foto_pergunta_9" accept="image/jpeg, image/png" onchange="handleImageUpload(this, 'pergunta_9')">
-                    <div class="uploaded-images" id="uploaded_images_pergunta_9"></div>
-                </div>
-        
-                <!-- Pergunta 2 -->
-                <label>Pergunta 2: Existe acumulo de agua e excesos de resíduos?</label>
-                <div class="emoji-group" id="pergunta_10">
-                    <div class="emoji-btn emoji-bom" onclick="toggleEmoji(this, 'bom')">😃 Bom</div>
-                    <div class="emoji-btn emoji-medio" onclick="toggleEmoji(this, 'medio')">😐 Médio</div>
-                    <div class="emoji-btn emoji-ruim" onclick="toggleEmoji(this, 'ruim')">😟 Ruim</div>
-                </div>
-                <!-- Restante da pergunta 2 (comentário e upload de fotos) -->
-                <div id="comentario_pergunta_10" class="comment-section hidden">
-                    <label for="comentario_pergunta_10">Comentário (caso a resposta seja Médio ou Ruim - Pergunta 10):</label>
-                    <textarea name="comentario_pergunta_10"></textarea>
-                </div>
-                <div id="upload_foto_pergunta_10" class="image-upload hidden">
-                    <label for="upload_foto_pergunta_10">Faça o upload de fotos (caso necessário):</label>
-                    <input type="file" name="upload_foto_pergunta_10" accept="image/jpeg, image/png" onchange="handleImageUpload(this, 'pergunta_10')">
-                    <div class="uploaded-images" id="uploaded_images_pergunta_10"></div>
-                </div>
+        <!-- Pergunta 2 -->
+        <label>Pergunta 2: Existem equipamentos/mobiliários, ferramentas ou algum elemento de estrutura física do setor necessitando de reparo, enferrujados, velhos ou que precisa ser trocado?</label>
+        <div class="emoji-group" id="pergunta_9">
+            <div class="emoji-btn emoji-bom" onclick="toggleEmoji(this, 'bom')">😃 Bom</div>
+            <div class="emoji-btn emoji-medio" onclick="toggleEmoji(this, 'medio')">😐 Médio</div>
+            <div class="emoji-btn emoji-ruim" onclick="toggleEmoji(this, 'ruim')">😟 Ruim</div>
+        </div>
+        <!-- Restante da pergunta 2 (comentário e upload de fotos) -->
+        <div id="comentario_pergunta_9" class="comment-section hidden">
+            <label for="comentario_pergunta_9">Comentário (caso a resposta seja Médio ou Ruim - Pergunta 9):</label>
+            <textarea name="comentario_pergunta_9"></textarea>
+        </div>
+        <div id="upload_foto_pergunta_9" class="image-upload hidden">
+            <label for="upload_foto_pergunta_9">Faça o upload de fotos (caso necessário):</label>
+            <input type="file" name="upload_foto_pergunta_9" accept="image/jpeg, image/png" onchange="handleImageUpload(this, 'pergunta_9')">
+            <div class="uploaded-images" id="uploaded_images_pergunta_9"></div>
+        </div>
+        <!-- Pergunta 3 -->
+        <label>Pergunta 3: Gramas e galhos encontram-se aparados?</label>
+        <div class="emoji-group" id="pergunta_10">
+            <div class="emoji-btn emoji-bom" onclick="toggleEmoji(this, 'bom')">😃 Bom</div>
+            <div class="emoji-btn emoji-medio" onclick="toggleEmoji(this, 'medio')">😐 Médio</div>
+            <div class="emoji-btn emoji-ruim" onclick="toggleEmoji(this, 'ruim')">😟 Ruim</div>
+        </div>
+        <!-- Restante da pergunta 3 (comentário e upload de fotos) -->
+        <div id="comentario_pergunta_10" class="comment-section hidden">
+            <label for="comentario_pergunta_10">Comentário (caso a resposta seja Médio ou Ruim - Pergunta 10):</label>
+            <textarea name="comentario_pergunta_10"></textarea>
+        </div>
+        <div id="upload_foto_pergunta_10" class="image-upload hidden">
+            <label for="upload_foto_pergunta_10">Faça o upload de fotos (caso necessário):</label>
+            <input type="file" name="upload_foto_pergunta_10" accept="image/jpeg, image/png" onchange="handleImageUpload(this, 'pergunta_10')">
+            <div class="uploaded-images" id="uploaded_images_pergunta_10"></div>
+        </div>
 
-                <!-- Pergunta 3 -->
-                <label>Pergunta 3: Há  materiais jogado no chão?( materiais espalhados pelo pátio)</label>
-                <div class="emoji-group" id="pergunta_11">
-                    <div class="emoji-btn emoji-bom" onclick="toggleEmoji(this, 'bom')">😃 Bom</div>
-                    <div class="emoji-btn emoji-medio" onclick="toggleEmoji(this, 'medio')">😐 Médio</div>
-                    <div class="emoji-btn emoji-ruim" onclick="toggleEmoji(this, 'ruim')">😟 Ruim</div>
-                </div>
-                <!-- Restante da pergunta 1 (comentário e upload de fotos) -->
-                <div id="comentario_pergunta_11" class="comment-section hidden">
-                    <label for="comentario_pergunta_11">Comentário (caso a resposta seja Médio ou Ruim - Pergunta 11):</label>
-                    <textarea name="comentario_pergunta_11"></textarea>
-                </div>
-                <div id="upload_foto_pergunta_11" class="image-upload hidden">
-                    <label for="upload_foto_pergunta_11">Faça o upload de fotos (caso necessário):</label>
-                    <input type="file" name="upload_foto_pergunta_11" accept="image/jpeg, image/png" onchange="handleImageUpload(this, 'pergunta_11')">
-                    <div class="uploaded-images" id="uploaded_images_pergunta_11"></div>
-                </div>
-        
-                <!-- Pergunta 4 -->
-                <label>Pergunta 4: Há excesso de resíduos para destinação?</label>
-                <div class="emoji-group" id="pergunta_12">
-                    <div class="emoji-btn emoji-bom" onclick="toggleEmoji(this, 'bom')">😃 Bom</div>
-                    <div class="emoji-btn emoji-medio" onclick="toggleEmoji(this, 'medio')">😐 Médio</div>
-                    <div class="emoji-btn emoji-ruim" onclick="toggleEmoji(this, 'ruim')">😟 Ruim</div>
-                </div>
-                <!-- Restante da pergunta 2 (comentário e upload de fotos) -->
-                <div id="comentario_pergunta_12" class="comment-section hidden">
-                    <label for="comentario_pergunta_12">Comentário (caso a resposta seja Médio ou Ruim - Pergunta 12):</label>
-                    <textarea name="comentario_pergunta_12"></textarea>
-                </div>
-                <div id="upload_foto_pergunta_12" class="image-upload hidden">
-                    <label for="upload_foto_pergunta_12">Faça o upload de fotos (caso necessário):</label>
-                    <input type="file" name="upload_foto_pergunta_12" accept="image/jpeg, image/png" onchange="handleImageUpload(this, 'pergunta_12')">
-                    <div class="uploaded-images" id="uploaded_images_pergunta_12"></div>
-                </div>                
-
-                        <!-- Seção SENSO DE PADRONIZAÇÃO-->
-        <h2>SENSO DE PADRONIZAÇÃO</h2>
+        <h2>SENSO DE AUTO DISCIPLINA</h2>
 
         <!-- Pergunta 1 -->
-        <label>Pergunta 1: As lâmpadas, luminárias estão limpas e em funcionamento?</label>
-        <div class="emoji-group" id="pergunta_13">
+        <label>Pergunta 1: Existem materiais ou equipamentos que não estão sendo utilizados sobre as mesas e bancadas?</label>
+        <div class="emoji-group" id="pergunta_11">
             <div class="emoji-btn emoji-bom" onclick="toggleEmoji(this, 'bom')">😃 Bom</div>
             <div class="emoji-btn emoji-medio" onclick="toggleEmoji(this, 'medio')">😐 Médio</div>
             <div class="emoji-btn emoji-ruim" onclick="toggleEmoji(this, 'ruim')">😟 Ruim</div>
         </div>
         <!-- Restante da pergunta 1 (comentário e upload de fotos) -->
+        <div id="comentario_pergunta_11" class="comment-section hidden">
+            <label for="comentario_pergunta_11">Comentário (caso a resposta seja Médio ou Ruim - Pergunta 11):</label>
+            <textarea name="comentario_pergunta_11"></textarea>
+        </div>
+        <div id="upload_foto_pergunta_11" class="image-upload hidden">
+            <label for="upload_foto_pergunta_11">Faça o upload de fotos (caso necessário):</label>
+            <input type="file" name="upload_foto_pergunta_11" accept="image/jpeg, image/png" onchange="handleImageUpload(this, 'pergunta_11')">
+            <div class="uploaded-images" id="uploaded_images_pergunta_11"></div>
+        </div>
+
+        <!-- Pergunta 2 -->
+        <label>Pergunta 2: Existem equipamentos/mobiliários, ferramentas ou algum elemento de estrutura física do setor necessitando de reparo, enferrujados, velhos ou que precisa ser trocado?</label>
+        <div class="emoji-group" id="pergunta_12">
+            <div class="emoji-btn emoji-bom" onclick="toggleEmoji(this, 'bom')">😃 Bom</div>
+            <div class="emoji-btn emoji-medio" onclick="toggleEmoji(this, 'medio')">😐 Médio</div>
+            <div class="emoji-btn emoji-ruim" onclick="toggleEmoji(this, 'ruim')">😟 Ruim</div>
+        </div>
+        <!-- Restante da pergunta 2 (comentário e upload de fotos) -->
+        <div id="comentario_pergunta_12" class="comment-section hidden">
+            <label for="comentario_pergunta_12">Comentário (caso a resposta seja Médio ou Ruim - Pergunta 12):</label>
+            <textarea name="comentario_pergunta_12"></textarea>
+        </div>
+        <div id="upload_foto_pergunta_12" class="image-upload hidden">
+            <label for="upload_foto_pergunta_12">Faça o upload de fotos (caso necessário):</label>
+            <input type="file" name="upload_foto_pergunta_12" accept="image/jpeg, image/png" onchange="handleImageUpload(this, 'pergunta_12')">
+            <div class="uploaded-images" id="uploaded_images_pergunta_12"></div>
+        </div>
+        <!-- Pergunta 3 -->
+        <label>Pergunta 3: Gramas e galhos encontram-se aparados?</label>
+        <div class="emoji-group" id="pergunta_13">
+            <div class="emoji-btn emoji-bom" onclick="toggleEmoji(this, 'bom')">😃 Bom</div>
+            <div class="emoji-btn emoji-medio" onclick="toggleEmoji(this, 'medio')">😐 Médio</div>
+            <div class="emoji-btn emoji-ruim" onclick="toggleEmoji(this, 'ruim')">😟 Ruim</div>
+        </div>
+        <!-- Restante da pergunta 3 (comentário e upload de fotos) -->
         <div id="comentario_pergunta_13" class="comment-section hidden">
-            <label for="comentario_pergunta_13">Comentário (caso a resposta seja Médio ou Ruim - Pergunta 13):</label>
+            <label for="comentario_pergunta_3">Comentário (caso a resposta seja Médio ou Ruim - Pergunta 13):</label>
             <textarea name="comentario_pergunta_13"></textarea>
         </div>
         <div id="upload_foto_pergunta_13" class="image-upload hidden">
@@ -434,35 +418,34 @@
             <div class="uploaded-images" id="uploaded_images_pergunta_13"></div>
         </div>
 
-        <!-- Pergunta 2 -->
-        <label>Pergunta 2: Os equipamentos de combate à incêndios estão identificados,em boas condições e prontos para o uso?</label>
+        <h2>SENSO DE SEGURANÇA DO ALIMENTO</h2>
+
+        <!-- Pergunta 14 -->
+        <label>Pergunta 14: Existem materiais ou equipamentos que não estão sendo utilizados sobre as mesas e bancadas?</label>
         <div class="emoji-group" id="pergunta_14">
             <div class="emoji-btn emoji-bom" onclick="toggleEmoji(this, 'bom')">😃 Bom</div>
             <div class="emoji-btn emoji-medio" onclick="toggleEmoji(this, 'medio')">😐 Médio</div>
             <div class="emoji-btn emoji-ruim" onclick="toggleEmoji(this, 'ruim')">😟 Ruim</div>
         </div>
-        <!-- Restante da pergunta 2 (comentário e upload de fotos) -->
+        <!-- Restante da pergunta 14 (comentário e upload de fotos) -->
         <div id="comentario_pergunta_14" class="comment-section hidden">
             <label for="comentario_pergunta_14">Comentário (caso a resposta seja Médio ou Ruim - Pergunta 14):</label>
             <textarea name="comentario_pergunta_14"></textarea>
         </div>
         <div id="upload_foto_pergunta_14" class="image-upload hidden">
-            <label for="upload_foto_pergunta_14">Faça o upload de fotos (caso necessário):</label>
+            <label for="upload_foto_pergunta_1">Faça o upload de fotos (caso necessário):</label>
             <input type="file" name="upload_foto_pergunta_14" accept="image/jpeg, image/png" onchange="handleImageUpload(this, 'pergunta_14')">
             <div class="uploaded-images" id="uploaded_images_pergunta_14"></div>
         </div>
 
-
-        <h2>SENSO DE AUTO DISCIPLINA</h2>
-
-        <!-- Pergunta 1 -->
-        <label>Pergunta 1: Existem materiais ou objetos impossibilitando trajeto, impedindo entrada de áreas ou setores?</label>
+        <!-- Pergunta 15 -->
+        <label>Pergunta 2: Existem equipamentos/mobiliários, ferramentas ou algum elemento de estrutura física do setor necessitando de reparo, enferrujados, velhos ou que precisa ser trocado?</label>
         <div class="emoji-group" id="pergunta_15">
             <div class="emoji-btn emoji-bom" onclick="toggleEmoji(this, 'bom')">😃 Bom</div>
             <div class="emoji-btn emoji-medio" onclick="toggleEmoji(this, 'medio')">😐 Médio</div>
             <div class="emoji-btn emoji-ruim" onclick="toggleEmoji(this, 'ruim')">😟 Ruim</div>
         </div>
-        <!-- Restante da pergunta 1 (comentário e upload de fotos) -->
+        <!-- Restante da pergunta 15 (comentário e upload de fotos) -->
         <div id="comentario_pergunta_15" class="comment-section hidden">
             <label for="comentario_pergunta_15">Comentário (caso a resposta seja Médio ou Ruim - Pergunta 15):</label>
             <textarea name="comentario_pergunta_15"></textarea>
@@ -472,98 +455,23 @@
             <input type="file" name="upload_foto_pergunta_15" accept="image/jpeg, image/png" onchange="handleImageUpload(this, 'pergunta_15')">
             <div class="uploaded-images" id="uploaded_images_pergunta_15"></div>
         </div>
-
-        <!-- Pergunta 2 -->
-        <label>Pergunta 2: O ambiente reflete a essência do Programa 6S? A área causa impacto, admiração? O setor cumpre com os demais Sensos?</label>
+        <!-- Pergunta 16 -->
+        <label>Pergunta 3: Gramas e galhos encontram-se aparados?</label>
         <div class="emoji-group" id="pergunta_16">
             <div class="emoji-btn emoji-bom" onclick="toggleEmoji(this, 'bom')">😃 Bom</div>
             <div class="emoji-btn emoji-medio" onclick="toggleEmoji(this, 'medio')">😐 Médio</div>
             <div class="emoji-btn emoji-ruim" onclick="toggleEmoji(this, 'ruim')">😟 Ruim</div>
         </div>
-        <!-- Restante da pergunta 2 (comentário e upload de fotos) -->
+        <!-- Restante da pergunta 16 (comentário e upload de fotos) -->
         <div id="comentario_pergunta_16" class="comment-section hidden">
             <label for="comentario_pergunta_16">Comentário (caso a resposta seja Médio ou Ruim - Pergunta 16):</label>
             <textarea name="comentario_pergunta_16"></textarea>
         </div>
         <div id="upload_foto_pergunta_16" class="image-upload hidden">
             <label for="upload_foto_pergunta_16">Faça o upload de fotos (caso necessário):</label>
-            <input type="file" name="upload_foto_pergunta_12" accept="image/jpeg, image/png" onchange="handleImageUpload(this, 'pergunta_16')">
+            <input type="file" name="upload_foto_pergunta_16" accept="image/jpeg, image/png" onchange="handleImageUpload(this, 'pergunta_16')">
             <div class="uploaded-images" id="uploaded_images_pergunta_16"></div>
         </div>
-
-
-        <h2>SENSO DE SEGURANÇA DO ALIMENTO</h2>
-
-        <!-- Pergunta 1 -->
-        <label>Pergunta 1: Os colaboradores conhecem a Política da Qualidade? (Entrevistar colaboradores).</label>
-        <div class="emoji-group" id="pergunta_17">
-            <div class="emoji-btn emoji-bom" onclick="toggleEmoji(this, 'bom')">😃 Bom</div>
-            <div class="emoji-btn emoji-medio" onclick="toggleEmoji(this, 'medio')">😐 Médio</div>
-            <div class="emoji-btn emoji-ruim" onclick="toggleEmoji(this, 'ruim')">😟 Ruim</div>
-        </div>
-        <!-- Restante da pergunta 14 (comentário e upload de fotos) -->
-        <div id="comentario_pergunta_17" class="comment-section hidden">
-            <label for="comentario_pergunta_17">Comentário (caso a resposta seja Médio ou Ruim - Pergunta 17):</label>
-            <textarea name="comentario_pergunta_17"></textarea>
-        </div>
-        <div id="upload_foto_pergunta_17" class="image-upload hidden">
-            <label for="upload_foto_pergunta_17">Faça o upload de fotos (caso necessário):</label>
-            <input type="file" name="upload_foto_pergunta_17" accept="image/jpeg, image/png" onchange="handleImageUpload(this, 'pergunta_17')">
-            <div class="uploaded-images" id="uploaded_images_pergunta_17"></div>
-        </div>
-
-        <!-- Pergunta 18 -->
-        <label>Pergunta 2: Bancadas,mesas,armários,estantes,gavetas são mantidas organizadas durante a execução das tarefas?</label>
-        <div class="emoji-group" id="pergunta_18">
-            <div class="emoji-btn emoji-bom" onclick="toggleEmoji(this, 'bom')">😃 Bom</div>
-            <div class="emoji-btn emoji-medio" onclick="toggleEmoji(this, 'medio')">😐 Médio</div>
-            <div class="emoji-btn emoji-ruim" onclick="toggleEmoji(this, 'ruim')">😟 Ruim</div>
-        </div>
-        <!-- Restante da pergunta 18 (comentário e upload de fotos) -->
-        <div id="comentario_pergunta_18" class="comment-section hidden">
-            <label for="comentario_pergunta_18">Comentário (caso a resposta seja Médio ou Ruim - Pergunta 18):</label>
-            <textarea name="comentario_pergunta_18"></textarea>
-        </div>
-        <div id="upload_foto_pergunta_18" class="image-upload hidden">
-            <label for="upload_foto_pergunta_18">Faça o upload de fotos (caso necessário):</label>
-            <input type="file" name="upload_foto_pergunta_18" accept="image/jpeg, image/png" onchange="handleImageUpload(this, 'pergunta_18')">
-            <div class="uploaded-images" id="uploaded_images_pergunta_18"></div>
-        </div>
-        <!-- Pergunta 19 -->
-        <label>Pergunta 3: Os colaboradores entendem e praticam as Boas Práticas de Fabricação(BPF), (Colaborador com roupa civil por baixo do uniforme, usando adornos ou maquiagem, não fazendo uso das barreiras sanitárias, etc.).</label>
-        <div class="emoji-group" id="pergunta_19">
-            <div class="emoji-btn emoji-bom" onclick="toggleEmoji(this, 'bom')">😃 Bom</div>
-            <div class="emoji-btn emoji-medio" onclick="toggleEmoji(this, 'medio')">😐 Médio</div>
-            <div class="emoji-btn emoji-ruim" onclick="toggleEmoji(this, 'ruim')">😟 Ruim</div>
-        </div>
-        <!-- Restante da pergunta 19 (comentário e upload de fotos) -->
-        <div id="comentario_pergunta_19" class="comment-section hidden">
-            <label for="comentario_pergunta_19">Comentário (caso a resposta seja Médio ou Ruim - Pergunta 19):</label>
-            <textarea name="comentario_pergunta_19"></textarea>
-        </div>
-        <div id="upload_foto_pergunta_19" class="image-upload hidden">
-            <label for="upload_foto_pergunta_19">Faça o upload de fotos (caso necessário):</label>
-            <input type="file" name="upload_foto_pergunta_19" accept="image/jpeg, image/png" onchange="handleImageUpload(this, 'pergunta_19')">
-            <div class="uploaded-images" id="uploaded_images_pergunta_19"></div>
-        </div>
-
-        <!-- Pergunta 20 -->
-        <label>Pergunta 4: As lixeiras estão sendo utilizadas corretamente?(Todo lixo dentro da lixeira,  lixeira padrão, resíduos separados corretamente).</label>
-        <div class="emoji-group" id="pergunta_20">
-            <div class="emoji-btn emoji-bom" onclick="toggleEmoji(this, 'bom')">😃 Bom</div>
-            <div class="emoji-btn emoji-medio" onclick="toggleEmoji(this, 'medio')">😐 Médio</div>
-            <div class="emoji-btn emoji-ruim" onclick="toggleEmoji(this, 'ruim')">😟 Ruim</div>
-        </div>
-        <!-- Restante da pergunta 20 (comentário e upload de fotos) -->
-        <div id="comentario_pergunta_20" class="comment-section hidden">
-            <label for="comentario_pergunta_20">Comentário (caso a resposta seja Médio ou Ruim - Pergunta 20):</label>
-            <textarea name="comentario_pergunta_20"></textarea>
-        </div>
-        <div id="upload_foto_pergunta_20" class="image-upload hidden">
-            <label for="upload_foto_pergunta_20">Faça o upload de fotos (caso necessário):</label>
-            <input type="file" name="upload_foto_pergunta_20" accept="image/jpeg, image/png" onchange="handleImageUpload(this, 'pergunta_20')">
-            <div class="uploaded-images" id="uploaded_images_pergunta_20"></div>
-        </div>        
 <!-- Adicione as perguntas para as outras seções aqui -->
 
         <button type="button" onclick="submitForm()">Enviar</button>
@@ -591,10 +499,7 @@
         const selecoesPergunta14 = { resposta: null, comentario: null, imagens: [] };
         const selecoesPergunta15 = { resposta: null, comentario: null, imagens: [] };
         const selecoesPergunta16 = { resposta: null, comentario: null, imagens: [] };
-        const selecoesPergunta17 = { resposta: null, comentario: null, imagens: [] };
-        const selecoesPergunta18 = { resposta: null, comentario: null, imagens: [] };
-        const selecoesPergunta19 = { resposta: null, comentario: null, imagens: [] };
-        const selecoesPergunta20 = { resposta: null, comentario: null, imagens: [] };        
+        
 
         function toggleEmoji(emojiBtn, resposta) {
             const perguntaId = emojiBtn.parentNode.id;
@@ -672,20 +577,8 @@
                     break;
                 case 'pergunta_16':
                     selecoesPergunta16.resposta = resposta;
-                    break;
-                case 'pergunta_17':
-                    selecoesPergunta17.resposta = resposta;
-                    break;                                                                                                    
-                case 'pergunta_18':
-                    selecoesPergunta18.resposta = resposta;
-                    break;
-                case 'pergunta_19':
-                    selecoesPergunta19.resposta = resposta;
-                    break;                    
-                case 'pergunta_20':
-                    selecoesPergunta20.resposta = resposta;
-                    break;                    
-                    // Adicione casos para outras perguntas conforme necessário
+                    break;                                                                                
+                // Adicione casos para outras perguntas conforme necessário
             }
 
             // Atualiza a visibilidade dos campos adicionais
@@ -882,51 +775,7 @@
                         clearUploadedImages(uploadedImagesSection);
                     }
                     break;                                      
-                case 'pergunta_17':
-                    if (selecoesPergunta17.resposta === 'ruim' || selecoesPergunta17.resposta === 'medio') {
-                        comentarioSection.classList.remove('hidden');
-                        uploadSection.classList.remove('hidden');
-                        showUploadedImages(selecoesPergunta17.imagens, uploadedImagesSection);
-                    } else {
-                        comentarioSection.classList.add('hidden');
-                        uploadSection.classList.add('hidden');
-                        clearUploadedImages(uploadedImagesSection);
-                    }
-                    break; 
-                case 'pergunta_18':
-                    if (selecoesPergunta18.resposta === 'ruim' || selecoesPergunta18.resposta === 'medio') {
-                        comentarioSection.classList.remove('hidden');
-                        uploadSection.classList.remove('hidden');
-                        showUploadedImages(selecoesPergunta18.imagens, uploadedImagesSection);
-                    } else {
-                        comentarioSection.classList.add('hidden');
-                        uploadSection.classList.add('hidden');
-                        clearUploadedImages(uploadedImagesSection);
-                    }
-                    break; 
-                case 'pergunta_19':
-                    if (selecoesPergunta19.resposta === 'ruim' || selecoesPergunta16.resposta === 'medio') {
-                        comentarioSection.classList.remove('hidden');
-                        uploadSection.classList.remove('hidden');
-                        showUploadedImages(selecoesPergunta19.imagens, uploadedImagesSection);
-                    } else {
-                        comentarioSection.classList.add('hidden');
-                        uploadSection.classList.add('hidden');
-                        clearUploadedImages(uploadedImagesSection);
-                    }
-                    break; 
-                case 'pergunta_20':
-                    if (selecoesPergunta20.resposta === 'ruim' || selecoesPergunta20.resposta === 'medio') {
-                        comentarioSection.classList.remove('hidden');
-                        uploadSection.classList.remove('hidden');
-                        showUploadedImages(selecoesPergunta20.imagens, uploadedImagesSection);
-                    } else {
-                        comentarioSection.classList.add('hidden');
-                        uploadSection.classList.add('hidden');
-                        clearUploadedImages(uploadedImagesSection);
-                    }
-                    break; 
-                    // Adicione casos para outras perguntas conforme necessário
+                // Adicione casos para outras perguntas conforme necessário
             }
         }
 
@@ -975,10 +824,6 @@
                         case 'pergunta_14':
                         case 'pergunta_15':
                         case 'pergunta_16':
-                        case 'pergunta_17':
-                        case 'pergunta_18':                        
-                        case 'pergunta_19':
-                        case 'pergunta_20':                            
                             const perguntaNumber = perguntaId.split('_')[1];
                             eval(`selecoesPergunta${perguntaNumber}.imagens.push(URL.createObjectURL(file));`);
                             break;
@@ -1044,18 +889,6 @@
         pergunta_16: selecoesPergunta16.resposta,
         comentario_pergunta_16: document.getElementsByName('comentario_pergunta_16')[0].value,
         upload_foto_pergunta_16: selecoesPergunta16.imagens,
-        pergunta_17: selecoesPergunta17.resposta,
-        comentario_pergunta_17: document.getElementsByName('comentario_pergunta_17')[0].value,
-        upload_foto_pergunta_17: selecoesPergunta17.imagens,
-        pergunta_18: selecoesPergunta18.resposta,
-        comentario_pergunta_18: document.getElementsByName('comentario_pergunta_18')[0].value,
-        upload_foto_pergunta_18: selecoesPergunta18.imagens,
-        pergunta_19: selecoesPergunta19.resposta,
-        comentario_pergunta_19: document.getElementsByName('comentario_pergunta_19')[0].value,
-        upload_foto_pergunta_19: selecoesPergunta19.imagens,
-        pergunta_20: selecoesPergunta20.resposta,
-        comentario_pergunta_20: document.getElementsByName('comentario_pergunta_20')[0].value,
-        upload_foto_pergunta_20: selecoesPergunta20.imagens,
         // Adicione aqui os dados para outras perguntas conforme necessário
     };
         

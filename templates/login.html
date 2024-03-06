@@ -10,17 +10,17 @@
     <title>Login</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <style>
-body {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    margin: 0;
-    background-image: url("../static/assets/wallpaper.jpg");
-    background-size: cover; /* Isso faz com que a imagem de fundo cubra toda a tela */
-    background-position: center; /* Centraliza a imagem de fundo */
-    background-repeat: no-repeat; /* Evita a repetição da imagem */
-}
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-image: url("../static/assets/wallpaper2.jpg");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
 
         .login-container {
             text-align: center;
@@ -54,12 +54,20 @@ body {
         }
 
         input {
-            width: 100%;
+            width: calc(100% - 30px);
             padding: 10px;
             margin-bottom: 16px;
             border: 1px solid #ddd;
             border-radius: 4px;
             box-sizing: border-box;
+            float: left;
+        }
+
+        .password-toggle {
+            float: right;
+            margin-top: 10px;
+            margin-right: 10px;
+            cursor: pointer;
         }
 
         input[type="submit"] {
@@ -73,62 +81,73 @@ body {
         }
 
         .logo-img {
-    max-width: 100%; /* Alterado para ser responsivo */
-    height: auto;
-    border-radius: 0%;
-}
+            max-width: 35%;
+            height: auto;
+            border-radius: 0%;
+        }
 
-footer {
-    margin-top: 20px;
-}
+        footer {
+            margin-top: 20px;
+        }
 
-footer p {
-    text-align: center;
-    font-size: 14px;
-}
+        footer p {
+            text-align: center;
+            font-size: 14px;
+        }
 
-/* Media queries para tornar o layout responsivo */
-@media only screen and (max-width: 600px) {
-    .login-container {
-        width: 90%; /* Alterado para ocupar 90% da largura da tela */
-    }
+        /* Media queries para tornar o layout responsivo */
+        @media only screen and (max-width: 600px) {
+            .login-container {
+                width: 90%;
+            }
 
-    .logo-img {
-        max-width: 80%; /* Alterado para ocupar 80% da largura da tela */
-    }
-}
-
+            .logo-img {
+                max-width: 80%;
+            }
+        }
     </style>
 </head>
 <body>
 
-    <div class="login-container">
-        <img src="../static/assets/logo.png" alt="Logo" id="logo-login">
-
-        <h2> PROGRAMA 6S </h2>
-        <form action="{{ url_for('login') }}" method="POST">
-            <label for="usuario">Usuário:</label>
-            <input type="text" id="usuario" name="usuario" required>
-
-            <label for="senha">Senha:</label>
+<div class="login-container">
+    <img src="../static/assets/logo.png" alt="Logo" id="logo-login">
+    <h2> PROGRAMA 6S </h2>
+    <form action="{{ url_for('login') }}" method="POST">
+        <label for="usuario">Usuário:</label>
+        <input type="text" id="usuario" name="usuario" required>
+        <label for="senha">Senha:</label>
+        <div>
             <input type="password" id="senha" name="senha" required>
-
-            <input type="submit" value="Entrar">
-        </form>
-        <footer>
-            <center><img class="logo-img" src="../static/assets/pluma.png" alt="Logo da Empresa"></center>
-            <div class="copyright">
-                <p>
-                    In development By
-                    <a
+            <i class='bx bx-show password-toggle' id='togglePassword'></i>
+        </div>
+        <input type="submit" value="Entrar">
+    </form>
+    <footer>
+        <center><img class="logo-img" src="../static/assets/Logo6S.png" alt="Logo da Empresa"></center>
+        <div class="copyright">
+            <p>
+                In development By
+                <a
                         href="https://github.com/herichmarcelo"
                         target="_blank"
-                        ><i class="bx bxl-github"></i>Herich Marcelo</a
-                    >
-                </p>
-            </div>
-        </footer>
-    </div>
+                ><i class="bx bxl-github"></i>Herich Marcelo</a
+                >
+            </p>
+        </div>
+    </footer>
+</div>
+
+<script>
+    const togglePassword = document.getElementById('togglePassword');
+    const passwordInput = document.getElementById('senha');
+
+    togglePassword.addEventListener('click', function () {
+        const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+        passwordInput.setAttribute('type', type);
+        this.classList.toggle('bx-show');
+        this.classList.toggle('bx-hide');
+    });
+</script>
 
 </body>
 </html>

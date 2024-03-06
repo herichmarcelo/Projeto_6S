@@ -10,7 +10,10 @@
 
     <style>
         body {
-            background-color: #f8f9fa;
+            background-image: url('../static/assets/wallpaper2.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
         }
 
         .container {
@@ -136,12 +139,10 @@
 
         <!-- Botões para as áreas de auditoria -->
         <div>
-            <a href="#" class="btn btn-primary btn-administrativo">🖊️ADMINISTRATIVO</a>
-            <a href="#" class="btn btn-success btn-manutencao">🛠️MANUTENÇÃO</a>
+            <a href="{{ url_for('auditorias.adm') }}" class="btn btn-primary btn-administrativo">🖊️ADMINISTRATIVO</a>
+            <a href="{{ url_for('auditorias.externas') }}" class="btn btn-success btn-manutencao">🛠️EXTERNAS</a>
             <a href="{{ url_for('auditorias.patio') }}" class="btn btn-primary btn-patio">🌳PÁTIO</a>
-            <a href="#" class="btn btn-success btn-caldeira">🍵CALDEIRA</a>
-            <a href="#" class="btn btn-primary btn-ffo">🔧FFO</a>
-            <a href="#" class="btn btn-danger btn-producao">🐔PRODUÇÃO</a>
+            <a href="{{ url_for('auditorias.producao') }}" class="btn btn-success btn-caldeira">🐔PRODUÇÃO</a>
             <!-- Adicione mais áreas conforme necessário -->
         </div>
 
@@ -151,12 +152,6 @@
             <a href="{{ url_for('logout') }}" class="btn btn-sair">Sair</a>
 
         </div>
-
-        <!-- Rodapé -->
-        <div class="rodape">
-            <p>&copy; Bello Alimentos 2024 Powered by Luiz Santos e Herich Marcelo</p>
-        </div>
-    </div>
 
     <!-- Adicione os scripts necessários no final do corpo da página -->
     <!-- Adicione os scripts do Bootstrap JS e Popper.js -->

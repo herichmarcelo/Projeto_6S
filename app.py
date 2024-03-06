@@ -1,9 +1,11 @@
+import uuid
 import csv
 import os
 from flask import Flask, render_template, request, jsonify, session, redirect, url_for, send_file
 from auditorias_routes import auditorias_bp
 from flask import send_file
 from dashdados import app_dash
+from werkzeug.utils import secure_filename
 
 app = Flask(__name__)
 app.register_blueprint(auditorias_bp)
@@ -82,11 +84,13 @@ def upload_foto():
         usuario = session.get('usuario')
 
         if usuario:
-            nome_arquivo = f'{usuario}_foto.jpg'
+            setor_auditado = request.form.get('setor_auditado')  # Obtém o setor auditado do formulário HTML
+            nome_arquivo = f'{setor_auditado}_foto.jpg'
             file = request.files.get('file')
 
             if file:
-                file.save(os.path.join('../static/assets', nome_arquivo))
+                # Salva o arquivo na pasta 'static/fotosauditorias'
+                file.save(os.path.join('static', 'fotosauditorias', secure_filename(nome_arquivo)))
                 return jsonify({'status': 'success', 'mensagem': 'Foto carregada com sucesso'})
             else:
                 return jsonify({'status': 'error', 'mensagem': 'Erro ao carregar foto'})
@@ -166,4 +170,4 @@ def submit():
         return f'Ocorreu um erro ao processar a solicitação: {str(e)}', 500
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000, debug=True)
+    app.run(host='0.0.0.0', port=80, debug=True)
