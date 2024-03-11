@@ -19,3 +19,7 @@ def externas():
 @auditorias_bp.route('/producao')
 def producao():
     return render_template('producao.html')
+
+@auditorias_bp.route('/apoio')
+def apoio():
+    return render_template('apoio.html')

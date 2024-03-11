@@ -10,7 +10,7 @@
 
     <style>
         body {
-            background-image: url('../static/assets/wallpaper2.jpg');
+            background-image: url('../static/img/wallpaper2.jpg');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -100,7 +100,7 @@
             margin-bottom: 10px; /* Espaço vertical entre os botões */
         }
 
-        .btn-ffo {
+        .btn-apoio {
             width: 200px;
             height: 50px;
             background-color: #4bac56; /* Cor de fundo amarela */
@@ -131,7 +131,7 @@
     </style>
 </head>
 <body>
-  <center>  <img src="../static/assets/logo.png" alt="Logo da Empresa" style="width: 260px ; max-height: 146px;">  </center>  
+  <center>  <img src="../static/img/logo.png" alt="Logo da Empresa" style="width: 260px ; max-height: 146px;">  </center>  
     <div class="container">
         <!-- Adiciona a imagem acima do título -->
         <h2>Área de Auditoria</h2>
@@ -142,7 +142,8 @@
             <a href="{{ url_for('auditorias.adm') }}" class="btn btn-primary btn-administrativo">🖊️ADMINISTRATIVO</a>
             <a href="{{ url_for('auditorias.externas') }}" class="btn btn-success btn-manutencao">🛠️EXTERNAS</a>
             <a href="{{ url_for('auditorias.patio') }}" class="btn btn-primary btn-patio">🌳PÁTIO</a>
-            <a href="{{ url_for('auditorias.producao') }}" class="btn btn-success btn-caldeira">🐔PRODUÇÃO</a>
+            <a href="{{ url_for('auditorias.producao') }}" class="btn btn-success btn-producao">🐔PRODUÇÃO</a>
+            <a href="{{ url_for('auditorias.apoio') }}" class="btn btn-success btn-apoio">🐔APOIO</a>
             <!-- Adicione mais áreas conforme necessário -->
         </div>
 

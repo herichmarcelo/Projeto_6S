@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
         body {
-            background-image: url('../static/assets/wallpaper2.jpg');
+            background-image: url('../static/img/wallpaper2.jpg');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -100,7 +100,7 @@
 </head>
 <body>
     
-    <img class="logo-img" src="../static/assets/logo.png" alt="Logo da Empresa">
+    <img class="logo-img" src="../static/img/logo.png" alt="Logo da Empresa">
     <center> <h2>Painel de Auditores</h2> </center>
     <div class="container">
         <div>
@@ -174,7 +174,7 @@
 
         function salvarFoto(nomeArquivo, file) {
             const formData = new FormData();
-            formData.append('nome_arquivo', nomeArquivo);
+            formData.append('nome_usuario', nomeArquivo);
             formData.append('file', file);
 
             fetch("{{ url_for('upload_foto') }}", {
