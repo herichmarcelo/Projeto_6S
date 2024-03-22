@@ -12,7 +12,7 @@
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: #f4f4f400;
-            background-image: url('../static/assets/wallpaper2.jpg');
+            background-image: url('../static/img/wallpaper2.jpg');
 
             margin: 20px;
         }
@@ -20,7 +20,7 @@
         form {
             max-width: 800px;
             margin: 0 auto;
-            background-color: #fff;
+            background-color: #fff; 
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -82,6 +82,12 @@
         .emoji-ruim-selected {
             background-color: red;
             border-color: red;
+            color: white;
+            /* Altere a cor do texto, se necessário */
+        }
+        .emoji-nsa-selected {
+            background-color: rgb(0, 0, 0);
+            border-color: rgb(0, 0, 0);
             color: white;
             /* Altere a cor do texto, se necessário */
         }
@@ -151,7 +157,7 @@
 </head>
 
 <body>
-    <img src="../static/assets/logo.png" alt="Bello Alimentos Logo"
+    <img src="../static/img/logo.png" alt="Bello Alimentos Logo"
         style="display: block; margin: 0 auto; max-width: 100%;">
 
     <center>
@@ -188,6 +194,7 @@
             <div class="emoji-btn emoji-bom" onclick="toggleEmoji(this, 'bom')">😃 Bom</div>
             <div class="emoji-btn emoji-medio" onclick="toggleEmoji(this, 'medio')">😐 Médio</div>
             <div class="emoji-btn emoji-ruim" onclick="toggleEmoji(this, 'ruim')">😟 Ruim</div>
+            <div class="emoji-btn emoji-nsa" onclick="toggleEmoji(this, 'Não se aplica')">😕 Não se aplica</div>            
         </div>
         <!-- Restante da pergunta 1 (comentário e upload de fotos) -->
         <div id="comentario_pergunta_1" class="comment-section hidden">
@@ -196,7 +203,7 @@
         </div>
         <div id="upload_foto_pergunta_1" class="image-upload hidden">
             <label for="upload_foto_pergunta_1">Faça o upload de fotos (caso necessário):</label>
-            <input type="file" name="upload_foto_pergunta_1" accept="image/jpeg, image/png"
+            <input type="file" id="uploaded_images_pergunta_1" name="upload_foto_pergunta_1" aaccept="image/*"
                 onchange="handleImageUpload(this, 'pergunta_1')">
             <div class="uploaded-images" id="uploaded_images_pergunta_1"></div>
         </div>
@@ -208,6 +215,7 @@
             <div class="emoji-btn emoji-bom" onclick="toggleEmoji(this, 'bom')">😃 Bom</div>
             <div class="emoji-btn emoji-medio" onclick="toggleEmoji(this, 'medio')">😐 Médio</div>
             <div class="emoji-btn emoji-ruim" onclick="toggleEmoji(this, 'ruim')">😟 Ruim</div>
+            <div class="emoji-btn emoji-nsa" onclick="toggleEmoji(this, 'Não se aplica')">😕 Não se aplica</div> 
         </div>
         <!-- Restante da pergunta 2 (comentário e upload de fotos) -->
         <div id="comentario_pergunta_2" class="comment-section hidden">
@@ -228,6 +236,7 @@
             <div class="emoji-btn emoji-bom" onclick="toggleEmoji(this, 'bom')">😃 Bom</div>
             <div class="emoji-btn emoji-medio" onclick="toggleEmoji(this, 'medio')">😐 Médio</div>
             <div class="emoji-btn emoji-ruim" onclick="toggleEmoji(this, 'ruim')">😟 Ruim</div>
+            <div class="emoji-btn emoji-nsa" onclick="toggleEmoji(this, 'Não se aplica')">😕 Não se aplica</div> 
         </div>
 
         <!-- Restante da pergunta 3 (comentário e upload de fotos) -->
@@ -252,6 +261,7 @@
             <div class="emoji-btn emoji-bom" onclick="toggleEmoji(this, 'bom')">😃 Bom</div>
             <div class="emoji-btn emoji-medio" onclick="toggleEmoji(this, 'medio')">😐 Médio</div>
             <div class="emoji-btn emoji-ruim" onclick="toggleEmoji(this, 'ruim')">😟 Ruim</div>
+            <div class="emoji-btn emoji-nsa" onclick="toggleEmoji(this, 'Não se aplica')">😕 Não se aplica</div> 
         </div>
         <!-- Restante da pergunta 1 (comentário e upload de fotos) -->
         <div id="comentario_pergunta_4" class="comment-section hidden">
@@ -272,6 +282,7 @@
             <div class="emoji-btn emoji-bom" onclick="toggleEmoji(this, 'bom')">😃 Bom</div>
             <div class="emoji-btn emoji-medio" onclick="toggleEmoji(this, 'medio')">😐 Médio</div>
             <div class="emoji-btn emoji-ruim" onclick="toggleEmoji(this, 'ruim')">😟 Ruim</div>
+            <div class="emoji-btn emoji-nsa" onclick="toggleEmoji(this, 'Não se aplica')">😕 Não se aplica</div> 
         </div>
         <!-- Restante da pergunta 2 (comentário e upload de fotos) -->
         <div id="comentario_pergunta_5" class="comment-section hidden">
@@ -295,6 +306,7 @@
             <div class="emoji-btn emoji-bom" onclick="toggleEmoji(this, 'bom')">😃 Bom</div>
             <div class="emoji-btn emoji-medio" onclick="toggleEmoji(this, 'medio')">😐 Médio</div>
             <div class="emoji-btn emoji-ruim" onclick="toggleEmoji(this, 'ruim')">😟 Ruim</div>
+            <div class="emoji-btn emoji-nsa" onclick="toggleEmoji(this, 'Não se aplica')">😕 Não se aplica</div> 
         </div>
         <!-- Restante da pergunta 1 (comentário e upload de fotos) -->
         <div id="comentario_pergunta_6" class="comment-section hidden">
@@ -315,6 +327,7 @@
             <div class="emoji-btn emoji-bom" onclick="toggleEmoji(this, 'bom')">😃 Bom</div>
             <div class="emoji-btn emoji-medio" onclick="toggleEmoji(this, 'medio')">😐 Médio</div>
             <div class="emoji-btn emoji-ruim" onclick="toggleEmoji(this, 'ruim')">😟 Ruim</div>
+            <div class="emoji-btn emoji-nsa" onclick="toggleEmoji(this, 'Não se aplica')">😕 Não se aplica</div> 
         </div>
         <!-- Restante da pergunta 2 (comentário e upload de fotos) -->
         <div id="comentario_pergunta_7" class="comment-section hidden">
@@ -338,6 +351,7 @@
             <div class="emoji-btn emoji-bom" onclick="toggleEmoji(this, 'bom')">😃 Bom</div>
             <div class="emoji-btn emoji-medio" onclick="toggleEmoji(this, 'medio')">😐 Médio</div>
             <div class="emoji-btn emoji-ruim" onclick="toggleEmoji(this, 'ruim')">😟 Ruim</div>
+            <div class="emoji-btn emoji-nsa" onclick="toggleEmoji(this, 'Não se aplica')">😕 Não se aplica</div> 
         </div>
         <!-- Restante da pergunta 1 (comentário e upload de fotos) -->
         <div id="comentario_pergunta_8" class="comment-section hidden">
@@ -358,6 +372,7 @@
             <div class="emoji-btn emoji-bom" onclick="toggleEmoji(this, 'bom')">😃 Bom</div>
             <div class="emoji-btn emoji-medio" onclick="toggleEmoji(this, 'medio')">😐 Médio</div>
             <div class="emoji-btn emoji-ruim" onclick="toggleEmoji(this, 'ruim')">😟 Ruim</div>
+            <div class="emoji-btn emoji-nsa" onclick="toggleEmoji(this, 'Não se aplica')">😕 Não se aplica</div> 
         </div>
         <!-- Restante da pergunta 2 (comentário e upload de fotos) -->
         <div id="comentario_pergunta_9" class="comment-section hidden">
@@ -376,6 +391,7 @@
             <div class="emoji-btn emoji-bom" onclick="toggleEmoji(this, 'bom')">😃 Bom</div>
             <div class="emoji-btn emoji-medio" onclick="toggleEmoji(this, 'medio')">😐 Médio</div>
             <div class="emoji-btn emoji-ruim" onclick="toggleEmoji(this, 'ruim')">😟 Ruim</div>
+            <div class="emoji-btn emoji-nsa" onclick="toggleEmoji(this, 'Não se aplica')">😕 Não se aplica</div> 
         </div>
         <!-- Restante da pergunta 3 (comentário e upload de fotos) -->
         <div id="comentario_pergunta_10" class="comment-section hidden">
@@ -398,6 +414,7 @@
             <div class="emoji-btn emoji-bom" onclick="toggleEmoji(this, 'bom')">😃 Bom</div>
             <div class="emoji-btn emoji-medio" onclick="toggleEmoji(this, 'medio')">😐 Médio</div>
             <div class="emoji-btn emoji-ruim" onclick="toggleEmoji(this, 'ruim')">😟 Ruim</div>
+            <div class="emoji-btn emoji-nsa" onclick="toggleEmoji(this, 'Não se aplica')">😕 Não se aplica</div> 
         </div>
         <!-- Restante da pergunta 1 (comentário e upload de fotos) -->
         <div id="comentario_pergunta_11" class="comment-section hidden">
@@ -418,6 +435,7 @@
             <div class="emoji-btn emoji-bom" onclick="toggleEmoji(this, 'bom')">😃 Bom</div>
             <div class="emoji-btn emoji-medio" onclick="toggleEmoji(this, 'medio')">😐 Médio</div>
             <div class="emoji-btn emoji-ruim" onclick="toggleEmoji(this, 'ruim')">😟 Ruim</div>
+            <div class="emoji-btn emoji-nsa" onclick="toggleEmoji(this, 'Não se aplica')">😕 Não se aplica</div> 
         </div>
         <!-- Restante da pergunta 2 (comentário e upload de fotos) -->
         <div id="comentario_pergunta_12" class="comment-section hidden">
@@ -436,6 +454,7 @@
             <div class="emoji-btn emoji-bom" onclick="toggleEmoji(this, 'bom')">😃 Bom</div>
             <div class="emoji-btn emoji-medio" onclick="toggleEmoji(this, 'medio')">😐 Médio</div>
             <div class="emoji-btn emoji-ruim" onclick="toggleEmoji(this, 'ruim')">😟 Ruim</div>
+            <div class="emoji-btn emoji-nsa" onclick="toggleEmoji(this, 'Não se aplica')">😕 Não se aplica</div> 
         </div>
         <!-- Restante da pergunta 3 (comentário e upload de fotos) -->
         <div id="comentario_pergunta_13" class="comment-section hidden">
@@ -458,6 +477,7 @@
             <div class="emoji-btn emoji-bom" onclick="toggleEmoji(this, 'bom')">😃 Bom</div>
             <div class="emoji-btn emoji-medio" onclick="toggleEmoji(this, 'medio')">😐 Médio</div>
             <div class="emoji-btn emoji-ruim" onclick="toggleEmoji(this, 'ruim')">😟 Ruim</div>
+            <div class="emoji-btn emoji-nsa" onclick="toggleEmoji(this, 'Não se aplica')">😕 Não se aplica</div> 
         </div>
         <!-- Restante da pergunta 14 (comentário e upload de fotos) -->
         <div id="comentario_pergunta_14" class="comment-section hidden">
@@ -478,6 +498,7 @@
             <div class="emoji-btn emoji-bom" onclick="toggleEmoji(this, 'bom')">😃 Bom</div>
             <div class="emoji-btn emoji-medio" onclick="toggleEmoji(this, 'medio')">😐 Médio</div>
             <div class="emoji-btn emoji-ruim" onclick="toggleEmoji(this, 'ruim')">😟 Ruim</div>
+            <div class="emoji-btn emoji-nsa" onclick="toggleEmoji(this, 'Não se aplica')">😕 Não se aplica</div> 
         </div>
         <!-- Restante da pergunta 15 (comentário e upload de fotos) -->
         <div id="comentario_pergunta_15" class="comment-section hidden">
@@ -496,6 +517,7 @@
             <div class="emoji-btn emoji-bom" onclick="toggleEmoji(this, 'bom')">😃 Bom</div>
             <div class="emoji-btn emoji-medio" onclick="toggleEmoji(this, 'medio')">😐 Médio</div>
             <div class="emoji-btn emoji-ruim" onclick="toggleEmoji(this, 'ruim')">😟 Ruim</div>
+            <div class="emoji-btn emoji-nsa" onclick="toggleEmoji(this, 'Não se aplica')">😕 Não se aplica</div> 
         </div>
         <!-- Restante da pergunta 16 (comentário e upload de fotos) -->
         <div id="comentario_pergunta_16" class="comment-section hidden">
@@ -516,7 +538,7 @@
 
     </form>
 
-    <script>
+    <script> 
 
         // Variáveis para armazenar as seleções feitas nas perguntas
         const selecoesPergunta1 = { resposta: null, comentario: null, imagens: [] };
@@ -552,6 +574,8 @@
                 emojiBtn.classList.add('emoji-medio-selected');
             } else if (resposta === 'ruim') {
                 emojiBtn.classList.add('emoji-ruim-selected');
+            } else if (resposta === 'Não se aplica') {
+                emojiBtn.classList.add('emoji-nsa-selected');
             }
         }
 
@@ -561,6 +585,7 @@
                 btn.classList.remove('emoji-selected');
                 btn.classList.remove('emoji-medio-selected');
                 btn.classList.remove('emoji-ruim-selected');
+                btn.classList.remove('emoji-nsa-selected')
             });
         }
 
@@ -883,7 +908,7 @@
                 pergunta_2: selecoesPergunta2.resposta,
                 comentario_pergunta_2: document.getElementsByName('comentario_pergunta_2')[0].value,
                 upload_foto_pergunta_2: selecoesPergunta2.imagens,
-                pergunta_3: selecoesPergunta3.resposta,
+                pergunta_3: selecoesPergunta3.resposta, 
                 comentario_pergunta_3: document.getElementsByName('comentario_pergunta_3')[0].value,
                 upload_foto_pergunta_3: selecoesPergunta3.imagens,
                 pergunta_4: selecoesPergunta4.resposta,
@@ -959,4 +984,5 @@
         }
     </script>
 </body>
+
 </html>

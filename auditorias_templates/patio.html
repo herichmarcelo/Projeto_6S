@@ -164,7 +164,7 @@
         <h1>Checklist Auditoria 6S</h1>
         <h1>PATIO</h1>
     </center>
-    <form id="auditoriaForm" method="POST" enctype="multipart/form-data" action="/submit">
+    <form id="auditoriaForm" method="POST" enctype="multipart/form-data" action="/submit" novalidate>
         <!-- Informações sobre o setor auditado -->
         <label for="setor_auditado">Setor Auditado:</label>
         <select name="setor_auditado" required style="width: 100%; height: 38px; box-sizing: border-box;">
@@ -203,7 +203,7 @@
         </div>
         <div id="upload_foto_pergunta_1" class="image-upload hidden">
             <label for="upload_foto_pergunta_1">Faça o upload de fotos (caso necessário):</label>
-            <input type="file" id="uploaded_images_pergunta_1" name="upload_foto_pergunta_1" aaccept="image/jpeg, image/png"
+            <input type="file" name="upload_foto_pergunta_1" aaccept="image/jpeg, image/png"
                 onchange="handleImageUpload(this, 'pergunta_1')">
             <div class="uploaded-images" id="uploaded_images_pergunta_1"></div>
         </div>
@@ -524,7 +524,7 @@
             <label for="comentario_pergunta_16">Comentário (caso a resposta seja Médio ou Ruim - Pergunta 16):</label>
             <textarea name="comentario_pergunta_16"></textarea>
         </div>
-        <div id="upload_foto_pergunta_16" class="image-upload hidden">
+        <div id="upload_foto_pergunta_16" class="image-upload hidden" aria-required="">
             <label for="upload_foto_pergunta_16">Faça o upload de fotos (caso necessário):</label>
             <input type="file" name="upload_foto_pergunta_16" accept="image/jpeg, image/png"
                 onchange="handleImageUpload(this, 'pergunta_16')">
@@ -652,6 +652,7 @@
 
         // Define o valor da caixa de texto como a data atual
         document.getElementById('data_auditoria').value = today;
+        // vamos testar
 
         function updateAdditionalFields(perguntaId) {
             const formData = new FormData(document.getElementById('auditoriaForm'));
@@ -908,7 +909,7 @@
                 pergunta_2: selecoesPergunta2.resposta,
                 comentario_pergunta_2: document.getElementsByName('comentario_pergunta_2')[0].value,
                 upload_foto_pergunta_2: selecoesPergunta2.imagens,
-                pergunta_3: selecoesPergunta3.resposta,
+                pergunta_3: selecoesPergunta3.resposta, 
                 comentario_pergunta_3: document.getElementsByName('comentario_pergunta_3')[0].value,
                 upload_foto_pergunta_3: selecoesPergunta3.imagens,
                 pergunta_4: selecoesPergunta4.resposta,

@@ -1,9 +1,9 @@
 import pyodbc
 import os
-from flask import Flask, render_template, request, jsonify, session, redirect, url_for, send_file, send_from_directory
+from flask import Flask, render_template, request, jsonify, session, redirect, url_for, flash, send_file, send_from_directory
 from auditorias_routes import auditorias_bp
-from flask import send_file
 from dashdados import app_dash
+from datetime import datetime
 from werkzeug.utils import secure_filename
 
 
@@ -13,8 +13,11 @@ app.register_blueprint(auditorias_bp)
 app.secret_key = 'chave_secreta_super_segura'  # Certifique-se de alterar para uma chave segura em um ambiente de produção
 
 # Defina a pasta onde os arquivos serão carregados
+UPLOAD_PATIO = 'static/patio'
+app.config['UPLOAD_PATIO'] = UPLOAD_PATIO
 UPLOAD_FOLDER = 'static/assets'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+
 
 # String de conexão com o banco de dados Access
 conn_str = (
@@ -105,11 +108,6 @@ def cadastrar_usuario():
 
     return redirect(url_for('index'))
 
-# Rota par a pagina auditorias/patio
-@app.route('/auditorias/patio')
-def patio():
-    return render_template('auditorias/patio.html')
-
 # Rota para consultar usuários (disponível apenas para administradores)
 @app.route('/consultar_usuarios')
 def consultar_usuarios():
@@ -147,80 +145,49 @@ def upload_foto():
     except Exception as e:
         return jsonify({'status': 'error', 'message': str(e)})
 
-@app.route('/submit', methods=['GET''POST'])
+@app.route('/submit', methods=['POST'])
 def submit():
     if request.method == 'POST':
-        setor_auditado = request.form['setor_auditado']# Recebe os dados do formulário 
-        data_auditoria = request.form['data_auditoria']
-        representante_setor = request.form['representante_setor']
-        auditores = request.form['auditores']
-        pergunta_1 = request.form['pergunta_1']
-        comentario_pergunta_1 =  request.form.get('comentario_pergunta_1', None)
-        upload_foto_pergunta_1 = request.files.get('upload_foto_pergunta_1', None)
-        pergunta_2 = request.form['pergunta_2']
-        upload_foto_pergunta_2 = request.files.get('upload_foto_pergunta_2', None)
-        comentario_pergunta_2 = request.form.get('comentario_pergunta_2', None)
-        pergunta_3 = request.form['pergunta_3']
-        upload_foto_pergunta_3 = request.files.get('upload_foto_pergunta_3', None)
-        comentario_pergunta_3 = request.form.get('comentario_pergunta_3', None)
-        pergunta_4 = request.form['pergunta_4']
-        upload_foto_pergunta_4 = request.files.get('upload_foto_pergunta_4', None)
-        comentario_pergunta_4 = request.form.get('comentario_pergunta_4', None)
-        pergunta_5 = request.form['pergunta_5']
-        upload_foto_pergunta_5 = request.files.get('upload_foto_pergunta_5', None)
-        comentario_pergunta_5 = request.form.get('comentario_pergunta_5', None)
-        pergunta_6 = request.form['pergunta_6']
-        upload_foto_pergunta_6 = request.files.get('upload_foto_pergunta_6', None)
-        comentario_pergunta_6 = request.form.get('comentario_pergunta_6', None)
-        pergunta_7 = request.form['pergunta_7']
-        upload_foto_pergunta_7 = request.files.get('upload_foto_pergunta_7', None)
-        comentario_pergunta_7 = request.form.get('comentario_pergunta_7', None)
-        pergunta_8 = request.form['pergunta_8']
-        upload_foto_pergunta_8 = request.files.get('upload_foto_pergunta_8', None)
-        comentario_pergunta_8 = request.form.get('comentario_pergunta_8', None)
-        pergunta_9 = request.form['pergunta_9']
-        upload_foto_pergunta_9 = request.files.get('upload_foto_pergunta_9', None)
-        comentario_pergunta_9 = request.form.get('comentario_pergunta_9', None)
-        pergunta_10 = request.form['pergunta_10']
-        upload_foto_pergunta_10 = request.files.get('upload_foto_pergunta_10', None)
-        comentario_pergunta_10 = request.form.get('comentario_pergunta_10', None)
-        pergunta_11 = request.form['pergunta_11']
-        upload_foto_pergunta_11 = request.files.get('upload_foto_pergunta_11', None)
-        comentario_pergunta_11 = request.form.get('comentario_pergunta_11', None)
-        pergunta_12 = request.form['pergunta_12']
-        upload_foto_pergunta_12 = request.files.get('upload_foto_pergunta_12', None)
-        comentario_pergunta_12 = request.form.get('comentario_pergunta_12', None)
-        pergunta_13 = request.form['pergunta_13']
-        upload_foto_pergunta_13 = request.files.get('upload_foto_pergunta_13', None)
-        comentario_pergunta_13 = request.form.get('comentario_pergunta_13', None)
-        pergunta_14 = request.form['pergunta_14']
-        upload_foto_pergunta_14 = request.files.get('upload_foto_pergunta_14', None)
-        comentario_pergunta_14 = request.form.get('comentario_pergunta_14', None)
-        pergunta_15 = request.form['pergunta_15']
-        upload_foto_pergunta_15 = request.files.get('upload_foto_pergunta_15', None)
-        comentario_pergunta_15 = request.form.get('comentario_pergunta_15', None)
-        pergunta_16 = request.form['pergunta_16']
-        upload_foto_pergunta_16 = request.files.get('upload_foto_pergunta_16', None)
-        comentario_pergunta_16 = request.form.get('comentario_pergunta_16', None)
+        form_data = request.form
 
-
-        def save_image(setor_auditado, upload_file):
-            if upload_file and allowed_file(upload_file.filename):
-                filename = secure_filename(setor_auditado) + os.path.splitext(upload_file.filename)[1]
-                upload_file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-                return filename
-            return None
-
-        # Uso da função save_image
-        filename_pergunta_1 = save_image(setor_auditado, upload_foto_pergunta_1)
-        filename_pergunta_2 = save_image(setor_auditado, upload_foto_pergunta_2)
         # Conecta-se ao banco de dados
         conn = pyodbc.connect(conn_str)
         cursor = conn.cursor()
 
         # Insere os dados na tabela adequada
-        sql = "INSERT INTO patio (setor_auditado, data_auditoria, representante_setor, auditores, pergunta_1, comentario_pergunta_1, upload_foto_pergunta_1, pergunta_2, comentario_pergunta_2, upload_foto_pergunta_2, pergunta_3, comentario_pergunta_3, upload_foto_pergunta_3, pergunta_4, comentario_pergunta_4, upload_foto_pergunta_4, pergunta_5, comentario_pergunta_5, upload_foto_pergunta_5, pergunta_6, comentario_pergunta_6, upload_foto_pergunta_6, pergunta_7, comentario_pergunta_7, upload_foto_pergunta_7, pergunta_8, comentario_pergunta_8, upload_foto_pergunta_8, pergunta_9, comentario_pergunta_9, upload_foto_pergunta_9, pergunta_10, comentario_pergunta_10, upload_foto_pergunta_10, pergunta_11, comentario_pergunta_11, upload_foto_pergunta_11, pergunta_12, comentario_pergunta_12, upload_foto_pergunta_12, pergunta_13, comentario_pergunta_13, upload_foto_pergunta_13, pergunta_14, comentario_pergunta_14, upload_foto_pergunta_14, pergunta_15, comentario_pergunta_15, upload_foto_pergunta_15, pergunta_16, comentario_pergunta_16, upload_foto_pergunta_16) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
-        val =  (setor_auditado, data_auditoria, representante_setor, auditores, pergunta_1, comentario_pergunta_1, filename, pergunta_2, comentario_pergunta_2, upload_foto_pergunta_2, pergunta_3, comentario_pergunta_3, upload_foto_pergunta_3, pergunta_4, comentario_pergunta_4, upload_foto_pergunta_4, pergunta_5, comentario_pergunta_5, upload_foto_pergunta_5, pergunta_6, comentario_pergunta_6, upload_foto_pergunta_6, pergunta_7, comentario_pergunta_7, upload_foto_pergunta_7, pergunta_8, comentario_pergunta_8, upload_foto_pergunta_8, pergunta_9, comentario_pergunta_9, upload_foto_pergunta_9, pergunta_10, comentario_pergunta_10, upload_foto_pergunta_10, pergunta_11, comentario_pergunta_11, upload_foto_pergunta_11, pergunta_12, comentario_pergunta_12, upload_foto_pergunta_12, pergunta_13, comentario_pergunta_13, upload_foto_pergunta_13, pergunta_14, comentario_pergunta_14, upload_foto_pergunta_14, pergunta_15, comentario_pergunta_15, upload_foto_pergunta_15, pergunta_16, comentario_pergunta_16, upload_foto_pergunta_16)
+        val = [
+            form_data['setor_auditado'],
+            form_data['data_auditoria'],
+            form_data['representante_setor'],
+            form_data['auditores']
+        ]
+
+        for i in range(1, 17):
+            val.append(form_data[f'pergunta_{i}'])
+            val.append(form_data.get(f'comentario_pergunta_{i}', None))
+            if f'upload_foto_pergunta_{i}' in request.files:
+                upload_file = request.files[f'upload_foto_pergunta_{i},']
+                if upload_file and allowed_file(upload_file.filename):
+                    # Gera um nome de arquivo seguro com base no setor_auditado e um identificador único
+                    timestamp = datetime.now().strftime('%Y%m%d%H%M%S')
+                    filename = secure_filename(f"{form_data['setor_auditado']}_{timestamp}")
+
+                    # Se o arquivo tiver uma extensão, adicione-a ao nome do arquivo seguro
+                    if upload_file.filename:
+                        filename += os.path.splitext(upload_file.filename)[1]
+
+                    # Salva o arquivo
+                    upload_file.save(os.path.join(UPLOAD_FOLDER, filename))
+                    val.append(filename)
+                else:
+                    val.append(None)
+            else:
+                val.append(None)
+
+        sql_columns = ", ".join([f'pergunta_{i}, comentario_pergunta_{i}, upload_foto_pergunta_{i}' for i in range(1, 17)])
+        sql_values = ", ".join(['?'] * 52)  # 16 perguntas * 3 colunas + 4 colunas adicionais
+        sql = f"INSERT INTO patio (setor_auditado, data_auditoria, representante_setor, auditores, {sql_columns}) VALUES ({sql_values})"
+        
         cursor.execute(sql, val)
 
         # Confirma a transação e fecha a conexão
