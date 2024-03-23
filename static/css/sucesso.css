@@ -1,0 +1,64 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-image: url('../static/img/5172658.jpg');
+    background-size: cover;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.content {
+    background-color: #f2f2f2;
+    padding: 20px;
+    margin-right: 20px;
+    border-radius: 10px;
+}
+
+.parabens {
+    color: blue;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.mensagem {
+    font-size: 20px;
+    margin-top: 10px;
+}
+
+.img-container {
+    margin-top: 10px;
+}
+
+.logo {
+    max-width: 200px;
+}
+
+footer {
+    margin-top: 20px;
+}
+.logobrc {
+    width: auto;
+    height: 50px;
+}
+
+.btn-red {
+    background-color: red;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+.btn-green {
+    background-color: green;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+}

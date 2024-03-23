@@ -3,7 +3,7 @@ import pyodbc
 # Configurações de conexão com o banco de dados Access
 conn_str = (
     r'DRIVER={Microsoft Access Driver (*.mdb, *.accdb)};'
-    r'DBQ=H:\Documentos\PYTHON\Projeto_6S\dados\base.accdb;'
+    r'DBQ=H:\Documentos\PYTHON\Projeto_Sensos - BKP -ACCDB\dados\base.accdb;'
 )
 
 # Conectar ao banco de dados
@@ -12,7 +12,7 @@ cursor = conn.cursor()
 
 # SQL para criar a tabela "patio" com os campos especificados
 sql_create_table = '''
-CREATE TABLE patio (
+CREATE TABLE apoio (
     setor_auditado TEXT,
     data_auditoria TEXT,
     representante_setor TEXT,
@@ -64,7 +64,55 @@ CREATE TABLE patio (
     upload_foto_pergunta_15 TEXT,
     pergunta_16 TEXT,
     comentario_pergunta_16 TEXT,
-    upload_foto_pergunta_16 TEXT
+    upload_foto_pergunta_16 TEXT,
+    pergunta_17 TEXT,
+    comentario_pergunta_17 TEXT,
+    upload_foto_pergunta_17 TEXT,
+    pergunta_18 TEXT,
+    comentario_pergunta_18 TEXT,
+    upload_foto_pergunta_18 TEXT,
+    pergunta_19 TEXT,
+    comentario_pergunta_19 TEXT,
+    upload_foto_pergunta_19 TEXT,
+    pergunta_20 TEXT,
+    comentario_pergunta_20 TEXT,
+    upload_foto_pergunta_20 TEXT,
+        pergunta_21 TEXT,
+    comentario_pergunta_21 TEXT,
+    upload_foto_pergunta_21 TEXT,
+    pergunta_22 TEXT,
+    comentario_pergunta_22 TEXT,
+    upload_foto_pergunta_22 TEXT,
+    pergunta_23 TEXT,
+    comentario_pergunta_23 TEXT,
+    upload_foto_pergunta_23 TEXT,
+    pergunta_24 TEXT,
+    comentario_pergunta_24 TEXT,
+    upload_foto_pergunta_24 TEXT,
+    pergunta_25 TEXT,
+    comentario_pergunta_25 TEXT,
+    upload_foto_pergunta_25 TEXT,
+    pergunta_26 TEXT,
+    comentario_pergunta_26 TEXT,
+    upload_foto_pergunta_26 TEXT,
+    pergunta_27 TEXT,
+    comentario_pergunta_27 TEXT,
+    upload_foto_pergunta_27 TEXT,
+    pergunta_28 TEXT,
+    comentario_pergunta_28 TEXT,
+    upload_foto_pergunta_28 TEXT,
+    pergunta_29 TEXT,
+    comentario_pergunta_29 TEXT,
+    upload_foto_pergunta_29 TEXT,
+    pergunta_30 TEXT,
+    comentario_pergunta_30 TEXT,
+    upload_foto_pergunta_30 TEXT,
+    pergunta_31 TEXT,
+    comentario_pergunta_31 TEXT,
+    upload_foto_pergunta_31 TEXT,
+    pergunta_32 TEXT,
+    comentario_pergunta_32 TEXT,
+    upload_foto_pergunta_32 TEXT
 )
 '''
 
