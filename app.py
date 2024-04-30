@@ -5,6 +5,7 @@ from auditorias_routes import auditorias_bp
 from dashdados import app_dash
 from werkzeug.utils import secure_filename
 import pyodbc
+import base64
 from datetime import datetime
 
 
@@ -18,14 +19,18 @@ UPLOAD_FOLDER = 'static/assets'
 UPLOAD_PATIO = 'static/patio'
 UPLOAD_EXTERNAS = 'static/externas'
 UPLOAD_ADM = 'static/adm'
-UPLOAD_APOIO = 'static/apoio'
+UPLOAD_APOIO = 'static/apoio' 
 UPLOAD_PRODUCAO = 'static/producao'
+UPLOAD_ASS = 'static/assinaturas' # Diretório para uploads de assinaturas
+UPLOAD_USER = 'static/user'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.config['UPLOAD_PATIO'] = UPLOAD_PATIO
 app.config['UPLOAD_EXTERNAS'] = UPLOAD_EXTERNAS
 app.config['UPLOAD_ADM'] = UPLOAD_ADM
 app.config['UPLOAD_APOIO'] = UPLOAD_APOIO
-app.config['UPLOAD_PRODUCAO'] = UPLOAD_PRODUCAO 
+app.config['UPLOAD_PRODUCAO'] = UPLOAD_PRODUCAO
+app.config['UPLOAD_ASS'] = UPLOAD_ASS
+app.config['UPLOAD_USER'] = UPLOAD_USER
 
 # String de conexão com o banco de dados Access
 conn_str = (
@@ -109,6 +114,21 @@ def centro_usuario():
 def area_auditoria():
     return render_template('area_auditoria.html')
 
+# Rota para cadastrar usuário (disponível apenas para administradores)
+@app.route('/cadastrar_usuario')
+def cadastrar_usuario():
+    return render_template('cadastrar_usuario.html')
+
+# Rota para consultar usuário (disponível apenas para administradores)
+@app.route('/consultar_usuarios')
+def consultar_usuarios():
+    return render_template('consultar_usuarios.html')
+
+# Rota para exibir o formulário HTML
+@app.route('/cadastrar_usuario', methods=['GET'])
+def mostrar_formulario():
+    return render_template('cadastrar_usuario.html')
+
 @app.route('/sucesso')
 def sucesso():
     return render_template('sucesso.html')
@@ -127,41 +147,82 @@ def logout():
     return redirect(url_for('index'))
 
 # Rota para cadastrar usuário (disponível apenas para administradores)
-@app.route('/cadastrar_usuario', methods=['GET', 'POST'])
-def cadastrar_usuario():
-    if 'usuario' in session:
-        usuario = session['usuario']
-        tipo_usuario = usuarios[usuario]['tipo'] if usuario in usuarios else 'auditor'
+# Rota para receber os dados do formulário e cadastrá-los no banco de dados
+@app.route('/cadastrarUser', methods=['POST'])
+def submitUser():
+    nome = request.form['nome']
+    re = request.form['re']
+    usuario = request.form['usuario']
+    senha = request.form['senha']
+    perfil = request.form['perfil']
+    email = request.form['email']
 
-        if tipo_usuario == 'administrador':
-            if request.method == 'POST':
-                novo_usuario = request.form.get('novo_usuario')
-                nova_senha = request.form.get('nova_senha')
-                tipo_novo_usuario = request.form.get('tipo_usuario')
+    # Salvar a imagem na pasta static/user
+    foto = request.files['foto']
+    nome_foto = f"{usuario}_foto.jpg"  # Nome do arquivo de foto baseado no usuário
+    foto.save(os.path.join(UPLOAD_USER, nome_foto))
 
-                usuarios[novo_usuario] = {'senha': nova_senha, 'tipo': tipo_novo_usuario} # type: ignore
-                mensagem = f'Usuário {novo_usuario} cadastrado com sucesso.'
-                return render_template('cadastrar_usuario.html', usuario=usuario, tipo_usuario=tipo_usuario, mensagem=mensagem)
-            
-            return render_template('cadastrar_usuario.html', usuario=usuario, tipo_usuario=tipo_usuario)
+    # Salvar a referência da imagem no banco de dados
+    with pyodbc.connect(conn_str) as connection:
+        cursor = connection.cursor()
+        cursor.execute("INSERT INTO usuarios (nome, re, usuario, senha, perfil, email, foto) VALUES (?, ?, ?, ?, ?, ?, ?)",
+                       (nome, re, usuario, senha, perfil, email, nome_foto))
+        connection.commit()
 
-        return redirect(url_for('centro_usuario'))
-
-    return redirect(url_for('index'))
-
+    return redirect(url_for('mostrar_formulario'))
 # Rota para consultar usuários (disponível apenas para administradores)
-@app.route('/consultar_usuarios')
-def consultar_usuarios():
-    if 'usuario' in session:
-        usuario = session['usuario']
-        tipo_usuario = usuarios[usuario]['tipo'] if usuario in usuarios else 'auditor'
+@app.route('/consultUser', methods=['GET', 'POST'])
+def submitconsult():
+    if request.method == 'POST':
+        termo_RE = request.form.get('termo_RE', '')
+        termo_nome = request.form.get('termo_nome', '')
 
-        if tipo_usuario == 'administrador':
-            return render_template('consultar_usuarios.html', usuario=usuario, tipo_usuario=tipo_usuario, usuarios=usuarios)
-        
-        return redirect(url_for('centro_usuario'))
+        # Conectar ao banco de dados
+        conn = pyodbc.connect(conn_str)
+        cursor = conn.cursor()
 
-    return redirect(url_for('index'))
+        # Consulta SQL para buscar empresas com base nos critérios de consulta
+        sql = "SELECT * FROM usuarios WHERE RE LIKE ? AND nome LIKE ?"
+
+        try:
+            # Executar a consulta com os parâmetros adequados
+            cursor.execute(sql, ('%' + termo_RE + '%', '%' + termo_nome + '%'))
+
+            # Obter os resultados da consulta
+            usuarios = cursor.fetchall()
+
+            # Fechar o cursor e a conexão com o banco de dados
+            cursor.close()
+            conn.close()
+
+            # Renderizar o template HTML com os resultados da consulta
+            return render_template('consultar_usuarios.html', usuarios=usuarios)
+
+        except pyodbc.Error as e:
+            # Tratar o erro aqui, como registrar e informar ao usuário
+            print("Erro ao consultar usuarios:", e)
+            return "Erro ao consultar usuarios. Por favor, tente novamente mais tarde."
+
+    return render_template('consultar_usuarios.html')
+@app.route('/trocar_Senha', methods=['POST'])
+def trocar_Senha():
+    # Obter o nome do arquivo da imagem clicada
+    nome_imagem = request.form['nome_imagem']
+
+    # Extrair o nome de usuário do nome do arquivo da imagem
+    nome_usuario = nome_imagem.split('_')[0]
+
+    # Obter a nova senha do formulário
+    nova_senha = request.form['novaSenha']
+
+    # Atualizar a senha na base de dados
+    with pyodbc.connect(conn_str) as connection:
+        cursor = connection.cursor()
+        cursor.execute("UPDATE usuarios SET senha = ? WHERE usuario = ?", (nova_senha, nome_usuario))
+        connection.commit()
+
+    # Redirecionar o usuário de volta para onde estava
+    return redirect(request.referrer)
 #Upar foto do Usuario
 @app.route('/upload_foto', methods=['POST'])
 def upload_foto():
@@ -191,10 +252,11 @@ def upload_foto():
 def submit_patio():
     if request.method == 'POST':
         form_data = request.form
+
         # Conecta-se ao banco de dados
         conn = pyodbc.connect(conn_str)
         cursor = conn.cursor()
-        # Insere os dados na tabela adequada
+        # 2. Insira o caminho da imagem da assinatura nos parâmetros SQL
         sql_columns = "setor_auditado, data_auditoria, representante_setor, auditores"
         sql_values = "?, ?, ?, ?"
         sql_params = [
@@ -202,8 +264,8 @@ def submit_patio():
             form_data['data_auditoria'],
             form_data['representante_setor'],
             form_data['auditores']
+        
         ]
-
         for i in range(1, 17):
             pergunta_key = f'pergunta_{i}'
             comentario_key = f'comentario_pergunta_{i}'
@@ -419,10 +481,10 @@ def submit_apoio():
                     filename = secure_filename(f"{form_data['setor_auditado']}_{timestamp}_{random_suffix}{extension}")
 
                     # Salva o arquivo no sistema de arquivos
-                    upload_file.save(os.path.join(UPLOAD_ADM, filename))
+                    upload_file.save(os.path.join(UPLOAD_APOIO, filename))
 
                     # Salva apenas o caminho do arquivo no banco de dados
-                    sql_params.append(os.path.join(UPLOAD_ADM, filename))
+                    sql_params.append(os.path.join(UPLOAD_APOIO, filename))
                 else:
                     sql_params.append('')
             else:
@@ -459,7 +521,7 @@ def submit_prod():
             form_data['auditores']
         ]
 
-        for i in range(1, 35):
+        for i in range(1, 33):
             pergunta_key = f'pergunta_{i}'
             comentario_key = f'comentario_pergunta_{i}'
             upload_key = f'upload_foto_pergunta_{i}'
@@ -483,10 +545,10 @@ def submit_prod():
                     filename = secure_filename(f"{form_data['setor_auditado']}_{timestamp}_{random_suffix}{extension}")
 
                     # Salva o arquivo no sistema de arquivos
-                    upload_file.save(os.path.join(UPLOAD_ADM, filename))
+                    upload_file.save(os.path.join(UPLOAD_PRODUCAO, filename))
 
                     # Salva apenas o caminho do arquivo no banco de dados
-                    sql_params.append(os.path.join(UPLOAD_ADM, filename))
+                    sql_params.append(os.path.join(UPLOAD_PRODUCAO, filename))
                 else:
                     sql_params.append('')
             else:
@@ -513,4 +575,4 @@ def allowed_file(filename):
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=80, debug=True)
+    app.run(host='0.0.0.0', port=5000, debug=True)

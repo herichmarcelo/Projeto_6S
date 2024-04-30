@@ -2,8 +2,7 @@
 FROM python:3.8-slim
 
 # Define o diretório de trabalho dentro do contêiner
-WORKDIR /app
-
+WORKDIR /
 # Copie o arquivo requirements.txt para o diretório de trabalho
 COPY requirements.txt requirements.txt
 
@@ -14,4 +13,4 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY . .
 
 # Comando padrão a ser executado quando o contêiner for iniciado
-CMD [ "python", "app.py" ]
+CMD [ "python", "app.py"  

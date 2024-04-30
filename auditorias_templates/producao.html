@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Checklist Auditoria 6S</title>
     <style>
@@ -11,21 +11,22 @@
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: #f4f4f400;
-            background-image: url('../static/assets/wallpaper2.jpg');
-        
+            background-image: url('../static/img/wallpaper2.jpg');
+
             margin: 20px;
         }
 
         form {
             max-width: 800px;
             margin: 0 auto;
-            background-color: #fff;
+            background-color: #fff; 
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
 
-        h1, h2 {
+        h1,
+        h2 {
             text-align: center;
             color: #333;
         }
@@ -36,7 +37,8 @@
             color: #555;
         }
 
-        input, textarea {
+        input,
+        textarea {
             width: 100%;
             padding: 8px;
             margin-top: 5px;
@@ -72,13 +74,21 @@
         .emoji-medio-selected {
             background-color: yellow;
             border-color: yellow;
-            color: black; /* Altere a cor do texto, se necessário */
+            color: black;
+            /* Altere a cor do texto, se necessário */
         }
 
         .emoji-ruim-selected {
             background-color: red;
             border-color: red;
-            color: white; /* Altere a cor do texto, se necessário */
+            color: white;
+            /* Altere a cor do texto, se necessário */
+        }
+        .emoji-nsa-selected {
+            background-color: rgb(0, 0, 0);
+            border-color: rgb(0, 0, 0);
+            color: white;
+            /* Altere a cor do texto, se necessário */
         }
 
         .hidden {
@@ -111,7 +121,7 @@
         .image-upload label {
             display: block;
             margin-top: 10px;
-            color: #555;
+            color: #000000;
         }
 
         .uploaded-images {
@@ -124,364 +134,713 @@
             border-radius: 8px;
             box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
         }
+
         .btn-sair {
-        background-color: red;
-        color: white;
-        padding: 10px 15px;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-    }
+            background-color: red;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
 
-    .btn-voltar {
-        background-color: yellow;
-        color: black;
-        padding: 10px 15px;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-    }
-
+        .btn-voltar {
+            background-color: yellow;
+            color: black;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
     </style>
 </head>
+
 <body>
-    <img src="../static/assets/logo.png" alt="Bello Alimentos Logo" style="display: block; margin: 0 auto; max-width: 100%;">
+    <img src="../static/img/logo.png" alt="Bello Alimentos Logo"
+        style="display: block; margin: 0 auto; max-width: 100%;">
 
     <center>
         <h1>Checklist Auditoria 6S</h1>
         <h1>PRODUÇÃO</h1>
     </center>
-    <form id="auditoriaForm">
+    <form  action="/prodAud" method="POST" enctype="multipart/form-data"  >
         <!-- Informações sobre o setor auditado -->
         <label for="setor_auditado">Setor Auditado:</label>
-        <select name="setor_auditado" required style="width: 100%; height: 38px; box-sizing: border-box;">
+        <select id="setor_auditado" name="setor_auditado" style="width: 100%; height: 38px; box-sizing: border-box;"  required>
             <option value="" disabled selected hidden>Selecione o setor auditado</option>
-            <option value="Setor 1">Setor 1</option>
-            <option value="Setor 2">Setor 2</option>
-            <option value="Setor 3">Setor 3</option>
+            <option value="CALDEIRA">CALDEIRA</option>
+            <option value="EMB.PRIMÁRIA CARIMBO">EMB.PRIMÁRIA CARIMBO</option>
+            <option value="EMB.SECUNDÁRIA PAPELÃO">EMB.SECUNDÁRIA PAPELÃO</option>
+            <option value="EMBALAGEM SECUNDÁRIA">EMBALAGEM SECUNDÁRIA</option>
+            <option value="ESCALDAGEM">ESCALDAGEM</option>
+            <option value="EVISCERAÇÃO">EVISCERAÇÃO</option>
+            <option value="EXPEDIÇÃO">EXPEDIÇÃO</option>
+            <option value="FFO">FFO</option>
+            <option value="MIÚDOS GELADO">MIÚDOS GELADO</option>
+            <option value="PALETIZAÇÃO">PALETIZAÇÃO</option>
+            <option value="PLATAFORMA">PLATAFORMA</option>
+            <option value="SALA DE CORTES 01">SALA DE CORTES 01</option>
+            <option value="SALA DE CORTES 02">SALA DE CORTES 02</option>
+            <option value="SALA DE CORTES 03">SALA DE CORTES 03</option>
+            <option value="SALA DE CORTES 04">SALA DE CORTES 04</option>
+            <option value="SALA DE CORTES 05">SALA DE CORTES 05</option>
+            <option value="SALA DE ETIQUETAS">SALA DE ETIQUETAS</option>
+            <option value="SALA DE MÁQUINAS">SALA DE MÁQUINAS</option>
+            <option value="SANGRIA">SANGRIA</option>
+            <option value="TUNEL DE CONGELAMENTO">TUNEL DE CONGELAMENTO</option>
             <!-- Adicione mais opções conforme necessário -->
         </select>
- 
+
         <label for="data_auditoria">Data da Auditoria:</label>
-        <input type="date" name="data_auditoria" required id="data_auditoria">
-         
-         <label for="representante_setor">Representante do Setor:</label>
-         <input type="text" name="representante_setor" required>
- 
-         <label for="auditores">Dupla de Auditores:</label>
-         <input type="text" name="auditores" required>
+        <input type="date" id="data_auditoria" name="data_auditoria" required>
+
+        <label for="representante_setor">Representante do Setor:</label>
+        <input type="text" id="representante_setor" name="representante_setor" required>
+
+        <label for="auditores">Auditores:</label>
+        <input type="text" id="auditores" name="auditores" required>
 
         <!-- Seção SENSO DE UTILIZAÇÃO -->
         <h2>SENSO DE UTILIZAÇÃO</h2>
 
-            <!-- Pergunta 1 -->
-            <label>Pergunta 1: Existem materiais ou equipamentos que não estão sendo utilizados sobre as mesas e bancadas?</label>
-            <div class="emoji-group" id="pergunta_1">
-                <div class="emoji-btn emoji-bom" onclick="toggleEmoji(this, 'bom')">😃 Bom</div>
-                <div class="emoji-btn emoji-medio" onclick="toggleEmoji(this, 'medio')">😐 Médio</div>
-                <div class="emoji-btn emoji-ruim" onclick="toggleEmoji(this, 'ruim')">😟 Ruim</div>
-            </div>
-            <!-- Restante da pergunta 1 (comentário e upload de fotos) -->
-            <div id="comentario_pergunta_1" class="comment-section hidden">
-                <label for="comentario_pergunta_1">Comentário (caso a resposta seja Médio ou Ruim - Pergunta 1):</label>
-                <textarea name="comentario_pergunta_1"></textarea>
-            </div>
-            <div id="upload_foto_pergunta_1" class="image-upload hidden">
-                <label for="upload_foto_pergunta_1">Faça o upload de fotos (caso necessário):</label>
-                <input type="file" name="upload_foto_pergunta_1" accept="image/jpeg, image/png" onchange="handleImageUpload(this, 'pergunta_1')">
-                <div class="uploaded-images" id="uploaded_images_pergunta_1"></div>
-            </div>
+        <!-- Pergunta 1 -->
+        <label>Pergunta 1: Existem materiais ou equipamentos que não estão sendo utilizados sobre as mesas e bancadas?</label>   
+        <div class="emoji-group" id="pergunta_1" name="pergunta_1">
+            <input type="hidden" id="resposta_pergunta_1" name="pergunta_1">
+            <div class="emoji-btn emoji-bom" data-value="bom" onclick="toggleEmoji(this, 'bom')">😃 Bom</div>
+            <div class="emoji-btn emoji-medio" data-value="medio" onclick="toggleEmoji(this, 'medio')">😐 Médio</div>
+            <div class="emoji-btn emoji-ruim" data-value="ruim" onclick="toggleEmoji(this, 'ruim')">😟 Ruim</div>
+            <div class="emoji-btn emoji-nsa" data-value="Não se aplica" onclick="toggleEmoji(this, 'Não se aplica')">😕 Não se aplica</div>
+                    
+        </div>
+        <!-- Restante da pergunta 1 (comentário e upload de fotos) -->
+        <div id="comentario_pergunta_1" class="comment-section hidden">
+            <label for="comentario_pergunta_1">Comentário (caso a resposta seja Médio ou Ruim - Pergunta 1):</label>
+            <textarea id="comentario_pergunta_1" name="comentario_pergunta_1"></textarea>
+        </div>
+        <div id="upload_foto_pergunta_1" class="image-upload hidden">
+            <label for="upload_foto_pergunta_1">Faça o upload de fotos (caso necessário):</label>
+            <input type="file" id="upload_foto_pergunta_1" name="upload_foto_pergunta_1" accept="image/*">
+        </div>
 
         <!-- Pergunta 2 -->
-            <label>Pergunta 2: Existem equipamentos/mobiliários, ferramentas ou algum elemento de estrutura física do setor necessitando de reparo, enferrujados, velhos ou que precisa ser trocado?</label>
-            <div class="emoji-group" id="pergunta_2">
-                <div class="emoji-btn emoji-bom" onclick="toggleEmoji(this, 'bom')">😃 Bom</div>
-                <div class="emoji-btn emoji-medio" onclick="toggleEmoji(this, 'medio')">😐 Médio</div>
-                <div class="emoji-btn emoji-ruim" onclick="toggleEmoji(this, 'ruim')">😟 Ruim</div>
-            </div>
-            <!-- Restante da pergunta 2 (comentário e upload de fotos) -->
-            <div id="comentario_pergunta_2" class="comment-section hidden">
-                <label for="comentario_pergunta_2">Comentário (caso a resposta seja Médio ou Ruim - Pergunta 2):</label>
-                <textarea name="comentario_pergunta_2"></textarea>
-            </div>
-            <div id="upload_foto_pergunta_2" class="image-upload hidden">
-                <label for="upload_foto_pergunta_2">Faça o upload de fotos (caso necessário):</label>
-                <input type="file" name="upload_foto_pergunta_2" accept="image/jpeg, image/png" onchange="handleImageUpload(this, 'pergunta_2')">
-                <div class="uploaded-images" id="uploaded_images_pergunta_2"></div>
-            </div>
+        <label>Pergunta 2: Existem objetos desnecessários debaixo de mesas e bancadas ?(caixas de papelão, etc.)</label>
+        <div class="emoji-group" id="pergunta_2">
+            <input type="hidden" id="resposta_pergunta_2" name="pergunta_2">
+            <div class="emoji-btn emoji-bom" data-value="bom" onclick="toggleEmoji(this, 'bom')">😃 Bom</div>
+            <div class="emoji-btn emoji-medio" data-value="medio" onclick="toggleEmoji(this, 'medio')">😐 Médio</div>
+            <div class="emoji-btn emoji-ruim" data-value="ruim" onclick="toggleEmoji(this, 'ruim')">😟 Ruim</div>
+            <div class="emoji-btn emoji-nsa" data-value="Não se aplica" onclick="toggleEmoji(this, 'Não se aplica')">😕 Não se aplica</div>
+        </div>
+        <!-- Restante da pergunta 2 (comentário e upload de fotos) -->
+        <div id="comentario_pergunta_2" class="comment-section hidden">
+            <label for="comentario_pergunta_2">Comentário (caso a resposta seja Médio ou Ruim - Pergunta 2):</label>
+            <textarea id="comentario_pergunta_2" name="comentario_pergunta_2"></textarea>
+        </div>
+        <div id="upload_foto_pergunta_2" class="image-upload hidden">
+            <label for="upload_foto_pergunta_2">Faça o upload de fotos (caso necessário):</label>
+            <input type="file" id="upload_foto_pergunta_2" name="upload_foto_pergunta_2" accept="image/jpeg, image/png">
+        </div>
 
-         <!-- Pergunta 3 -->
-             <label>Pergunta 3: Exitem fontes de desperdicios, tais como água, energia, vapor, insumos, matéria prima, embalagens, materiais, etc?</label>
-             <div class="emoji-group" id="pergunta_3">
-                 <div class="emoji-btn emoji-bom" onclick="toggleEmoji(this, 'bom')">😃 Bom</div>
-                 <div class="emoji-btn emoji-medio" onclick="toggleEmoji(this, 'medio')">😐 Médio</div>
-                 <div class="emoji-btn emoji-ruim" onclick="toggleEmoji(this, 'ruim')">😟 Ruim</div>
-             </div>
-         
-         <!-- Restante da pergunta 3 (comentário e upload de fotos) -->
-            <div id="comentario_pergunta_3" class="comment-section hidden">
-                <label for="comentario_pergunta_3">Comentário (caso a resposta seja Médio ou Ruim - Pergunta 3):</label>
-                <textarea name="comentario_pergunta_3"></textarea>
-            </div>
-            <div id="upload_foto_pergunta_3" class="image-upload hidden">
-                <label for="upload_foto_pergunta_3">Faça o upload de fotos (caso necessário):</label>
-                <input type="file" name="upload_foto_pergunta_3" accept="image/jpeg, image/png" onchange="handleImageUpload(this, 'pergunta_3')">
-                <div class="uploaded-images" id="uploaded_images_pergunta_3"></div>
-            </div>
+        <!-- Pergunta 3 -->
+        <label>Pergunta 3: Os dados ou informações disponíveis no quadro de avisos ou na
+             parede estão atualizados ouestão a mais de 2 meses ?</label>
+        <div class="emoji-group" id="pergunta_3">
+            <input type="hidden" id="resposta_pergunta_3" name="pergunta_3">
+            <div class="emoji-btn emoji-bom" data-value="bom" onclick="toggleEmoji(this, 'bom')">😃 Bom</div>
+            <div class="emoji-btn emoji-medio" data-value="medio" onclick="toggleEmoji(this, 'medio')">😐 Médio</div>
+            <div class="emoji-btn emoji-ruim" data-value="ruim" onclick="toggleEmoji(this, 'ruim')">😟 Ruim</div>
+            <div class="emoji-btn emoji-nsa" data-value="Não se aplica" onclick="toggleEmoji(this, 'Não se aplica')">😕 Não se aplica</div>> 
+        </div>
+
+        <!-- Restante da pergunta 3 (comentário e upload de fotos) -->
+        <div id="comentario_pergunta_3" class="comment-section hidden">
+            <label for="comentario_pergunta_3">Comentário (caso a resposta seja Médio ou Ruim - Pergunta 3):</label>
+            <textarea id="comentario_pergunta_3" name="comentario_pergunta_3"></textarea>
+        </div>
+        <div id="upload_foto_pergunta_3" class="image-upload hidden">
+            <label for="upload_foto_pergunta_3">Faça o upload de fotos (caso necessário):</label>
+            <input type="file" id="upload_foto_pergunta_3" name="upload_foto_pergunta_3" accept="image/jpeg, image/png">
+        </div>
+
+        <!-- Pergunta 4 -->
+        <label>Pergunta 4: Existem objetos em quantidade desnecessária? (excesso em cima das bancadas).</label>   
+        <div class="emoji-group" id="pergunta_4" name="pergunta_4">
+            <input type="hidden" id="resposta_pergunta_4" name="pergunta_4">
+            <div class="emoji-btn emoji-bom" data-value="bom" onclick="toggleEmoji(this, 'bom')">😃 Bom</div>
+            <div class="emoji-btn emoji-medio" data-value="medio" onclick="toggleEmoji(this, 'medio')">😐 Médio</div>
+            <div class="emoji-btn emoji-ruim" data-value="ruim" onclick="toggleEmoji(this, 'ruim')">😟 Ruim</div>
+            <div class="emoji-btn emoji-nsa" data-value="Não se aplica" onclick="toggleEmoji(this, 'Não se aplica')">😕 Não se aplica</div>
+                    
+        </div>
+        <!-- Restante da pergunta 4 (comentário e upload de fotos) -->
+        <div id="comentario_pergunta_4" class="comment-section hidden">
+            <label for="comentario_pergunta_4">Comentário (caso a resposta seja Médio ou Ruim - Pergunta 4):</label>
+            <textarea id="comentario_pergunta_4" name="comentario_pergunta_4"></textarea>
+        </div>
+        <div id="upload_foto_pergunta_4" class="image-upload hidden">
+            <label for="upload_foto_pergunta_4">Faça o upload de fotos (caso necessário):</label>
+            <input type="file" id="upload_foto_pergunta_4" name="upload_foto_pergunta_4" accept="image/*">
+        </div>
+
+        <!-- Pergunta 2 -->
+        <label>Pergunta 5: Existem objetos pessoais no local de trabalho?(mais de um objeto)</label>
+        <div class="emoji-group" id="pergunta_5">
+            <input type="hidden" id="resposta_pergunta_5" name="pergunta_5">
+            <div class="emoji-btn emoji-bom" data-value="bom" onclick="toggleEmoji(this, 'bom')">😃 Bom</div>
+            <div class="emoji-btn emoji-medio" data-value="medio" onclick="toggleEmoji(this, 'medio')">😐 Médio</div>
+            <div class="emoji-btn emoji-ruim" data-value="ruim" onclick="toggleEmoji(this, 'ruim')">😟 Ruim</div>
+            <div class="emoji-btn emoji-nsa" data-value="Não se aplica" onclick="toggleEmoji(this, 'Não se aplica')">😕 Não se aplica</div>
+        </div>
+        <!-- Restante da pergunta 5(comentário e upload de fotos) -->
+        <div id="comentario_pergunta_5" class="comment-section hidden">
+            <label for="comentario_pergunta_5">Comentário (caso a resposta seja Médio ou Ruim - Pergunta 5):</label>
+            <textarea id="comentario_pergunta_5" name="comentario_pergunta_5"></textarea>
+        </div>
+        <div id="upload_foto_pergunta_5" class="image-upload hidden">
+            <label for="upload_foto_pergunta_5">Faça o upload de fotos (caso necessário):</label>
+            <input type="file" id="upload_foto_pergunta_5" name="upload_foto_pergunta_5" accept="image/jpeg, image/png">
+        </div>
         
+        <!-- Pergunta 6 -->
+        <label>Pergunta 6: Existem equipamentos/mobiliários, ferramentas ou 
+            algum elemento da estrutura física do setor necessitando de reparo,enferrujados,velhos ou que precisam ser trocados?</label>
+        <div class="emoji-group" id="pergunta_6">
+            <input type="hidden" id="resposta_pergunta_6" name="pergunta_6">
+            <div class="emoji-btn emoji-bom" data-value="bom" onclick="toggleEmoji(this, 'bom')">😃 Bom</div>
+            <div class="emoji-btn emoji-medio" data-value="medio" onclick="toggleEmoji(this, 'medio')">😐 Médio</div>
+            <div class="emoji-btn emoji-ruim" data-value="ruim" onclick="toggleEmoji(this, 'ruim')">😟 Ruim</div>
+            <div class="emoji-btn emoji-nsa" data-value="Não se aplica" onclick="toggleEmoji(this, 'Não se aplica')">😕 Não se aplica</div>> 
+        </div>
+
+        <!-- Restante da pergunta 6 (comentário e upload de fotos) -->
+        <div id="comentario_pergunta_6" class="comment-section hidden">
+            <label for="comentario_pergunta_6">Comentário (caso a resposta seja Médio ou Ruim - Pergunta 6):</label>
+            <textarea id="comentario_pergunta_6" name="comentario_pergunta_3"></textarea>
+        </div>
+        <div id="upload_foto_pergunta_6" class="image-upload hidden">
+            <label for="upload_foto_pergunta_6">Faça o upload de fotos (caso necessário):</label>
+            <input type="file" id="upload_foto_pergunta_6" name="upload_foto_pergunta_6" accept="image/jpeg, image/png">
+        </div>
+
+        <!-- Pergunta 7 -->
+        <label>Pergunta 7: Existem fontes de desperdicios tais como água,energia,vapor,insumos,matéria prima,embalagens, materiais etc?</label>
+        <div class="emoji-group" id="pergunta_7">
+            <input type="hidden" id="resposta_pergunta_7" name="pergunta_7">
+            <div class="emoji-btn emoji-bom" data-value="bom" onclick="toggleEmoji(this, 'bom')">😃 Bom</div>
+            <div class="emoji-btn emoji-medio" data-value="medio" onclick="toggleEmoji(this, 'medio')">😐 Médio</div>
+            <div class="emoji-btn emoji-ruim" data-value="ruim" onclick="toggleEmoji(this, 'ruim')">😟 Ruim</div>
+            <div class="emoji-btn emoji-nsa" data-value="Não se aplica" onclick="toggleEmoji(this, 'Não se aplica')">😕 Não se aplica</div>
+        </div>
+        <!-- Restante da pergunta 7 (comentário e upload de fotos) -->
+        <div id="comentario_pergunta_7" class="comment-section hidden">
+            <label for="comentario_pergunta_7">Comentário (caso a resposta seja Médio ou Ruim - Pergunta 7):</label>
+            <textarea id="comentario_pergunta_7" name="comentario_pergunta_7"></textarea>
+        </div>
+        <div id="upload_foto_pergunta_7" class="image-upload hidden">
+            <label for="upload_foto_pergunta_7">Faça o upload de fotos (caso necessário):</label>
+            <input type="file" id="upload_foto_pergunta_7" name="upload_foto_pergunta_7" accept="image/jpeg, image/png">
+        </div>
+
+        <!-- Pergunta 8 -->
+        <label>Pergunta 8: Existem improvisos visando facilitar as atividades?</label>
+        <div class="emoji-group" id="pergunta_8">
+            <input type="hidden" id="resposta_pergunta_8" name="pergunta_8">
+            <div class="emoji-btn emoji-bom" data-value="bom" onclick="toggleEmoji(this, 'bom')">😃 Bom</div>
+            <div class="emoji-btn emoji-medio" data-value="medio" onclick="toggleEmoji(this, 'medio')">😐 Médio</div>
+            <div class="emoji-btn emoji-ruim" data-value="ruim" onclick="toggleEmoji(this, 'ruim')">😟 Ruim</div>
+            <div class="emoji-btn emoji-nsa" data-value="Não se aplica" onclick="toggleEmoji(this, 'Não se aplica')">😕 Não se aplica</div>> 
+        </div>
+
+        <!-- Restante da pergunta 3 (comentário e upload de fotos) -->
+        <div id="comentario_pergunta_8" class="comment-section hidden">
+            <label for="comentario_pergunta_8">Comentário (caso a resposta seja Médio ou Ruim - Pergunta 8):</label>
+            <textarea id="comentario_pergunta_8" name="comentario_pergunta_8"></textarea>
+        </div>
+        <div id="upload_foto_pergunta_8" class="image-upload hidden">
+            <label for="upload_foto_pergunta_8">Faça o upload de fotos (caso necessário):</label>
+            <input type="file" id="upload_foto_pergunta_8" name="upload_foto_pergunta_8" accept="image/jpeg, image/png">
+        </div>
+
         <!-- Seção SENSO DE ORGANIZAÇÃO -->
         <h2>SENSO DE ORGANIZAÇÃO</h2>
 
         <!-- Pergunta 1 -->
-        <label>Pergunta 1: Existem materiais ou equipamentos que não estão sendo utilizados sobre as mesas e bancadas?</label>
-        <div class="emoji-group" id="pergunta_4">
-            <div class="emoji-btn emoji-bom" onclick="toggleEmoji(this, 'bom')">😃 Bom</div>
-            <div class="emoji-btn emoji-medio" onclick="toggleEmoji(this, 'medio')">😐 Médio</div>
-            <div class="emoji-btn emoji-ruim" onclick="toggleEmoji(this, 'ruim')">😟 Ruim</div>
+        <label>Pergunta 1: Os materiais e objetos estão em locais adequados, organizados e identificados corretamente?</label>   
+        <div class="emoji-group" id="pergunta_9" name="pergunta_9">
+            <input type="hidden" id="resposta_pergunta_9" name="pergunta_9">
+            <div class="emoji-btn emoji-bom" data-value="bom" onclick="toggleEmoji(this, 'bom')">😃 Bom</div>
+            <div class="emoji-btn emoji-medio" data-value="medio" onclick="toggleEmoji(this, 'medio')">😐 Médio</div>
+            <div class="emoji-btn emoji-ruim" data-value="ruim" onclick="toggleEmoji(this, 'ruim')">😟 Ruim</div>
+            <div class="emoji-btn emoji-nsa" data-value="Não se aplica" onclick="toggleEmoji(this, 'Não se aplica')">😕 Não se aplica</div>            
         </div>
+
         <!-- Restante da pergunta 1 (comentário e upload de fotos) -->
-        <div id="comentario_pergunta_4" class="comment-section hidden">
-            <label for="comentario_pergunta_4">Comentário (caso a resposta seja Médio ou Ruim - Pergunta 4):</label>
-            <textarea name="comentario_pergunta_4"></textarea>
-        </div>
-        <div id="upload_foto_pergunta_4" class="image-upload hidden">
-            <label for="upload_foto_pergunta_4">Faça o upload de fotos (caso necessário):</label>
-            <input type="file" name="upload_foto_pergunta_4" accept="image/jpeg, image/png" onchange="handleImageUpload(this, 'pergunta_4')">
-            <div class="uploaded-images" id="uploaded_images_pergunta_4"></div>
-        </div>
-
-        <!-- Pergunta 2 -->
-        <label>Pergunta 2: Existem equipamentos/mobiliários, ferramentas ou algum elemento de estrutura física do setor necessitando de reparo, enferrujados, velhos ou que precisa ser trocado?</label>
-        <div class="emoji-group" id="pergunta_5">
-            <div class="emoji-btn emoji-bom" onclick="toggleEmoji(this, 'bom')">😃 Bom</div>
-            <div class="emoji-btn emoji-medio" onclick="toggleEmoji(this, 'medio')">😐 Médio</div>
-            <div class="emoji-btn emoji-ruim" onclick="toggleEmoji(this, 'ruim')">😟 Ruim</div>
-        </div>
-        <!-- Restante da pergunta 2 (comentário e upload de fotos) -->
-        <div id="comentario_pergunta_5" class="comment-section hidden">
-            <label for="comentario_pergunta_5">Comentário (caso a resposta seja Médio ou Ruim - Pergunta 5):</label>
-            <textarea name="comentario_pergunta_5"></textarea>
-        </div>
-        <div id="upload_foto_pergunta_5" class="image-upload hidden">
-            <label for="upload_foto_pergunta_5">Faça o upload de fotos (caso necessário):</label>
-            <input type="file" name="upload_foto_pergunta_5" accept="image/jpeg, image/png" onchange="handleImageUpload(this, 'pergunta_5')">
-            <div class="uploaded-images" id="uploaded_images_pergunta_5"></div>
-        </div>
-
-                <!-- Seção SENSO DE LIMPEZA -->
-                <h2>SENSO DE LIMPEZA</h2>
-
-                <!-- Pergunta 1 -->
-                <label>Pergunta 1: Existem materiais ou equipamentos que não estão sendo utilizados sobre as mesas e bancadas?</label>
-                <div class="emoji-group" id="pergunta_6">
-                    <div class="emoji-btn emoji-bom" onclick="toggleEmoji(this, 'bom')">😃 Bom</div>
-                    <div class="emoji-btn emoji-medio" onclick="toggleEmoji(this, 'medio')">😐 Médio</div>
-                    <div class="emoji-btn emoji-ruim" onclick="toggleEmoji(this, 'ruim')">😟 Ruim</div>
-                </div>
-                <!-- Restante da pergunta 1 (comentário e upload de fotos) -->
-                <div id="comentario_pergunta_6" class="comment-section hidden">
-                    <label for="comentario_pergunta_6">Comentário (caso a resposta seja Médio ou Ruim - Pergunta 6):</label>
-                    <textarea name="comentario_pergunta_6"></textarea>
-                </div>
-                <div id="upload_foto_pergunta_6" class="image-upload hidden">
-                    <label for="upload_foto_pergunta_6">Faça o upload de fotos (caso necessário):</label>
-                    <input type="file" name="upload_foto_pergunta_6" accept="image/jpeg, image/png" onchange="handleImageUpload(this, 'pergunta_6')">
-                    <div class="uploaded-images" id="uploaded_images_pergunta_6"></div>
-                </div>
-        
-                <!-- Pergunta 2 -->
-                <label>Pergunta 2: Existem equipamentos/mobiliários, ferramentas ou algum elemento de estrutura física do setor necessitando de reparo, enferrujados, velhos ou que precisa ser trocado?</label>
-                <div class="emoji-group" id="pergunta_7">
-                    <div class="emoji-btn emoji-bom" onclick="toggleEmoji(this, 'bom')">😃 Bom</div>
-                    <div class="emoji-btn emoji-medio" onclick="toggleEmoji(this, 'medio')">😐 Médio</div>
-                    <div class="emoji-btn emoji-ruim" onclick="toggleEmoji(this, 'ruim')">😟 Ruim</div>
-                </div>
-                <!-- Restante da pergunta 2 (comentário e upload de fotos) -->
-                <div id="comentario_pergunta_7" class="comment-section hidden">
-                    <label for="comentario_pergunta_7">Comentário (caso a resposta seja Médio ou Ruim - Pergunta 7):</label>
-                    <textarea name="comentario_pergunta_7"></textarea>
-                </div>
-                <div id="upload_foto_pergunta_7" class="image-upload hidden">
-                    <label for="upload_foto_pergunta_7">Faça o upload de fotos (caso necessário):</label>
-                    <input type="file" name="upload_foto_pergunta_7" accept="image/jpeg, image/png" onchange="handleImageUpload(this, 'pergunta_7')">
-                    <div class="uploaded-images" id="uploaded_images_pergunta_7"></div>
-                </div>
-
-                        <!-- Seção SENSO DE PADRONIZAÇÃO-->
-        <h2>SENSO DE PADRONIZAÇÃO</h2>
-
-        <!-- Pergunta 1 -->
-        <label>Pergunta 1: Existem materiais ou equipamentos que não estão sendo utilizados sobre as mesas e bancadas?</label>
-        <div class="emoji-group" id="pergunta_8">
-            <div class="emoji-btn emoji-bom" onclick="toggleEmoji(this, 'bom')">😃 Bom</div>
-            <div class="emoji-btn emoji-medio" onclick="toggleEmoji(this, 'medio')">😐 Médio</div>
-            <div class="emoji-btn emoji-ruim" onclick="toggleEmoji(this, 'ruim')">😟 Ruim</div>
-        </div>
-        <!-- Restante da pergunta 1 (comentário e upload de fotos) -->
-        <div id="comentario_pergunta_8" class="comment-section hidden">
-            <label for="comentario_pergunta_8">Comentário (caso a resposta seja Médio ou Ruim - Pergunta 8):</label>
-            <textarea name="comentario_pergunta_8"></textarea>
-        </div>
-        <div id="upload_foto_pergunta_8" class="image-upload hidden">
-            <label for="upload_foto_pergunta_8">Faça o upload de fotos (caso necessário):</label>
-            <input type="file" name="upload_foto_pergunta_8" accept="image/jpeg, image/png" onchange="handleImageUpload(this, 'pergunta_8')">
-            <div class="uploaded-images" id="uploaded_images_pergunta_8"></div>
-        </div>
-
-        <!-- Pergunta 2 -->
-        <label>Pergunta 2: Existem equipamentos/mobiliários, ferramentas ou algum elemento de estrutura física do setor necessitando de reparo, enferrujados, velhos ou que precisa ser trocado?</label>
-        <div class="emoji-group" id="pergunta_9">
-            <div class="emoji-btn emoji-bom" onclick="toggleEmoji(this, 'bom')">😃 Bom</div>
-            <div class="emoji-btn emoji-medio" onclick="toggleEmoji(this, 'medio')">😐 Médio</div>
-            <div class="emoji-btn emoji-ruim" onclick="toggleEmoji(this, 'ruim')">😟 Ruim</div>
-        </div>
-        <!-- Restante da pergunta 2 (comentário e upload de fotos) -->
         <div id="comentario_pergunta_9" class="comment-section hidden">
             <label for="comentario_pergunta_9">Comentário (caso a resposta seja Médio ou Ruim - Pergunta 9):</label>
-            <textarea name="comentario_pergunta_9"></textarea>
+            <textarea id="comentario_pergunta_9" name="comentario_pergunta_9"></textarea>
         </div>
         <div id="upload_foto_pergunta_9" class="image-upload hidden">
             <label for="upload_foto_pergunta_9">Faça o upload de fotos (caso necessário):</label>
-            <input type="file" name="upload_foto_pergunta_9" accept="image/jpeg, image/png" onchange="handleImageUpload(this, 'pergunta_9')">
-            <div class="uploaded-images" id="uploaded_images_pergunta_9"></div>
+            <input type="file" id="upload_foto_pergunta_9" name="upload_foto_pergunta_9" accept="image/jpeg, image/png">
         </div>
-        <!-- Pergunta 3 -->
-        <label>Pergunta 3: Gramas e galhos encontram-se aparados?</label>
+
+        <!-- Pergunta 2 -->
+        <label>Pergunta 2: Os produtos químicos(Limpeza)estão devidamente identificados, organizados e guardados em local
+             apropriado quando não estão em uso?</label>
         <div class="emoji-group" id="pergunta_10">
-            <div class="emoji-btn emoji-bom" onclick="toggleEmoji(this, 'bom')">😃 Bom</div>
-            <div class="emoji-btn emoji-medio" onclick="toggleEmoji(this, 'medio')">😐 Médio</div>
-            <div class="emoji-btn emoji-ruim" onclick="toggleEmoji(this, 'ruim')">😟 Ruim</div>
+            <input type="hidden" id="resposta_pergunta_10" name="pergunta_10">
+            <div class="emoji-btn emoji-bom" data-value="bom" onclick="toggleEmoji(this, 'bom')">😃 Bom</div>
+            <div class="emoji-btn emoji-medio" data-value="medio" onclick="toggleEmoji(this, 'medio')">😐 Médio</div>
+            <div class="emoji-btn emoji-ruim" data-value="ruim" onclick="toggleEmoji(this, 'ruim')">😟 Ruim</div>
+            <div class="emoji-btn emoji-nsa" data-value="Não se aplica" onclick="toggleEmoji(this, 'Não se aplica')">😕 Não se aplica</div>
         </div>
-        <!-- Restante da pergunta 3 (comentário e upload de fotos) -->
+        <!-- Restante da pergunta 2 (comentário e upload de fotos) -->
         <div id="comentario_pergunta_10" class="comment-section hidden">
             <label for="comentario_pergunta_10">Comentário (caso a resposta seja Médio ou Ruim - Pergunta 10):</label>
-            <textarea name="comentario_pergunta_10"></textarea>
+            <textarea id="comentario_pergunta_10" name="comentario_pergunta_10"></textarea>
         </div>
         <div id="upload_foto_pergunta_10" class="image-upload hidden">
             <label for="upload_foto_pergunta_10">Faça o upload de fotos (caso necessário):</label>
-            <input type="file" name="upload_foto_pergunta_10" accept="image/jpeg, image/png" onchange="handleImageUpload(this, 'pergunta_10')">
-            <div class="uploaded-images" id="uploaded_images_pergunta_10"></div>
+            <input type="file" id="upload_foto_pergunta_10" name="upload_foto_pergunta_10" accept="image/jpeg, image/png">
+        </div>
+        
+        <!-- Pergunta 1 -->
+        <label>Pergunta 3: Verificar se há fios de eletricidade,telefônicos espalhados pelo chão ou mesmo mal fixados nas paredes,
+             proporcionando risco de acidentes ou demonstrando desorganização.</label>   
+        <div class="emoji-group" id="pergunta_11" name="pergunta_11">
+            <input type="hidden" id="resposta_pergunta_11" name="pergunta_11">
+            <div class="emoji-btn emoji-bom" data-value="bom" onclick="toggleEmoji(this, 'bom')">😃 Bom</div>
+            <div class="emoji-btn emoji-medio" data-value="medio" onclick="toggleEmoji(this, 'medio')">😐 Médio</div>
+            <div class="emoji-btn emoji-ruim" data-value="ruim" onclick="toggleEmoji(this, 'ruim')">😟 Ruim</div>
+            <div class="emoji-btn emoji-nsa" data-value="Não se aplica" onclick="toggleEmoji(this, 'Não se aplica')">😕 Não se aplica</div>            
+        </div>
+
+        <!-- Restante da pergunta 11 (comentário e upload de fotos) -->
+        <div id="comentario_pergunta_11" class="comment-section hidden">
+            <label for="comentario_pergunta_11">Comentário (caso a resposta seja Médio ou Ruim - Pergunta 11):</label>
+            <textarea id="comentario_pergunta_11" name="comentario_pergunta_11"></textarea>
+        </div>
+        <div id="upload_foto_pergunta_11" class="image-upload hidden">
+            <label for="upload_foto_pergunta_11">Faça o upload de fotos (caso necessário):</label>
+            <input type="file" id="upload_foto_pergunta_11" name="upload_foto_pergunta_11" accept="image/jpeg, image/png">
+        </div>
+
+        <!-- Pergunta 4 -->
+        <label>Pergunta 4: De modo geral o setor, encontra-se organizado?</label>
+        <div class="emoji-group" id="pergunta_12">
+            <input type="hidden" id="resposta_pergunta_12" name="pergunta_12">
+            <div class="emoji-btn emoji-bom" data-value="bom" onclick="toggleEmoji(this, 'bom')">😃 Bom</div>
+            <div class="emoji-btn emoji-medio" data-value="medio" onclick="toggleEmoji(this, 'medio')">😐 Médio</div>
+            <div class="emoji-btn emoji-ruim" data-value="ruim" onclick="toggleEmoji(this, 'ruim')">😟 Ruim</div>
+            <div class="emoji-btn emoji-nsa" data-value="Não se aplica" onclick="toggleEmoji(this, 'Não se aplica')">😕 Não se aplica</div>
+        </div>
+        <!-- Restante da pergunta 2 (comentário e upload de fotos) -->
+        <div id="comentario_pergunta_12" class="comment-section hidden">
+            <label for="comentario_pergunta_12">Comentário (caso a resposta seja Médio ou Ruim - Pergunta 12):</label>
+            <textarea id="comentario_pergunta_12" name="comentario_pergunta_12"></textarea>
+        </div>
+        <div id="upload_foto_pergunta_12" class="image-upload hidden">
+            <label for="upload_foto_pergunta_12">Faça o upload de fotos (caso necessário):</label>
+            <input type="file" id="upload_foto_pergunta_12" name="upload_foto_pergunta_12" accept="image/jpeg, image/png">
+        </div>
+        
+        <!-- Pergunta 5 -->
+        <label>Pergunta 5: Existem informações expostas de maneira desordenada ou dispostas em locais inapropriados,
+            remetendo à poluição visual(papeis colados em parede, etc)</label>
+        <div class="emoji-group" id="pergunta_13">
+            <input type="hidden" id="resposta_pergunta_13" name="pergunta_13">
+            <div class="emoji-btn emoji-bom" data-value="bom" onclick="toggleEmoji(this, 'bom')">😃 Bom</div>
+            <div class="emoji-btn emoji-medio" data-value="medio" onclick="toggleEmoji(this, 'medio')">😐 Médio</div>
+            <div class="emoji-btn emoji-ruim" data-value="ruim" onclick="toggleEmoji(this, 'ruim')">😟 Ruim</div>
+            <div class="emoji-btn emoji-nsa" data-value="Não se aplica" onclick="toggleEmoji(this, 'Não se aplica')">😕 Não se aplica</div>
+        </div>
+        <!-- Restante da pergunta 2 (comentário e upload de fotos) -->
+        <div id="comentario_pergunta_13" class="comment-section hidden">
+            <label for="comentario_pergunta_13">Comentário (caso a resposta seja Médio ou Ruim - Pergunta 123):</label>
+            <textarea id="comentario_pergunta_13" name="comentario_pergunta_13"></textarea>
+        </div>
+        <div id="upload_foto_pergunta_13" class="image-upload hidden">
+            <label for="upload_foto_pergunta_13">Faça o upload de fotos (caso necessário):</label>
+            <input type="file" id="upload_foto_pergunta_13" name="upload_foto_pergunta_13" accept="image/jpeg, image/png">
+        </div>
+        <!-- Seção SENSO DE LIMPEZA -->
+        <h2>SENSO DE LIMPEZA</h2>
+
+        <!-- Pergunta 1 -->
+        <label>Pergunta 1: Os móveis, materiais, máquinas e equipamentos estão em boas condições de limpeza?</label>
+        <div class="emoji-group" id="pergunta_14">
+            <input type="hidden" id="resposta_pergunta_14" name="pergunta_14">
+            <div class="emoji-btn emoji-bom" data-value="bom" onclick="toggleEmoji(this, 'bom')">😃 Bom</div>
+            <div class="emoji-btn emoji-medio" data-value="medio" onclick="toggleEmoji(this, 'medio')">😐 Médio</div>
+            <div class="emoji-btn emoji-ruim" data-value="ruim" onclick="toggleEmoji(this, 'ruim')">😟 Ruim</div>
+            <div class="emoji-btn emoji-nsa" data-value="Não se aplica" onclick="toggleEmoji(this, 'Não se aplica')">😕 Não se aplica</div>
+        </div>
+        <!-- Restante da pergunta 1 (comentário e upload de fotos) -->
+        <div id="comentario_pergunta_14" class="comment-section hidden">
+            <label for="comentario_pergunta_14">Comentário (caso a resposta seja Médio ou Ruim - Pergunta 14):</label>
+            <textarea id="comentario_pergunta_14" name="comentario_pergunta_14"></textarea>
+        </div>
+        <div id="upload_foto_pergunta_14" class="image-upload hidden">
+            <label for="upload_foto_pergunta_14">Faça o upload de fotos (caso necessário):</label>
+            <input type="file" id="upload_foto_pergunta_14" name="upload_foto_pergunta_14" accept="image/jpeg, image/png">
+        </div>
+
+        <!-- Pergunta 2 -->
+        <label>Pergunta 2: Existe acumulo de agua no piso?</label>
+        <div class="emoji-group" id="pergunta_15">
+            <input type="hidden" id="resposta_pergunta_15" name="pergunta_15">
+            <div class="emoji-btn emoji-bom" data-value="bom" onclick="toggleEmoji(this, 'bom')">😃 Bom</div>
+            <div class="emoji-btn emoji-medio" data-value="medio" onclick="toggleEmoji(this, 'medio')">😐 Médio</div>
+            <div class="emoji-btn emoji-ruim" data-value="ruim" onclick="toggleEmoji(this, 'ruim')">😟 Ruim</div>
+            <div class="emoji-btn emoji-nsa" data-value="Não se aplica" onclick="toggleEmoji(this, 'Não se aplica')">😕 Não se aplica</div> 
+        </div>
+        <!-- Restante da pergunta 2 (comentário e upload de fotos) -->
+        <div id="comentario_pergunta_15" class="comment-section hidden">
+            <label for="comentario_pergunta_15">Comentário (caso a resposta seja Médio ou Ruim - Pergunta 15):</label>
+            <textarea id="comentario_pergunta_15" name="comentario_pergunta_15"></textarea>
+        </div>
+        <div id="upload_foto_pergunta_15" class="image-upload hidden">
+            <label for="upload_foto_pergunta_15">Faça o upload de fotos (caso necessário):</label>
+            <input type="file" id="upload_foto_pergunta_15" name="upload_foto_pergunta_15" accept="image/jpeg, image/png">
+        </div>
+        
+        <!-- Pergunta 1 -->
+        <label>Pergunta 3: Há materiais jogado no chão?( produtos, embalagens, objetos, etc)</label>
+        <div class="emoji-group" id="pergunta_16">
+            <input type="hidden" id="resposta_pergunta_16" name="pergunta_16">
+            <div class="emoji-btn emoji-bom" data-value="bom" onclick="toggleEmoji(this, 'bom')">😃 Bom</div>
+            <div class="emoji-btn emoji-medio" data-value="medio" onclick="toggleEmoji(this, 'medio')">😐 Médio</div>
+            <div class="emoji-btn emoji-ruim" data-value="ruim" onclick="toggleEmoji(this, 'ruim')">😟 Ruim</div>
+            <div class="emoji-btn emoji-nsa" data-value="Não se aplica" onclick="toggleEmoji(this, 'Não se aplica')">😕 Não se aplica</div>
+        </div>
+        <!-- Restante da pergunta 1 (comentário e upload de fotos) -->
+        <div id="comentario_pergunta_16" class="comment-section hidden">
+            <label for="comentario_pergunta_16">Comentário (caso a resposta seja Médio ou Ruim - Pergunta 16):</label>
+            <textarea id="comentario_pergunta_16" name="comentario_pergunta_6"></textarea>
+        </div>
+        <div id="upload_foto_pergunta_16" class="image-upload hidden">
+            <label for="upload_foto_pergunta_16">Faça o upload de fotos (caso necessário):</label>
+            <input type="file" id="upload_foto_pergunta_16" name="upload_foto_pergunta_16" accept="image/jpeg, image/png">
+        </div>
+        <!-- Pergunta 1 -->
+        <label>Pergunta 4: As paredes, janelas e teto estão limpos? </label>
+        <div class="emoji-group" id="pergunta_17">
+            <input type="hidden" id="resposta_pergunta_17" name="pergunta_17">
+            <div class="emoji-btn emoji-bom" data-value="bom" onclick="toggleEmoji(this, 'bom')">😃 Bom</div>
+            <div class="emoji-btn emoji-medio" data-value="medio" onclick="toggleEmoji(this, 'medio')">😐 Médio</div>
+            <div class="emoji-btn emoji-ruim" data-value="ruim" onclick="toggleEmoji(this, 'ruim')">😟 Ruim</div>
+            <div class="emoji-btn emoji-nsa" data-value="Não se aplica" onclick="toggleEmoji(this, 'Não se aplica')">😕 Não se aplica</div> 
+        </div>
+        <!-- Restante da pergunta 2 (comentário e upload de fotos) -->
+        <div id="comentario_pergunta_17" class="comment-section hidden">
+            <label for="comentario_pergunta_17">Comentário (caso a resposta seja Médio ou Ruim - Pergunta 7):</label>
+            <textarea id="comentario_pergunta_17" name="comentario_pergunta_7"></textarea>
+        </div>
+        <div id="upload_foto_pergunta_17" class="image-upload hidden">
+            <label for="upload_foto_pergunta_17">Faça o upload de fotos (caso necessário):</label>
+            <input type="file" id="upload_foto_pergunta_17" name="upload_foto_pergunta_17" accept="image/jpeg, image/png">
+        </div>
+
+        <!-- Pergunta 1 -->
+        <label>Pergunta 5: No Geral o setor esta limpo?</label>
+        <div class="emoji-group" id="pergunta_18">
+            <input type="hidden" id="resposta_pergunta_18" name="pergunta_18">
+            <div class="emoji-btn emoji-bom" data-value="bom" onclick="toggleEmoji(this, 'bom')">😃 Bom</div>
+            <div class="emoji-btn emoji-medio" data-value="medio" onclick="toggleEmoji(this, 'medio')">😐 Médio</div>
+            <div class="emoji-btn emoji-ruim" data-value="ruim" onclick="toggleEmoji(this, 'ruim')">😟 Ruim</div>
+            <div class="emoji-btn emoji-nsa" data-value="Não se aplica" onclick="toggleEmoji(this, 'Não se aplica')">😕 Não se aplica</div> 
+        </div>
+        <!-- Restante da pergunta 1 (comentário e upload de fotos) -->
+        <div id="comentario_pergunta_18" class="comment-section hidden">
+            <label for="comentario_pergunta_18">Comentário (caso a resposta seja Médio ou Ruim - Pergunta 18):</label>
+            <textarea id="comentario_pergunta_18" name="comentario_pergunta_18"></textarea>
+        </div>
+        <div id="upload_foto_pergunta_18" class="image-upload hidden">
+            <label for="upload_foto_pergunta_18">Faça o upload de fotos (caso necessário):</label>
+            <input type="file" id="upload_foto_pergunta_18" name="upload_foto_pergunta_18" accept="image/jpeg, image/png">
+        </div>
+
+        <!-- Seção SENSO DE PADRONIZAÇÃO-->
+        <h2>SENSO DE PADRONIZAÇÃO</h2>
+        <!-- Pergunta 2 -->
+        <label>Pergunta 1: As lâmpadas, luminárias estão limpas e em funcionamento?</label>
+        <div class="emoji-group" id="pergunta_19">
+            <input type="hidden" id="resposta_pergunta_19" name="pergunta_19">
+            <div class="emoji-btn emoji-bom" data-value="bom" onclick="toggleEmoji(this, 'bom')">😃 Bom</div>
+            <div class="emoji-btn emoji-medio" data-value="medio" onclick="toggleEmoji(this, 'medio')">😐 Médio</div>
+            <div class="emoji-btn emoji-ruim" data-value="ruim" onclick="toggleEmoji(this, 'ruim')">😟 Ruim</div>
+            <div class="emoji-btn emoji-nsa" data-value="Não se aplica" onclick="toggleEmoji(this, 'Não se aplica')">😕 Não se aplica</div> 
+        </div>
+        <!-- Restante da pergunta 2 (comentário e upload de fotos) -->
+        <div id="comentario_pergunta_19" class="comment-section hidden">
+            <label for="comentario_pergunta_19">Comentário (caso a resposta seja Médio ou Ruim - Pergunta 19):</label>
+            <textarea id="comentario_pergunta_19" name="comentario_pergunta_9"></textarea>
+        </div>
+        <div id="upload_foto_pergunta_19" class="image-upload hidden">
+            <label for="upload_foto_pergunta_19">Faça o upload de fotos (caso necessário):</label>
+            <input type="file" id="upload_foto_pergunta_19" name="upload_foto_pergunta_19" accept="image/jpeg, image/png">
+        </div>
+        <!-- Pergunta 3 -->
+        <label>Pergunta 2: Os banheiros encontram-se em bom estado de conservação por parte dos usuários?</label>
+        <div class="emoji-group" id="pergunta_20">
+            <input type="hidden" id="resposta_pergunta_20" name="pergunta_20">
+            <div class="emoji-btn emoji-bom" data-value="bom" onclick="toggleEmoji(this, 'bom')">😃 Bom</div>
+            <div class="emoji-btn emoji-medio" data-value="medio" onclick="toggleEmoji(this, 'medio')">😐 Médio</div>
+            <div class="emoji-btn emoji-ruim" data-value="ruim" onclick="toggleEmoji(this, 'ruim')">😟 Ruim</div>
+            <div class="emoji-btn emoji-nsa" data-value="Não se aplica" onclick="toggleEmoji(this, 'Não se aplica')">😕 Não se aplica</div> 
+        </div>
+        <!-- Restante da pergunta 3 (comentário e upload de fotos) -->
+        <div id="comentario_pergunta_20" class="comment-section hidden">
+            <label for="comentario_pergunta_20">Comentário (caso a resposta seja Médio ou Ruim - Pergunta 20):</label>
+            <textarea id="comentario_pergunta_20" name="comentario_pergunta_20"></textarea>
+        </div>
+        <div id="upload_foto_pergunta_20" class="image-upload hidden">
+            <label for="upload_foto_pergunta_20">Faça o upload de fotos (caso necessário):</label>
+            <input type="file" id="upload_foto_pergunta_20" name="upload_foto_pergunta_20" accept="image/jpeg, image/png">
+        </div>
+        
+        <!-- Pergunta 4 -->
+        <label>Pergunta 3: Os equipamentos de combate à incêndios estão identificados,em boas condições e prontos para o uso?</label>
+        <div class="emoji-group" id="pergunta_21">
+            <input type="hidden" id="resposta_pergunta_21" name="pergunta_21">
+            <div class="emoji-btn emoji-bom" data-value="bom" onclick="toggleEmoji(this, 'bom')">😃 Bom</div>
+            <div class="emoji-btn emoji-medio" data-value="medio" onclick="toggleEmoji(this, 'medio')">😐 Médio</div>
+            <div class="emoji-btn emoji-ruim" data-value="ruim" onclick="toggleEmoji(this, 'ruim')">😟 Ruim</div>
+            <div class="emoji-btn emoji-nsa" data-value="Não se aplica" onclick="toggleEmoji(this, 'Não se aplica')">😕 Não se aplica</div> 
+        </div>
+        <!-- Restante da pergunta 3 (comentário e upload de fotos) -->
+        <div id="comentario_pergunta_21" class="comment-section hidden">
+            <label for="comentario_pergunta_21">Comentário (caso a resposta seja Médio ou Ruim - Pergunta 21):</label>
+            <textarea id="comentario_pergunta_21" name="comentario_pergunta_21"></textarea>
+        </div>
+        <div id="upload_foto_pergunta_21" class="image-upload hidden">
+            <label for="upload_foto_pergunta_21">Faça o upload de fotos (caso necessário):</label>
+            <input type="file" id="upload_foto_pergunta_21" name="upload_foto_pergunta_21" accept="image/jpeg, image/png">
         </div>
 
         <h2>SENSO DE AUTO DISCIPLINA</h2>
 
         <!-- Pergunta 1 -->
-        <label>Pergunta 1: Existem materiais ou equipamentos que não estão sendo utilizados sobre as mesas e bancadas?</label>
-        <div class="emoji-group" id="pergunta_11">
-            <div class="emoji-btn emoji-bom" onclick="toggleEmoji(this, 'bom')">😃 Bom</div>
-            <div class="emoji-btn emoji-medio" onclick="toggleEmoji(this, 'medio')">😐 Médio</div>
-            <div class="emoji-btn emoji-ruim" onclick="toggleEmoji(this, 'ruim')">😟 Ruim</div>
+        <label>Pergunta 1: Todos estão utilizando crachá?</label>
+        <div class="emoji-group" id="pergunta_22" >
+            <input type="hidden" id="resposta_pergunta_22" name="pergunta_22">
+            <div class="emoji-btn emoji-bom" data-value="bom" onclick="toggleEmoji(this, 'bom')">😃 Bom</div>
+            <div class="emoji-btn emoji-medio" data-value="medio" onclick="toggleEmoji(this, 'medio')">😐 Médio</div>
+            <div class="emoji-btn emoji-ruim" data-value="ruim" onclick="toggleEmoji(this, 'ruim')">😟 Ruim</div>
+            <div class="emoji-btn emoji-nsa" data-value="Não se aplica" onclick="toggleEmoji(this, 'Não se aplica')">😕 Não se aplica</div> 
         </div>
         <!-- Restante da pergunta 1 (comentário e upload de fotos) -->
-        <div id="comentario_pergunta_11" class="comment-section hidden">
-            <label for="comentario_pergunta_11">Comentário (caso a resposta seja Médio ou Ruim - Pergunta 11):</label>
-            <textarea name="comentario_pergunta_11"></textarea>
+        <div id="comentario_pergunta_22" class="comment-section hidden">
+            <label for="comentario_pergunta_22">Comentário (caso a resposta seja Médio ou Ruim - Pergunta 22):</label>
+            <textarea id="comentario_pergunta_22" name="comentario_pergunta_22"></textarea>
         </div>
-        <div id="upload_foto_pergunta_11" class="image-upload hidden">
-            <label for="upload_foto_pergunta_11">Faça o upload de fotos (caso necessário):</label>
-            <input type="file" name="upload_foto_pergunta_11" accept="image/jpeg, image/png" onchange="handleImageUpload(this, 'pergunta_11')">
-            <div class="uploaded-images" id="uploaded_images_pergunta_11"></div>
+        <div id="upload_foto_pergunta_22" class="image-upload hidden">
+            <label for="upload_foto_pergunta_22">Faça o upload de fotos (caso necessário):</label>
+            <input type="file" id="upload_foto_pergunta_22" name="upload_foto_pergunta_22" accept="image/jpeg, image/png">
         </div>
 
         <!-- Pergunta 2 -->
-        <label>Pergunta 2: Existem equipamentos/mobiliários, ferramentas ou algum elemento de estrutura física do setor necessitando de reparo, enferrujados, velhos ou que precisa ser trocado?</label>
-        <div class="emoji-group" id="pergunta_12">
-            <div class="emoji-btn emoji-bom" onclick="toggleEmoji(this, 'bom')">😃 Bom</div>
-            <div class="emoji-btn emoji-medio" onclick="toggleEmoji(this, 'medio')">😐 Médio</div>
-            <div class="emoji-btn emoji-ruim" onclick="toggleEmoji(this, 'ruim')">😟 Ruim</div>
+        <label>Pergunta 2: Todos estão utilizando uniforme adequados para o setor?</label>
+        <div class="emoji-group" id="pergunta_23">
+            <input type="hidden" id="resposta_pergunta_23" name="pergunta_23">
+            <div class="emoji-btn emoji-bom" data-value="bom" onclick="toggleEmoji(this, 'bom')">😃 Bom</div>
+            <div class="emoji-btn emoji-medio" data-value="medio" onclick="toggleEmoji(this, 'medio')">😐 Médio</div>
+            <div class="emoji-btn emoji-ruim" data-value="ruim" onclick="toggleEmoji(this, 'ruim')">😟 Ruim</div>
+            <div class="emoji-btn emoji-nsa" data-value="Não se aplica" onclick="toggleEmoji(this, 'Não se aplica')">😕 Não se aplica</div>  
         </div>
         <!-- Restante da pergunta 2 (comentário e upload de fotos) -->
-        <div id="comentario_pergunta_12" class="comment-section hidden">
-            <label for="comentario_pergunta_12">Comentário (caso a resposta seja Médio ou Ruim - Pergunta 12):</label>
-            <textarea name="comentario_pergunta_12"></textarea>
+        <div id="comentario_pergunta_23" class="comment-section hidden">
+            <label for="comentario_pergunta_23">Comentário (caso a resposta seja Médio ou Ruim - Pergunta 23):</label>
+            <textarea id="comentario_pergunta_23" name="comentario_pergunta_23"></textarea>
         </div>
-        <div id="upload_foto_pergunta_12" class="image-upload hidden">
-            <label for="upload_foto_pergunta_12">Faça o upload de fotos (caso necessário):</label>
-            <input type="file" name="upload_foto_pergunta_12" accept="image/jpeg, image/png" onchange="handleImageUpload(this, 'pergunta_12')">
-            <div class="uploaded-images" id="uploaded_images_pergunta_12"></div>
+        <div id="upload_foto_pergunta_23" class="image-upload hidden">
+            <label for="upload_foto_pergunta_23">Faça o upload de fotos (caso necessário):</label>
+            <input type="file" id="upload_foto_pergunta_23" name="upload_foto_pergunta_23" accept="image/jpeg, image/png">
         </div>
         <!-- Pergunta 3 -->
-        <label>Pergunta 3: Gramas e galhos encontram-se aparados?</label>
-        <div class="emoji-group" id="pergunta_13">
-            <div class="emoji-btn emoji-bom" onclick="toggleEmoji(this, 'bom')">😃 Bom</div>
-            <div class="emoji-btn emoji-medio" onclick="toggleEmoji(this, 'medio')">😐 Médio</div>
-            <div class="emoji-btn emoji-ruim" onclick="toggleEmoji(this, 'ruim')">😟 Ruim</div>
+        <label>Pergunta 3: A auditoria foi acompanhada na íntegra pelo supervisor ou representante do setor?</label>
+        <div class="emoji-group" id="pergunta_24">
+            <input type="hidden" id="resposta_pergunta_24" name="pergunta_24">
+            <div class="emoji-btn emoji-bom" data-value="bom" onclick="toggleEmoji(this, 'bom')">😃 Bom</div>
+            <div class="emoji-btn emoji-medio" data-value="medio" onclick="toggleEmoji(this, 'medio')">😐 Médio</div>
+            <div class="emoji-btn emoji-ruim" data-value="ruim" onclick="toggleEmoji(this, 'ruim')">😟 Ruim</div>
+            <div class="emoji-btn emoji-nsa" data-value="Não se aplica" onclick="toggleEmoji(this, 'Não se aplica')">😕 Não se aplica</div>  
         </div>
         <!-- Restante da pergunta 3 (comentário e upload de fotos) -->
-        <div id="comentario_pergunta_13" class="comment-section hidden">
-            <label for="comentario_pergunta_3">Comentário (caso a resposta seja Médio ou Ruim - Pergunta 13):</label>
-            <textarea name="comentario_pergunta_13"></textarea>
+        <div id="comentario_pergunta_24" class="comment-section hidden">
+            <label for="comentario_pergunta_24">Comentário (caso a resposta seja Médio ou Ruim - Pergunta 24):</label>
+            <textarea id="comentario_pergunta_24" name="comentario_pergunta_24"></textarea>
         </div>
-        <div id="upload_foto_pergunta_13" class="image-upload hidden">
-            <label for="upload_foto_pergunta_13">Faça o upload de fotos (caso necessário):</label>
-            <input type="file" name="upload_foto_pergunta_13" accept="image/jpeg, image/png" onchange="handleImageUpload(this, 'pergunta_13')">
-            <div class="uploaded-images" id="uploaded_images_pergunta_13"></div>
+        <div id="upload_foto_pergunta_24" class="image-upload hidden">
+            <label for="upload_foto_pergunta_24">Faça o upload de fotos (caso necessário):</label>
+            <input type="file" id="upload_foto_pergunta_24" name="upload_foto_pergunta_24" accept="image/jpeg, image/png">
+        </div>
+         
+            <!-- Pergunta 2 -->
+            <label>Pergunta 4: O ambiente reflete a essência do Programa 6S?
+                 A área causa impacto, admiração? O setor cumpre com os demais Sensos?</label>
+        <div class="emoji-group" id="pergunta_25">
+            <input type="hidden" id="resposta_pergunta_25" name="pergunta_25">
+            <div class="emoji-btn emoji-bom" data-value="bom" onclick="toggleEmoji(this, 'bom')">😃 Bom</div>
+            <div class="emoji-btn emoji-medio" data-value="medio" onclick="toggleEmoji(this, 'medio')">😐 Médio</div>
+            <div class="emoji-btn emoji-ruim" data-value="ruim" onclick="toggleEmoji(this, 'ruim')">😟 Ruim</div>
+            <div class="emoji-btn emoji-nsa" data-value="Não se aplica" onclick="toggleEmoji(this, 'Não se aplica')">😕 Não se aplica</div>  
+        </div>
+        <!-- Restante da pergunta 2 (comentário e upload de fotos) -->
+        <div id="comentario_pergunta_25" class="comment-section hidden">
+            <label for="comentario_pergunta_25">Comentário (caso a resposta seja Médio ou Ruim - Pergunta 25):</label>
+            <textarea id="comentario_pergunta_25" name="comentario_pergunta_25"></textarea>
+        </div>
+        <div id="upload_foto_pergunta_25" class="image-upload hidden">
+            <label for="upload_foto_pergunta_25">Faça o upload de fotos (caso necessário):</label>
+            <input type="file" id="upload_foto_pergunta_25" name="upload_foto_pergunta_25" accept="image/jpeg, image/png">
+        </div>
+        <!-- Pergunta 3 -->
+        <label>Pergunta 5: Os colaboradores conhecem o Programa 6S? (Compreendem os Sensos e objetivos do Programa?) (entrevistar colaboradores).</label>
+        <div class="emoji-group" id="pergunta_26">
+            <input type="hidden" id="resposta_pergunta_26" name="pergunta_26">
+            <div class="emoji-btn emoji-bom" data-value="bom" onclick="toggleEmoji(this, 'bom')">😃 Bom</div>
+            <div class="emoji-btn emoji-medio" data-value="medio" onclick="toggleEmoji(this, 'medio')">😐 Médio</div>
+            <div class="emoji-btn emoji-ruim" data-value="ruim" onclick="toggleEmoji(this, 'ruim')">😟 Ruim</div>
+            <div class="emoji-btn emoji-nsa" data-value="Não se aplica" onclick="toggleEmoji(this, 'Não se aplica')">😕 Não se aplica</div>  
+        </div>
+        <!-- Restante da pergunta 3 (comentário e upload de fotos) -->
+        <div id="comentario_pergunta_26" class="comment-section hidden">
+            <label for="comentario_pergunta_26">Comentário (caso a resposta seja Médio ou Ruim - Pergunta 26):</label>
+            <textarea id="comentario_pergunta_26" name="comentario_pergunta_26"></textarea>
+        </div>
+        <div id="upload_foto_pergunta_26" class="image-upload hidden">
+            <label for="upload_foto_pergunta_26">Faça o upload de fotos (caso necessário):</label>
+            <input type="file" id="upload_foto_pergunta_26" name="upload_foto_pergunta_26" accept="image/jpeg, image/png">
         </div>
 
         <h2>SENSO DE SEGURANÇA DO ALIMENTO</h2>
 
+        <!-- Pergunta 27 -->
+        <label>Pergunta 1: São deixadas portas de armários e gavetas abertas?</label>
+        <div class="emoji-group" id="pergunta_27">
+            <input type="hidden" id="resposta_pergunta_27" name="pergunta_27">
+            <div class="emoji-btn emoji-bom" data-value="bom" onclick="toggleEmoji(this, 'bom')">😃 Bom</div>
+            <div class="emoji-btn emoji-medio" data-value="medio" onclick="toggleEmoji(this, 'medio')">😐 Médio</div>
+            <div class="emoji-btn emoji-ruim" data-value="ruim" onclick="toggleEmoji(this, 'ruim')">😟 Ruim</div>
+            <div class="emoji-btn emoji-nsa" data-value="Não se aplica" onclick="toggleEmoji(this, 'Não se aplica')">😕 Não se aplica</div> 
+        </div>
+        <!-- Restante da pergunta 27 (comentário e upload de fotos) -->
+        <div id="comentario_pergunta_27" class="comment-section hidden">
+            <label for="comentario_pergunta_27">Comentário (caso a resposta seja Médio ou Ruim - Pergunta 27):</label>
+            <textarea id="comentario_pergunta_27" name="comentario_pergunta_27"></textarea>
+        </div>
+        <div id="upload_foto_pergunta_27" class="image-upload hidden">
+            <label for="upload_foto_pergunta_27">Faça o upload de fotos (caso necessário):</label>
+            <input type="file" id="upload_foto_pergunta_27" name="upload_foto_pergunta_27" accept="image/jpeg, image/png">
+        </div>
+
+        <!-- Pergunta 28 -->
+        <label>Pergunta 2: Durante a auditoria foi observado algum ato que vai contra a política da cultura da empresa?
+             (Colabordores ajustando o ambiente na chegada do auditor, escondendo materiais, iniciando limpeza, etc.)</label>
+        <div class="emoji-group" id="pergunta_28">
+            <input type="hidden" id="resposta_pergunta_28" name="pergunta_28">
+            <div class="emoji-btn emoji-bom" data-value="bom" onclick="toggleEmoji(this, 'bom')">😃 Bom</div>
+            <div class="emoji-btn emoji-medio" data-value="medio" onclick="toggleEmoji(this, 'medio')">😐 Médio</div>
+            <div class="emoji-btn emoji-ruim" data-value="ruim" onclick="toggleEmoji(this, 'ruim')">😟 Ruim</div>
+            <div class="emoji-btn emoji-nsa" data-value="Não se aplica" onclick="toggleEmoji(this, 'Não se aplica')">😕 Não se aplica</div>  
+        </div>
+        <!-- Restante da pergunta 28 (comentário e upload de fotos) -->
+        <div id="comentario_pergunta_28" class="comment-section hidden">
+            <label for="comentario_pergunta_28">Comentário (caso a resposta seja Médio ou Ruim - Pergunta 28):</label>
+            <textarea id="comentario_pergunta_28" name="comentario_pergunta_28"></textarea>
+        </div>
+        <div id="upload_foto_pergunta_28" class="image-upload hidden">
+            <label for="upload_foto_pergunta_28">Faça o upload de fotos (caso necessário):</label>
+            <input type="file" id="upload_foto_pergunta_28" name="upload_foto_pergunta_28" accept="image/jpeg, image/png">
+        </div>
+        <!-- Pergunta 16 -->
+        <label>Pergunta 3: Os colaboradores conhecem a Política da Qualidade? (Entrevistar colaboradores).</label>
+        <div class="emoji-group" id="pergunta_29" name="pergunta_29">
+            <input type="hidden" id="resposta_pergunta_29" name="pergunta_29">
+            <div class="emoji-btn emoji-bom" data-value="bom" onclick="toggleEmoji(this, 'bom')">😃 Bom</div>
+            <div class="emoji-btn emoji-medio" data-value="medio" onclick="toggleEmoji(this, 'medio')">😐 Médio</div>
+            <div class="emoji-btn emoji-ruim" data-value="ruim" onclick="toggleEmoji(this, 'ruim')">😟 Ruim</div>
+            <div class="emoji-btn emoji-nsa" data-value="Não se aplica" onclick="toggleEmoji(this, 'Não se aplica')">😕 Não se aplica</div> 
+        </div>
+        <!-- Restante da pergunta 16 (comentário e upload de fotos) -->
+        <div id="comentario_pergunta_29" class="comment-section hidden">
+            <label for="comentario_pergunta_29">Comentário (caso a resposta seja Médio ou Ruim - Pergunta 29):</label>
+            <textarea id="comentario_pergunta_29" name="comentario_pergunta_29"></textarea>
+        </div>
+        <div id="upload_foto_pergunta_29" class="image-upload hidden">
+            <label for="upload_foto_pergunta_29">Faça o upload de fotos (caso necessário):</label>
+            <input type="file" id="upload_foto_pergunta_29" name="upload_foto_pergunta_29" accept="image/jpeg, image/png">
+        </div>
+
         <!-- Pergunta 14 -->
-        <label>Pergunta 14: Existem materiais ou equipamentos que não estão sendo utilizados sobre as mesas e bancadas?</label>
-        <div class="emoji-group" id="pergunta_14">
-            <div class="emoji-btn emoji-bom" onclick="toggleEmoji(this, 'bom')">😃 Bom</div>
-            <div class="emoji-btn emoji-medio" onclick="toggleEmoji(this, 'medio')">😐 Médio</div>
-            <div class="emoji-btn emoji-ruim" onclick="toggleEmoji(this, 'ruim')">😟 Ruim</div>
+        <label>Pergunta 4: Bancadas, mesas, armários, estantes, gavetas são mantidas organizadas durante a execução das tarefas?</label>
+        <div class="emoji-group" id="pergunta_30">
+            <input type="hidden" id="resposta_pergunta_30" name="pergunta_30">
+            <div class="emoji-btn emoji-bom" data-value="bom" onclick="toggleEmoji(this, 'bom')">😃 Bom</div>
+            <div class="emoji-btn emoji-medio" data-value="medio" onclick="toggleEmoji(this, 'medio')">😐 Médio</div>
+            <div class="emoji-btn emoji-ruim" data-value="ruim" onclick="toggleEmoji(this, 'ruim')">😟 Ruim</div>
+            <div class="emoji-btn emoji-nsa" data-value="Não se aplica" onclick="toggleEmoji(this, 'Não se aplica')">😕 Não se aplica</div> 
         </div>
         <!-- Restante da pergunta 14 (comentário e upload de fotos) -->
-        <div id="comentario_pergunta_14" class="comment-section hidden">
-            <label for="comentario_pergunta_14">Comentário (caso a resposta seja Médio ou Ruim - Pergunta 14):</label>
-            <textarea name="comentario_pergunta_14"></textarea>
+        <div id="comentario_pergunta_30" class="comment-section hidden">
+            <label for="comentario_pergunta_30">Comentário (caso a resposta seja Médio ou Ruim - Pergunta 30):</label>
+            <textarea id="comentario_pergunta_30" name="comentario_pergunta_30"></textarea>
         </div>
-        <div id="upload_foto_pergunta_14" class="image-upload hidden">
-            <label for="upload_foto_pergunta_1">Faça o upload de fotos (caso necessário):</label>
-            <input type="file" name="upload_foto_pergunta_14" accept="image/jpeg, image/png" onchange="handleImageUpload(this, 'pergunta_14')">
-            <div class="uploaded-images" id="uploaded_images_pergunta_14"></div>
+        <div id="upload_foto_pergunta_30" class="image-upload hidden">
+            <label for="upload_foto_pergunta_30">Faça o upload de fotos (caso necessário):</label>
+            <input type="file" id="upload_foto_pergunta_30" name="upload_foto_pergunta_30" accept="image/jpeg, image/png">
         </div>
 
         <!-- Pergunta 15 -->
-        <label>Pergunta 2: Existem equipamentos/mobiliários, ferramentas ou algum elemento de estrutura física do setor necessitando de reparo, enferrujados, velhos ou que precisa ser trocado?</label>
-        <div class="emoji-group" id="pergunta_15">
-            <div class="emoji-btn emoji-bom" onclick="toggleEmoji(this, 'bom')">😃 Bom</div>
-            <div class="emoji-btn emoji-medio" onclick="toggleEmoji(this, 'medio')">😐 Médio</div>
-            <div class="emoji-btn emoji-ruim" onclick="toggleEmoji(this, 'ruim')">😟 Ruim</div>
+        <label>Pergunta 5: Os colaboradores entendem e praticam as Boas Práticas de Fabricação(BPF), 
+            (Colaborador com roupa civil por baixo do uniforme, usando adornos ou maquiagem, não fazendo uso das barreiras sanitárias, etc.).</label>
+        <div class="emoji-group" id="pergunta_31">
+            <input type="hidden" id="resposta_pergunta_31" name="pergunta_31">
+            <div class="emoji-btn emoji-bom" data-value="bom" onclick="toggleEmoji(this, 'bom')">😃 Bom</div>
+            <div class="emoji-btn emoji-medio" data-value="medio" onclick="toggleEmoji(this, 'medio')">😐 Médio</div>
+            <div class="emoji-btn emoji-ruim" data-value="ruim" onclick="toggleEmoji(this, 'ruim')">😟 Ruim</div>
+            <div class="emoji-btn emoji-nsa" data-value="Não se aplica" onclick="toggleEmoji(this, 'Não se aplica')">😕 Não se aplica</div>  
         </div>
         <!-- Restante da pergunta 15 (comentário e upload de fotos) -->
-        <div id="comentario_pergunta_15" class="comment-section hidden">
-            <label for="comentario_pergunta_15">Comentário (caso a resposta seja Médio ou Ruim - Pergunta 15):</label>
-            <textarea name="comentario_pergunta_15"></textarea>
+        <div id="comentario_pergunta_31" class="comment-section hidden">
+            <label for="comentario_pergunta_31">Comentário (caso a resposta seja Médio ou Ruim - Pergunta 31):</label>
+            <textarea id="comentario_pergunta_31" name="comentario_pergunta_31"></textarea>
         </div>
-        <div id="upload_foto_pergunta_15" class="image-upload hidden">
-            <label for="upload_foto_pergunta_15">Faça o upload de fotos (caso necessário):</label>
-            <input type="file" name="upload_foto_pergunta_15" accept="image/jpeg, image/png" onchange="handleImageUpload(this, 'pergunta_15')">
-            <div class="uploaded-images" id="uploaded_images_pergunta_15"></div>
+        <div id="upload_foto_pergunta_31" class="image-upload hidden">
+            <label for="upload_foto_pergunta_31">Faça o upload de fotos (caso necessário):</label>
+            <input type="file" id="upload_foto_pergunta_31" name="upload_foto_pergunta_31" accept="image/jpeg, image/png">
         </div>
         <!-- Pergunta 16 -->
-        <label>Pergunta 3: Gramas e galhos encontram-se aparados?</label>
-        <div class="emoji-group" id="pergunta_16">
-            <div class="emoji-btn emoji-bom" onclick="toggleEmoji(this, 'bom')">😃 Bom</div>
-            <div class="emoji-btn emoji-medio" onclick="toggleEmoji(this, 'medio')">😐 Médio</div>
-            <div class="emoji-btn emoji-ruim" onclick="toggleEmoji(this, 'ruim')">😟 Ruim</div>
+        <label>Pergunta 6: As lixeiras estão sendo utilizadas corretamente? (Todo lixo dentro da lixeira, lixeira padrão, resíduos separados corretamente).</label>
+        <div class="emoji-group" id="pergunta_32" name="pergunta_32">
+            <input type="hidden" id="resposta_pergunta_32" name="pergunta_32">
+            <div class="emoji-btn emoji-bom" data-value="bom" onclick="toggleEmoji(this, 'bom')">😃 Bom</div>
+            <div class="emoji-btn emoji-medio" data-value="medio" onclick="toggleEmoji(this, 'medio')">😐 Médio</div>
+            <div class="emoji-btn emoji-ruim" data-value="ruim" onclick="toggleEmoji(this, 'ruim')">😟 Ruim</div>
+            <div class="emoji-btn emoji-nsa" data-value="Não se aplica" onclick="toggleEmoji(this, 'Não se aplica')">😕 Não se aplica</div> 
         </div>
         <!-- Restante da pergunta 16 (comentário e upload de fotos) -->
-        <div id="comentario_pergunta_16" class="comment-section hidden">
-            <label for="comentario_pergunta_16">Comentário (caso a resposta seja Médio ou Ruim - Pergunta 16):</label>
-            <textarea name="comentario_pergunta_16"></textarea>
+        <div id="comentario_pergunta_32" class="comment-section hidden">
+            <label for="comentario_pergunta_32">Comentário (caso a resposta seja Médio ou Ruim - Pergunta 32):</label>
+            <textarea id="comentario_pergunta_32" name="comentario_pergunta_32"></textarea>
         </div>
-        <div id="upload_foto_pergunta_16" class="image-upload hidden">
-            <label for="upload_foto_pergunta_16">Faça o upload de fotos (caso necessário):</label>
-            <input type="file" name="upload_foto_pergunta_16" accept="image/jpeg, image/png" onchange="handleImageUpload(this, 'pergunta_16')">
-            <div class="uploaded-images" id="uploaded_images_pergunta_16"></div>
-        </div>
-<!-- Adicione as perguntas para as outras seções aqui -->
+        <div id="upload_foto_pergunta_32" class="image-upload hidden">
+            <label for="upload_foto_pergunta_32">Faça o upload de fotos (caso necessário):</label>
+            <input type="file" id="upload_foto_pergunta_32" name="upload_foto_pergunta_32" accept="image/jpeg, image/png">
+        </div>        
+        <!-- Adicione as perguntas para as outras seções aqui -->
 
-        <button type="button" onclick="submitForm()">Enviar</button>
+        
+        <button type="submit_prod" >Enviar</button>
         <button type="button" onclick="location.href='/area_auditoria'" class="btn-voltar">Voltar</button>
         <button type="button" onclick="location.href='/logout'" class="btn-sair">Sair</button>
 
     </form>
 
-    <script>
-        
+    <script> 
+
         // Variáveis para armazenar as seleções feitas nas perguntas
         const selecoesPergunta1 = { resposta: null, comentario: null, imagens: [] };
         const selecoesPergunta2 = { resposta: null, comentario: null, imagens: [] };
@@ -499,7 +858,23 @@
         const selecoesPergunta14 = { resposta: null, comentario: null, imagens: [] };
         const selecoesPergunta15 = { resposta: null, comentario: null, imagens: [] };
         const selecoesPergunta16 = { resposta: null, comentario: null, imagens: [] };
-        
+        const selecoesPergunta17 = { resposta: null, comentario: null, imagens: [] };
+        const selecoesPergunta18 = { resposta: null, comentario: null, imagens: [] };
+        const selecoesPergunta19 = { resposta: null, comentario: null, imagens: [] };
+        const selecoesPergunta20 = { resposta: null, comentario: null, imagens: [] };
+        const selecoesPergunta21 = { resposta: null, comentario: null, imagens: [] };
+        const selecoesPergunta22 = { resposta: null, comentario: null, imagens: [] };
+        const selecoesPergunta23 = { resposta: null, comentario: null, imagens: [] };
+        const selecoesPergunta24 = { resposta: null, comentario: null, imagens: [] };
+        const selecoesPergunta25 = { resposta: null, comentario: null, imagens: [] };
+        const selecoesPergunta26 = { resposta: null, comentario: null, imagens: [] };
+        const selecoesPergunta27 = { resposta: null, comentario: null, imagens: [] };
+        const selecoesPergunta28 = { resposta: null, comentario: null, imagens: [] };
+        const selecoesPergunta29 = { resposta: null, comentario: null, imagens: [] };
+        const selecoesPergunta30 = { resposta: null, comentario: null, imagens: [] };
+        const selecoesPergunta31 = { resposta: null, comentario: null, imagens: [] };
+        const selecoesPergunta32 = { resposta: null, comentario: null, imagens: [] };
+
 
         function toggleEmoji(emojiBtn, resposta) {
             const perguntaId = emojiBtn.parentNode.id;
@@ -511,416 +886,383 @@
             emojiBtn.classList.add('emoji-selected');
             updateSelection(resposta, perguntaId);
 
-            // Adiciona classes de cor específicas para 'médio' e 'ruim'
-            if (resposta === 'medio') {
-                emojiBtn.classList.add('emoji-medio-selected');
-            } else if (resposta === 'ruim') {
-                emojiBtn.classList.add('emoji-ruim-selected');
+            // Atualiza o valor da resposta no campo do formulário correspondente
+            const inputField = document.getElementById(`resposta_${perguntaId}`);
+            inputField.value = resposta;
+
+            // Mapeia respostas para classes CSS correspondentes
+            const classes = {
+                medio: 'emoji-medio-selected',
+                ruim: 'emoji-ruim-selected',
+                'Não se aplica': 'emoji-nsa-selected'
+            };
+
+            // Adiciona a classe correspondente, se aplicável
+            const classeSelecionada = classes[resposta];
+            if (classeSelecionada) {
+                emojiBtn.classList.add(classeSelecionada);
             }
         }
-
         function clearSelections(perguntaId) {
             const emojis = document.querySelectorAll(`#${perguntaId} .emoji-btn`);
             emojis.forEach(btn => {
-                btn.classList.remove('emoji-selected');
-                btn.classList.remove('emoji-medio-selected');
-                btn.classList.remove('emoji-ruim-selected');
+                btn.classList.remove('emoji-selected', 'emoji-medio-selected', 'emoji-ruim-selected', 'emoji-nsa-selected');
             });
         }
 
-        function updateSelection(resposta, perguntaId) {
-            switch (perguntaId) {
-                case 'pergunta_1':
-                    selecoesPergunta1.resposta = resposta;
-                    break;
-                case 'pergunta_2':
-                    selecoesPergunta2.resposta = resposta;
-                    break;
-                case 'pergunta_3':
-                    selecoesPergunta3.resposta = resposta;
-                    break;
-                case 'pergunta_4':
-                    selecoesPergunta4.resposta = resposta;
-                    break;
-                case 'pergunta_5':
-                    selecoesPergunta5.resposta = resposta;
-                    break;
-                case 'pergunta_6':
-                    selecoesPergunta6.resposta = resposta;
-                    break;
-                case 'pergunta_7':
-                    selecoesPergunta7.resposta = resposta;
-                    break;
-                case 'pergunta_8':
-                    selecoesPergunta8.resposta = resposta;
-                    break;
-                case 'pergunta_9':
-                    selecoesPergunta9.resposta = resposta;
-                    break;
-                case 'pergunta_10':
-                    selecoesPergunta10.resposta = resposta;
-                    break;
-                case 'pergunta_11':
-                    selecoesPergunta11.resposta = resposta;
-                    break;
-                case 'pergunta_12':
-                    selecoesPergunta12.resposta = resposta;
-                    break;
-                case 'pergunta_13':
-                    selecoesPergunta13.resposta = resposta;
-                    break;
-                case 'pergunta_14':
-                    selecoesPergunta14.resposta = resposta;
-                    break;
-                case 'pergunta_15':
-                    selecoesPergunta15.resposta = resposta;
-                    break;
-                case 'pergunta_16':
-                    selecoesPergunta16.resposta = resposta;
-                    break;                                                                                
-                // Adicione casos para outras perguntas conforme necessário
-            }
 
-            // Atualiza a visibilidade dos campos adicionais
-            updateAdditionalFields(perguntaId);
-        }
-    // Obtém a data atual no formato YYYY-MM-DD
-            const now = new Date();
-            now.setHours(now.getHours() - 4); // Ajuste para UTC -4
-            const today = now.toISOString().split('T')[0];
-    
-    // Define o valor da caixa de texto como a data atual
-    document.getElementById('data_auditoria').value = today;
-    
+        function updateSelection(resposta, perguntaId) {
+            const selecoes = {
+                pergunta_1: selecoesPergunta1,
+                pergunta_2: selecoesPergunta2,
+                pergunta_3: selecoesPergunta3,
+                pergunta_4: selecoesPergunta4,
+                pergunta_5: selecoesPergunta5,
+                pergunta_6: selecoesPergunta6,
+                pergunta_7: selecoesPergunta7,
+                pergunta_8: selecoesPergunta8,
+                pergunta_9: selecoesPergunta9,
+                pergunta_10: selecoesPergunta10,
+                pergunta_11: selecoesPergunta11,
+                pergunta_12: selecoesPergunta12,
+                pergunta_13: selecoesPergunta13,
+                pergunta_14: selecoesPergunta14,
+                pergunta_15: selecoesPergunta15,
+                pergunta_16: selecoesPergunta16,
+                pergunta_17: selecoesPergunta17,
+                pergunta_18: selecoesPergunta18,
+                pergunta_19: selecoesPergunta19,
+                pergunta_20: selecoesPergunta20,
+                pergunta_21: selecoesPergunta21,
+                pergunta_22: selecoesPergunta22,
+                pergunta_23: selecoesPergunta23,
+                pergunta_24: selecoesPergunta24,
+                pergunta_25: selecoesPergunta25,
+                pergunta_26: selecoesPergunta26,
+                pergunta_27: selecoesPergunta27,
+                pergunta_28: selecoesPergunta28,
+                pergunta_29: selecoesPergunta29,
+                pergunta_30: selecoesPergunta30,
+                pergunta_31: selecoesPergunta31,
+                pergunta_32: selecoesPergunta32,
+                // Adicione mais perguntas conforme necessário
+    };
+
+    if (perguntaId in selecoes) {
+        selecoes[perguntaId].resposta = resposta;
+    }
+
+    // Atualiza a visibilidade dos campos adicionais
+    updateAdditionalFields(perguntaId);
+}
+
+        // Obtém a data atual no formato YYYY-MM-DD
+        const now = new Date();
+        now.setHours(now.getHours() - 4); // Ajuste para UTC -4
+        const today = now.toISOString().split('T')[0];
+
+        // Define o valor da caixa de texto como a data atual
+        document.getElementById('data_auditoria').value = today;
+        // vamos testar
+
         function updateAdditionalFields(perguntaId) {
-            const formData = new FormData(document.getElementById('auditoriaForm'));
             const comentarioSection = document.getElementById(`comentario_${perguntaId}`);
             const uploadSection = document.getElementById(`upload_foto_${perguntaId}`);
-            const uploadedImagesSection = document.getElementById(`uploaded_images_${perguntaId}`);
+            const uploadedImagesSection = document.getElementById(`upload_images_${perguntaId}`);
 
             switch (perguntaId) {
                 case 'pergunta_1':
                     if (selecoesPergunta1.resposta === 'ruim' || selecoesPergunta1.resposta === 'medio') {
                         comentarioSection.classList.remove('hidden');
                         uploadSection.classList.remove('hidden');
-                        showUploadedImages(selecoesPergunta1.imagens, uploadedImagesSection);
                     } else {
                         comentarioSection.classList.add('hidden');
                         uploadSection.classList.add('hidden');
-                        clearUploadedImages(uploadedImagesSection);
                     }
                     break;
                 case 'pergunta_2':
                     if (selecoesPergunta2.resposta === 'ruim' || selecoesPergunta2.resposta === 'medio') {
                         comentarioSection.classList.remove('hidden');
                         uploadSection.classList.remove('hidden');
-                        showUploadedImages(selecoesPergunta2.imagens, uploadedImagesSection);
                     } else {
                         comentarioSection.classList.add('hidden');
                         uploadSection.classList.add('hidden');
-                        clearUploadedImages(uploadedImagesSection);
                     }
                     break;
                 case 'pergunta_3':
                     if (selecoesPergunta3.resposta === 'ruim' || selecoesPergunta3.resposta === 'medio') {
                         comentarioSection.classList.remove('hidden');
                         uploadSection.classList.remove('hidden');
-                        showUploadedImages(selecoesPergunta3.imagens, uploadedImagesSection);
                     } else {
                         comentarioSection.classList.add('hidden');
                         uploadSection.classList.add('hidden');
-                        clearUploadedImages(uploadedImagesSection);
                     }
                     break;
                 case 'pergunta_4':
                     if (selecoesPergunta4.resposta === 'ruim' || selecoesPergunta4.resposta === 'medio') {
                         comentarioSection.classList.remove('hidden');
                         uploadSection.classList.remove('hidden');
-                        showUploadedImages(selecoesPergunta4.imagens, uploadedImagesSection);
                     } else {
                         comentarioSection.classList.add('hidden');
                         uploadSection.classList.add('hidden');
-                        clearUploadedImages(uploadedImagesSection);
                     }
                     break;
                 case 'pergunta_5':
                     if (selecoesPergunta5.resposta === 'ruim' || selecoesPergunta5.resposta === 'medio') {
                         comentarioSection.classList.remove('hidden');
                         uploadSection.classList.remove('hidden');
-                        showUploadedImages(selecoesPergunta5.imagens, uploadedImagesSection);
                     } else {
                         comentarioSection.classList.add('hidden');
                         uploadSection.classList.add('hidden');
-                        clearUploadedImages(uploadedImagesSection);
                     }
                     break;
                 case 'pergunta_6':
                     if (selecoesPergunta6.resposta === 'ruim' || selecoesPergunta6.resposta === 'medio') {
                         comentarioSection.classList.remove('hidden');
                         uploadSection.classList.remove('hidden');
-                        showUploadedImages(selecoesPergunta6.imagens, uploadedImagesSection);
                     } else {
                         comentarioSection.classList.add('hidden');
                         uploadSection.classList.add('hidden');
-                        clearUploadedImages(uploadedImagesSection);
                     }
                     break;
                 case 'pergunta_7':
                     if (selecoesPergunta7.resposta === 'ruim' || selecoesPergunta7.resposta === 'medio') {
                         comentarioSection.classList.remove('hidden');
                         uploadSection.classList.remove('hidden');
-                        showUploadedImages(selecoesPergunta7.imagens, uploadedImagesSection);
                     } else {
                         comentarioSection.classList.add('hidden');
                         uploadSection.classList.add('hidden');
-                        clearUploadedImages(uploadedImagesSection);
                     }
                     break;
                 case 'pergunta_8':
                     if (selecoesPergunta8.resposta === 'ruim' || selecoesPergunta8.resposta === 'medio') {
                         comentarioSection.classList.remove('hidden');
                         uploadSection.classList.remove('hidden');
-                        showUploadedImages(selecoesPergunta8.imagens, uploadedImagesSection);
                     } else {
                         comentarioSection.classList.add('hidden');
                         uploadSection.classList.add('hidden');
-                        clearUploadedImages(uploadedImagesSection);
                     }
                     break;
                 case 'pergunta_9':
                     if (selecoesPergunta9.resposta === 'ruim' || selecoesPergunta9.resposta === 'medio') {
                         comentarioSection.classList.remove('hidden');
                         uploadSection.classList.remove('hidden');
-                        showUploadedImages(selecoesPergunta9.imagens, uploadedImagesSection);
                     } else {
                         comentarioSection.classList.add('hidden');
                         uploadSection.classList.add('hidden');
-                        clearUploadedImages(uploadedImagesSection);
                     }
                     break;
                 case 'pergunta_10':
                     if (selecoesPergunta10.resposta === 'ruim' || selecoesPergunta10.resposta === 'medio') {
                         comentarioSection.classList.remove('hidden');
                         uploadSection.classList.remove('hidden');
-                        showUploadedImages(selecoesPergunta10.imagens, uploadedImagesSection);
                     } else {
                         comentarioSection.classList.add('hidden');
                         uploadSection.classList.add('hidden');
-                        clearUploadedImages(uploadedImagesSection);
                     }
                     break;
                 case 'pergunta_11':
                     if (selecoesPergunta11.resposta === 'ruim' || selecoesPergunta11.resposta === 'medio') {
                         comentarioSection.classList.remove('hidden');
                         uploadSection.classList.remove('hidden');
-                        showUploadedImages(selecoesPergunta11.imagens, uploadedImagesSection);
                     } else {
                         comentarioSection.classList.add('hidden');
-                        uploadSection.classList.add('hidden');
-                        clearUploadedImages(uploadedImagesSection);
+                        uploadSection.classList.add('hidden');;
                     }
                     break;
                 case 'pergunta_12':
                     if (selecoesPergunta12.resposta === 'ruim' || selecoesPergunta12.resposta === 'medio') {
                         comentarioSection.classList.remove('hidden');
                         uploadSection.classList.remove('hidden');
-                        showUploadedImages(selecoesPergunta12.imagens, uploadedImagesSection);
                     } else {
                         comentarioSection.classList.add('hidden');
                         uploadSection.classList.add('hidden');
-                        clearUploadedImages(uploadedImagesSection);
                     }
                     break;
                 case 'pergunta_13':
                     if (selecoesPergunta13.resposta === 'ruim' || selecoesPergunta13.resposta === 'medio') {
                         comentarioSection.classList.remove('hidden');
                         uploadSection.classList.remove('hidden');
-                        showUploadedImages(selecoesPergunta13.imagens, uploadedImagesSection);
                     } else {
                         comentarioSection.classList.add('hidden');
                         uploadSection.classList.add('hidden');
-                        clearUploadedImages(uploadedImagesSection);
                     }
                     break;
                 case 'pergunta_14':
                     if (selecoesPergunta14.resposta === 'ruim' || selecoesPergunta14.resposta === 'medio') {
                         comentarioSection.classList.remove('hidden');
                         uploadSection.classList.remove('hidden');
-                        showUploadedImages(selecoesPergunta14.imagens, uploadedImagesSection);
                     } else {
                         comentarioSection.classList.add('hidden');
                         uploadSection.classList.add('hidden');
-                        clearUploadedImages(uploadedImagesSection);
                     }
                     break;
                 case 'pergunta_15':
                     if (selecoesPergunta15.resposta === 'ruim' || selecoesPergunta15.resposta === 'medio') {
                         comentarioSection.classList.remove('hidden');
                         uploadSection.classList.remove('hidden');
-                        showUploadedImages(selecoesPergunta15.imagens, uploadedImagesSection);
                     } else {
                         comentarioSection.classList.add('hidden');
                         uploadSection.classList.add('hidden');
-                        clearUploadedImages(uploadedImagesSection);
                     }
                     break;
                 case 'pergunta_16':
                     if (selecoesPergunta16.resposta === 'ruim' || selecoesPergunta16.resposta === 'medio') {
                         comentarioSection.classList.remove('hidden');
                         uploadSection.classList.remove('hidden');
-                        showUploadedImages(selecoesPergunta16.imagens, uploadedImagesSection);
                     } else {
                         comentarioSection.classList.add('hidden');
                         uploadSection.classList.add('hidden');
-                        clearUploadedImages(uploadedImagesSection);
                     }
-                    break;                                      
+                    break;
+                case 'pergunta_17':
+                    if (selecoesPergunta17.resposta === 'ruim' || selecoesPergunta17.resposta === 'medio') {
+                        comentarioSection.classList.remove('hidden');
+                        uploadSection.classList.remove('hidden');
+                    } else {
+                        comentarioSection.classList.add('hidden');
+                        uploadSection.classList.add('hidden');
+                    }
+                    break;
+                case 'pergunta_18':
+                    if (selecoesPergunta18.resposta === 'ruim' || selecoesPergunta18.resposta === 'medio') {
+                        comentarioSection.classList.remove('hidden');
+                        uploadSection.classList.remove('hidden');
+                    } else {
+                        comentarioSection.classList.add('hidden');
+                        uploadSection.classList.add('hidden');
+                    }
+                    break;
+                case 'pergunta_19':
+                    if (selecoesPergunta19.resposta === 'ruim' || selecoesPergunta19.resposta === 'medio') {
+                        comentarioSection.classList.remove('hidden');
+                        uploadSection.classList.remove('hidden');
+                    } else {
+                        comentarioSection.classList.add('hidden');
+                        uploadSection.classList.add('hidden');
+                    }
+                    break;
+                case 'pergunta_20':
+                    if (selecoesPergunta20.resposta === 'ruim' || selecoesPergunta20.resposta === 'medio') {
+                        comentarioSection.classList.remove('hidden');
+                        uploadSection.classList.remove('hidden');
+                    } else {
+                        comentarioSection.classList.add('hidden');
+                        uploadSection.classList.add('hidden');
+                    }
+                    break;
+                case 'pergunta_21':
+                    if (selecoesPergunta21.resposta === 'ruim' || selecoesPergunta21.resposta === 'medio') {
+                        comentarioSection.classList.remove('hidden');
+                        uploadSection.classList.remove('hidden');
+                    } else {
+                        comentarioSection.classList.add('hidden');
+                        uploadSection.classList.add('hidden');
+                    }
+                    break;
+                case 'pergunta_22':
+                    if (selecoesPergunta22.resposta === 'ruim' || selecoesPergunta22.resposta === 'medio') {
+                        comentarioSection.classList.remove('hidden');
+                        uploadSection.classList.remove('hidden');
+                    } else {
+                        comentarioSection.classList.add('hidden');
+                        uploadSection.classList.add('hidden');
+                    }
+                    break;
+                case 'pergunta_23':
+                    if (selecoesPergunta23.resposta === 'ruim' || selecoesPergunta23.resposta === 'medio') {
+                        comentarioSection.classList.remove('hidden');
+                        uploadSection.classList.remove('hidden');
+                    } else {
+                        comentarioSection.classList.add('hidden');
+                        uploadSection.classList.add('hidden');
+                    }
+                    break;
+                case 'pergunta_24':
+                    if (selecoesPergunta24.resposta === 'ruim' || selecoesPergunta24.resposta === 'medio') {
+                        comentarioSection.classList.remove('hidden');
+                        uploadSection.classList.remove('hidden');
+                    } else {
+                        comentarioSection.classList.add('hidden');
+                        uploadSection.classList.add('hidden');
+                    }
+                    break;
+                case 'pergunta_25':
+                    if (selecoesPergunta25.resposta === 'ruim' || selecoesPergunta25.resposta === 'medio') {
+                        comentarioSection.classList.remove('hidden');
+                        uploadSection.classList.remove('hidden');
+                    } else {
+                        comentarioSection.classList.add('hidden');
+                        uploadSection.classList.add('hidden');
+                    }
+                    break;
+                case 'pergunta_26':
+                    if (selecoesPergunta26.resposta === 'ruim' || selecoesPergunta26.resposta === 'medio') {
+                        comentarioSection.classList.remove('hidden');
+                        uploadSection.classList.remove('hidden');
+                    } else {
+                        comentarioSection.classList.add('hidden');
+                        uploadSection.classList.add('hidden');
+                    }
+                    break;
+                case 'pergunta_27':
+                    if (selecoesPergunta27.resposta === 'ruim' || selecoesPergunta27.resposta === 'medio') {
+                        comentarioSection.classList.remove('hidden');
+                        uploadSection.classList.remove('hidden');
+                    } else {
+                        comentarioSection.classList.add('hidden');
+                        uploadSection.classList.add('hidden');
+                    }
+                    break;
+                case 'pergunta_28':
+                    if (selecoesPergunta28.resposta === 'ruim' || selecoesPergunta28.resposta === 'medio') {
+                        comentarioSection.classList.remove('hidden');
+                        uploadSection.classList.remove('hidden');
+                    } else {
+                        comentarioSection.classList.add('hidden');
+                        uploadSection.classList.add('hidden');
+                    }
+                    break;
+                case 'pergunta_29':
+                    if (selecoesPergunta29.resposta === 'ruim' || selecoesPergunta29.resposta === 'medio') {
+                        comentarioSection.classList.remove('hidden');
+                        uploadSection.classList.remove('hidden');
+                    } else {
+                        comentarioSection.classList.add('hidden');
+                        uploadSection.classList.add('hidden');
+                    }
+                    break;
+                case 'pergunta_30':
+                    if (selecoesPergunta30.resposta === 'ruim' || selecoesPergunta30.resposta === 'medio') {
+                        comentarioSection.classList.remove('hidden');
+                        uploadSection.classList.remove('hidden');
+                    } else {
+                        comentarioSection.classList.add('hidden');
+                        uploadSection.classList.add('hidden');
+                    }
+                    break;
+                case 'pergunta_31':
+                    if (selecoesPergunta31.resposta === 'ruim' || selecoesPergunta31.resposta === 'medio') {
+                        comentarioSection.classList.remove('hidden');
+                        uploadSection.classList.remove('hidden');
+                    } else {
+                        comentarioSection.classList.add('hidden');
+                        uploadSection.classList.add('hidden');
+                    }
+                    break;
+                case 'pergunta_32':
+                    if (selecoesPergunta32.resposta === 'ruim' || selecoesPergunta32.resposta === 'medio') {
+                        comentarioSection.classList.remove('hidden');
+                        uploadSection.classList.remove('hidden');
+                    } else {
+                        comentarioSection.classList.add('hidden');
+                        uploadSection.classList.add('hidden');
+                    }
+                    break; 
                 // Adicione casos para outras perguntas conforme necessário
-            }
-        }
-
-        function showUploadedImages(images, container) {
-            clearUploadedImages(container);
-
-            images.forEach(image => {
-                const imgElement = document.createElement('img');
-                imgElement.src = image;
-                container.appendChild(imgElement);
-            });
-        }
-
-        function clearUploadedImages(container) {
-            container.innerHTML = '';
-        }
-
-        function handleImageUpload(input, perguntaId) {
-            const imagesContainer = document.getElementById(`uploaded_images_${perguntaId}`);
-
-            // Limpa imagens anteriores
-            clearUploadedImages(imagesContainer);
-
-            const files = input.files;
-            for (const file of files) {
-                // Simula o upload e adiciona a imagem ao contêiner
-                const imgElement = document.createElement('img');
-                imgElement.src = URL.createObjectURL(file);
-                imagesContainer.appendChild(imgElement);
-
-                // Armazena a imagem na seleção apropriada
-                switch (perguntaId) {
-                        case 'pergunta_1':
-                        case 'pergunta_2':
-                        case 'pergunta_3':
-                        case 'pergunta_4':
-                        case 'pergunta_5':
-                        case 'pergunta_6':
-                        case 'pergunta_7':
-                        case 'pergunta_8':
-                        case 'pergunta_9':
-                        case 'pergunta_10':
-                        case 'pergunta_11':
-                        case 'pergunta_12':
-                        case 'pergunta_13':
-                        case 'pergunta_14':
-                        case 'pergunta_15':
-                        case 'pergunta_16':
-                            const perguntaNumber = perguntaId.split('_')[1];
-                            eval(`selecoesPergunta${perguntaNumber}.imagens.push(URL.createObjectURL(file));`);
-                            break;
-                    }
-                                }
-                        
-
-            // Agora a seleção de imagens está atualizada, podemos verificar se as seções devem ser exibidas
-            updateAdditionalFields(perguntaId);
-        }
-
-        function submitForm() {
-    const formData = {
-        setor_auditado: document.getElementsByName('setor_auditado')[0].value,
-        data_auditoria: document.getElementsByName('data_auditoria')[0].value,
-        representante_setor: document.getElementsByName('representante_setor')[0].value,
-        auditores: document.getElementsByName('auditores')[0].value,
-        pergunta_1: selecoesPergunta1.resposta,
-        comentario_pergunta_1: document.getElementsByName('comentario_pergunta_1')[0].value,
-        upload_foto_pergunta_1: selecoesPergunta1.imagens,
-        pergunta_2: selecoesPergunta2.resposta,
-        comentario_pergunta_2: document.getElementsByName('comentario_pergunta_2')[0].value,
-        upload_foto_pergunta_2: selecoesPergunta2.imagens,
-        pergunta_3: selecoesPergunta3.resposta,
-        comentario_pergunta_3: document.getElementsByName('comentario_pergunta_3')[0].value,
-        upload_foto_pergunta_3: selecoesPergunta3.imagens,        
-        pergunta_4: selecoesPergunta4.resposta,
-        comentario_pergunta_4: document.getElementsByName('comentario_pergunta_4')[0].value,
-        upload_foto_pergunta_4: selecoesPergunta4.imagens,
-        pergunta_5: selecoesPergunta5.resposta,
-        comentario_pergunta_5: document.getElementsByName('comentario_pergunta_5')[0].value,
-        upload_foto_pergunta_5: selecoesPergunta5.imagens,
-        pergunta_6: selecoesPergunta6.resposta,
-        comentario_pergunta_6: document.getElementsByName('comentario_pergunta_6')[0].value,
-        upload_foto_pergunta_6: selecoesPergunta6.imagens,
-        pergunta_7: selecoesPergunta7.resposta,
-        comentario_pergunta_7: document.getElementsByName('comentario_pergunta_7')[0].value,
-        upload_foto_pergunta_7: selecoesPergunta7.imagens,
-        pergunta_8: selecoesPergunta8.resposta,
-        comentario_pergunta_8: document.getElementsByName('comentario_pergunta_8')[0].value,
-        upload_foto_pergunta_8: selecoesPergunta8.imagens,
-        pergunta_9: selecoesPergunta9.resposta,
-        comentario_pergunta_9: document.getElementsByName('comentario_pergunta_9')[0].value,
-        upload_foto_pergunta_9: selecoesPergunta9.imagens,
-        pergunta_10: selecoesPergunta10.resposta,
-        comentario_pergunta_10: document.getElementsByName('comentario_pergunta_10')[0].value,
-        upload_foto_pergunta_10: selecoesPergunta10.imagens,
-        pergunta_11: selecoesPergunta11.resposta,
-        comentario_pergunta_11: document.getElementsByName('comentario_pergunta_11')[0].value,
-        upload_foto_pergunta_11: selecoesPergunta11.imagens,
-        pergunta_12: selecoesPergunta12.resposta,
-        comentario_pergunta_12: document.getElementsByName('comentario_pergunta_12')[0].value,
-        upload_foto_pergunta_12: selecoesPergunta12.imagens,
-        pergunta_13: selecoesPergunta13.resposta,
-        comentario_pergunta_13: document.getElementsByName('comentario_pergunta_13')[0].value,
-        upload_foto_pergunta_13: selecoesPergunta13.imagens,
-        pergunta_14: selecoesPergunta14.resposta,
-        comentario_pergunta_14: document.getElementsByName('comentario_pergunta_14')[0].value,
-        upload_foto_pergunta_14: selecoesPergunta14.imagens,
-        pergunta_15: selecoesPergunta15.resposta,
-        comentario_pergunta_15: document.getElementsByName('comentario_pergunta_15')[0].value,
-        upload_foto_pergunta_15: selecoesPergunta15.imagens,
-        pergunta_16: selecoesPergunta16.resposta,
-        comentario_pergunta_16: document.getElementsByName('comentario_pergunta_16')[0].value,
-        upload_foto_pergunta_16: selecoesPergunta16.imagens,
-        // Adicione aqui os dados para outras perguntas conforme necessário
-    };
-        
-
-    // Transforma o objeto em FormData
-    const formDataToSend = new FormData();
-    for (const key in formData) {
-        if (Array.isArray(formData[key])) {
-            // Se for uma matriz (como imagens), acrescente cada item separadamente
-            for (const item of formData[key]) {
-                formDataToSend.append(`${key}[]`, item);
-            }
-        } else {
-            formDataToSend.append(key, formData[key]);
-        }
     }
-
-    fetch('/submit', {
-        method: 'POST',
-        body: formDataToSend
-    })
-    .then(response => response.text())
-    .then(message => {
-        alert(message);
-        window.location.reload();
-    })
-    .catch(error => {
-        console.error('Erro ao enviar os dados:', error);
-        alert('Ocorreu um erro ao enviar os dados. Por favor, tente novamente.');
-    });
-
-}
+    }
     </script>
 </body>
+
 </html>

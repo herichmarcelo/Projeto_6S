@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Checklist Auditoria 6S</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/signature_pad/1.5.3/signature_pad.min.js"></script>
     <style>
         /* Estilos */
         /* Adicione estilos conforme necessário */
@@ -144,6 +145,12 @@
             cursor: pointer;
         }
 
+        .limparass {
+            color: white;
+            background-color:#555;
+        }
+
+
         .btn-voltar {
             background-color: yellow;
             color: black;
@@ -151,6 +158,17 @@
             border: none;
             border-radius: 4px;
             cursor: pointer;
+        }
+        #signatureContainer {
+        border: 4px solid rgba(0, 0, 0, 0.1); /* Adiciona uma borda preta de 4px */
+        border-radius: 10px; /* Arredonda as bordas em 10px */
+        padding: 10px; /* Adiciona um espaço interno */
+        max-width: 100%; /* Torna o container responsivo */
+        }
+
+        #signatureCanvas {
+            width: 100%; /* Torna o canvas responsivo */
+            height: auto; /* Torna o canvas responsivo */
         }
     </style>
 </head>
@@ -168,9 +186,13 @@
         <label for="setor_auditado">Setor Auditado:</label required>
         <select id="setor_auditado" name="setor_auditado" style="width: 100%; height: 38px; box-sizing: border-box;"  required>
             <option value="" disabled selected hidden>Selecione o setor auditado</option>
-            <option value="Setor 1">Setor 1</option>
-            <option value="Setor 2">Setor 2</option>
-            <option value="Setor 3">Setor 3</option>
+            <option value="" disabled selected hidden>SELECIONE O SETOR AUDITADO</option>
+            <option value="ÁREA EXTERNA CALDEIRA">ÁREA EXTERNA CALDEIRA</option>
+            <option value="ÁREA EXTERNA ETE">ÁREA EXTERNA ETE</option>
+            <option value="CASINHA DO LIXO">CASINHA DO LIXO</option>
+            <option value="CENTRAL DE RESÍDUOS">CENTRAL DE RESÍDUOS</option>
+            <option value="LAVAGEM DE CAMINHÃO-PLATAFORMA">LAVAGEM DE CAMINHÃO-PLATAFORMA</option>
+            <option value="PÁTIO">PÁTIO FRIGORIFICO</option>
             <!-- Adicione mais opções conforme necessário -->
         </select>
 
@@ -515,16 +537,16 @@
             <input type="file" id="upload_foto_pergunta_16" name="upload_foto_pergunta_16" accept="image/jpeg, image/png">
         </div>
         <!-- Adicione as perguntas para as outras seções aqui -->
-
-        
+        <br>
+        <div>
         <button type="submit_patio" >Enviar</button>
         <button type="button" onclick="location.href='/area_auditoria'" class="btn-voltar">Voltar</button>
         <button type="button" onclick="location.href='/logout'" class="btn-sair">Sair</button>
-
+        </div>
     </form>
-
+ 
     <script> 
-
+ 
         // Variáveis para armazenar as seleções feitas nas perguntas
         const selecoesPergunta1 = { resposta: null, comentario: null, imagens: [] };
         const selecoesPergunta2 = { resposta: null, comentario: null, imagens: [] };
@@ -769,6 +791,7 @@
                     break;
                 // Adicione casos para outras perguntas conforme necessário
             }
+  
         }
     </script>
 </body>

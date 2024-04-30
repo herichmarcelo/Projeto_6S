@@ -108,7 +108,7 @@
 
             <!-- Adiciona a verificação para a existência da foto do usuário -->
             {% if foto_usuario %}
-            <img id="profile-img" src="../static/assets/{{ usuario }}_foto.jpg" alt="Foto do Usuário" onclick="abrirCarregarFoto()">
+            <img id="profile-img" src="../static/user/{{ usuario }}_foto.jpg" alt="Foto do Usuário" onclick="abrirCarregarFoto()">
             {% else %}
                 <p>Nenhuma foto disponível.</p>
             {% endif %}
@@ -120,10 +120,21 @@
             
             <!-- Adiciona um botão para acessar a área de auditoria -->
             <a href="{{ url_for('area_auditoria') }}" class="btn btn-success btn-area-auditar">Área de Auditoria</a>
-
+        
             <!-- Adiciona um botão para acessar o dashboard -->
             <a href="{{ url_for('dashboard') }}" class="btn btn-warning btn-dashboard">Dashboard</a>
-
+            
+            <!-- Verifica se o tipo de usuário é administrador -->
+            {% if tipo_usuario == 'administrador' %}
+                <!-- Adiciona um botão para acessar a página de cadastro de usuário -->
+                <a href="{{ url_for('cadastrar_usuario') }}" class="btn btn-warning btn-dashboard">Cadastro</a>
+            {% endif %}
+                        <!-- Verifica se o tipo de usuário é administrador -->
+                        {% if tipo_usuario == 'administrador' %}
+                        <!-- Adiciona um botão para acessar a página de cadastro de usuário -->
+                        <a href="{{ url_for('consultar_usuarios') }}" class="btn btn-warning btn-dashboard">Consultar</a>
+                    {% endif %}
+        
             <!-- Adiciona um botão de logout -->
             <a href="{{ url_for('logout') }}" class="btn btn-danger btn-sair">Sair</a>
         </div>

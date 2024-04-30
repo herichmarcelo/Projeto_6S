@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consultar Empresas Auditores</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff; /* Azul claro */
+            margin: 0;
+            padding: 0;
+            text-align: center; /* Centraliza todo o conteúdo da página */
+        }
+        h1, h2 {
+            color: #008080; /* Verde escuro */
+        }
+        form {
+            display: inline-block;
+            vertical-align: top;
+            width: 50%;
+            margin: 20px;
+            padding: 20px;
+            background-color: #d3e0ea; /* Azul claro */
+            border-radius: 10px;
+            text-align: left;
+        }
+        label {
+            font-weight: bold;
+            color: #2e8b57; /* Verde marinho */
+        }
+        input[type="text"] {
+            padding: 8px;
+            width: calc(100% - 16px);
+            margin-bottom: 10px;
+            border: 1px solid #2e8b57; /* Verde marinho */
+            border-radius: 4px;
+        }
+        button[type="submitconsult"], button[type="button"] {
+            padding: 10px 20px;
+            background-color: #008080; /* Verde escuro */
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+        button[type="submitconsult"]:hover, button[type="button"]:hover {
+            background-color: #2e8b57; /* Verde marinho */
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 20px auto;
+        }
+        th, td {
+            border: 1px solid #008080; /* Verde escuro */
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #8a918d; /* Verde marinho */
+            color: white;
+        }
+        img {
+            max-width: 100px;
+        }
+        .logo-container {
+            text-align: center;
+            margin-bottom: 20px;
+            border-radius: 0%;
+            /* Adicione outras propriedades de estilo conforme necessário */
+        }
+        .logo-container img {
+            max-width: 260px;
+            height: auto;
+        }
+        .modal {
+            display: none; /* Por padrão, o modal está oculto */
+            position: fixed; /* Fique na mesma posição mesmo quando a página for rolada */
+            z-index: 1; /* Coloque o modal sobre o resto do conteúdo */
+            left: 0;
+            top: 0;
+            width: 100%; /* Largura total */
+            height: 100%; /* Altura total */
+            overflow: auto; /* Permita a rolagem quando necessário */
+            background-color: rgba(0,0,0,0.4); /* Fundo preto semi-transparente */
+        }
+
+        /* Conteúdo do modal */
+        .modal-content {
+            background-color: #808080;
+            margin: 15% auto; /* Centralize o modal verticalmente */
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%; /* Largura do modal */
+            border-radius: 5px;
+        }
+
+        /* Botão de fechar */
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="logo-container">
+        <img src="../static/img/logo.png" alt="Sesmt Logo">
+    </div>
+    <form action="/consultUser" method="post">
+        <center><h1> Consultar Auditores cadastrados </h1></center>
+        <label for="termo_nome">Nome:</label><br>
+        <input type="text" id="termo_nome" name="termo_nome"><br>
+        
+        <label for="termo_RE">RE:</label><br>
+        <input type="text" id="termo_RE" name="termo_RE"><br>
+        
+        <label for="termo_perfil">Perfil:</label><br>
+        <input type="text" id="termo_perfil" name="termo_perfil"><br>
+
+        <button type="submitconsult">Buscar Auditores</button>
+        <button type="button" onclick="location.href='/centro_usuario'" class="btn-voltar">Voltar</button>
+        <button type="button" onclick="location.href='/logout'" class="btn-sair">Sair</button>
+    </form>
+
+
+    <hr>
+
+    <h2>Resultados da Consulta</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Foto</th>
+                <th>Nome</th>
+                <th>RE</th>
+                <th>Login</th>
+                <th>Senha</th>
+                <th>Perfil</th>
+                <th>E-mail</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for usuarios in usuarios %}
+            <tr>
+                <td><img src="{{ url_for('static', filename='user/' + usuarios.foto) }}" alt="{{ usuarios.Nome }} Foto" onclick="openModal('{{ usuarios.foto }}')"></td>
+                <td>{{ usuarios.Nome }}</td>
+                <td>{{ usuarios.RE }}</td>
+                <td>{{ usuarios.usuario }}</td>
+                <td>{{ usuarios.senha }}</td>
+                <td>{{ usuarios.perfil }}</td>
+                <td>{{ usuarios.email}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+ <!-- O modal -->
+ <div id="myModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <p>Tem certeza de que deseja trocar a senha?</p>
+        <!-- Campo para inserir a nova senha -->
+        <label for="novaSenha">Nova Senha:</label><br>
+        <input type="password" id="novaSenha" name="novaSenha"><br>
+        <!-- Campo oculto para armazenar o nome da imagem -->
+        <input type="hidden" id="nomeImagem" name="nome_imagem">
+
+        <!-- Botão de trocar senha -->
+        <button onclick="trocarSenha()">Trocar Senha</button>
+        <button onclick="closeModal()">Cancelar</button>
+    </div>
+</div>
+</body>
+<script>
+    // JavaScript para mostrar e ocultar o modal
+    function openModal(nomeImagem) {
+    var modal = document.getElementById('myModal');
+    modal.style.display = 'block'; // Exibe o modal
+    // Defina o valor do campo de senha
+    document.getElementById('nomeImagem').value = nomeImagem;
+}
+
+    function closeModal() {
+        var modal = document.getElementById('myModal');
+        var btn = document.getElementById('trocarSenhaBtn');
+        modal.style.display = 'none'; // Oculta o modal
+        btn.style.display = 'none'; // Oculta o botão de trocar senha
+    }
+    function trocarSenha() {
+    // Obter a nova senha digitada
+    var novaSenha = document.getElementById('novaSenha').value;
+    // Outras operações...
+}
+</script>
+</html>

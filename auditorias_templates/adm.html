@@ -168,21 +168,57 @@
         <label for="setor_auditado">Setor Auditado:</label>
         <select id="setor_auditado" name="setor_auditado" style="width: 100%; height: 38px; box-sizing: border-box;"  required>
             <option value="" disabled selected hidden>Selecione o setor auditado</option>
+            <option value="APOIO A MANUTENÇÃO">APOIO A MANUTENÇÃO</option>
+            <option value="APOIO E EXPEDIÇÃO">APOIO E EXPEDIÇÃO</option>
+            <option value="BALANÇA">BALANÇA</option>
+            <option value="C.Q ADM">C.Q ADM</option>
+            <option value="C.Q ARQUIVO AMOSTRA">C.Q ARQUIVO AMOSTRA</option>
+            <option value="C.Q FFO">C.Q FFO</option>
+            <option value="C.Q GERÊNCIA">C.Q GERÊNCIA</option>
             <option value="COMERCIAL">COMERCIAL</option>
             <option value="COMPRAS">COMPRAS</option>
-            <option value="LOGISTICA">LOGISTICA</option>
+            <option value="CONTROLE DE ACESSO">CONTROLE DE ACESSO</option>
+            <option value="CONTROLADORIA">CONTROLADORIA</option>
+            <option value="E.T.E">E.T.E</option>
+            <option value="ESCRITÓRIO REFEITÓRIO">ESCRITÓRIO REFEITÓRIO</option>
+            <option value="GERÊNCIA ADM/CUSTOS">GERÊNCIA ADM/CUSTOS</option>
+            <option value="GERÊNCIA FFO">GERÊNCIA FFO</option>
+            <option value="GERÊNCIA INDUSTRIAL">GERÊNCIA INDUSTRIAL</option>
+            <option value="GERENTE DE UNIDADE">GERENTE DE UNIDADE</option>
+            <option value="LOGÍSTICA">LOGÍSTICA</option>
+            <option value="LAVANDERIA">LAVANDERIA</option>
+            <option value="MELHORIA CONTÍNUA">MELHORIA CONTÍNUA</option>
+            <option value="MANUTENÇÃO">MANUTENÇÃO</option>
+            <option value="MANUTENÇÃO EXTERNA">MANUTENÇÃO EXTERNA</option>
+            <option value="PCP E P&D">PCP E P&D</option>
+            <option value="PCM">PCM</option>
             <option value="PORTARIA">PORTARIA</option>
-            <option value="PROJETO BRC">PROJETO BRC</option>
             <option value="PROJETOS">PROJETOS</option>
             <option value="RECEPÇÃO">RECEPÇÃO</option>
-            <option value="RH/JURIDICO">RH/JURIDICO</option>
+            <option value="REFEITÓRIO">REFEITÓRIO</option>
+            <option value="RECURSOS HUMANOS">RECURSOS HUMANOS</option>
+            <option value="SALA BRC">SALA BRC</option>
+            <option value="SALA DE APOIO AMBIENTAL">SALA DE APOIO AMBIENTAL</option>
+            <option value="SALA DE APOIO GERÊNCIA INDUSTRIAL">SALA DE APOIO GERÊNCIA INDUSTRIAL</option>
+            <option value="SALA DE APOIO PCM">SALA DE APOIO PCM</option>
+            <option value="SALA DE APOIO PRODUÇÃO">SALA DE APOIO PRODUÇÃO</option>
+            <option value="SALA DE APOIO QUALIDADE">SALA DE APOIO QUALIDADE</option>
+            <option value="SALA DE APOIO SUPERVISÃO">SALA DE APOIO SUPERVISÃO</option>
+            <option value="SALA DOS SUPERVISORES">SALA DOS SUPERVISORES</option>
             <option value="SALA DIRETORIA">SALA DIRETORIA</option>
-            <option value="SALA GERENTE UNIDADE">SALA GERENTE UNIDADE</option>
+            <option value="SALA ISLÂMICA">SALA ISLÂMICA</option>
             <option value="SALA LIMPEZA ADM">SALA LIMPEZA ADM</option>
+            <option value="SALA PRODUTOS QUÍMICOS">SALA PRODUTOS QUÍMICOS</option>
+            <option value="SANITÁRIOS">SANITÁRIOS</option>
             <option value="SESMT">SESMT</option>
-            <option value="SUPERVISÃO ADM">SUPERVISÃO ADM</option>
+            <option value="SUPERVISÃO AMD/FATURAMENTO">SUPERVISÃO AMD/FATURAMENTO</option>
+            <option value="SUPERVISÃO FFO">SUPERVISÃO FFO</option>
+            <option value="SUPERVISÃO MANUTENÇÃO">SUPERVISÃO MANUTENÇÃO</option>
+            <option value="SUPERVISÓRIO CALDEIRA">SUPERVISÓRIO CALDEIRA</option>
+            <option value="SUPERVISÓRIO MANUTENÇÃO">SUPERVISÓRIO MANUTENÇÃO</option>
             <option value="TI">TI</option>
-            <option value="VESTIARIO">VESTIARIO</option>
+            <option value="VESTIÁRIO GERENCIAL">VESTIÁRIO GERENCIAL</option>
+            <option value="VESTIÁRIOS">VESTIÁRIOS</option>
             <!-- Adicione mais opções conforme necessário -->
         </select>
 
@@ -455,7 +491,7 @@
             <label for="comentario_pergunta_13">Comentário (caso a resposta seja Médio ou Ruim - Pergunta 123):</label>
             <textarea id="comentario_pergunta_123" name="comentario_pergunta_13"></textarea>
         </div>
-        <div id="upload_foto_pergunta_132" class="image-upload hidden">
+        <div id="upload_foto_pergunta_13" class="image-upload hidden">
             <label for="upload_foto_pergunta_13">Faça o upload de fotos (caso necessário):</label>
             <input type="file" id="upload_foto_pergunta_13" name="upload_foto_pergunta_13" accept="image/jpeg, image/png">
         </div>
@@ -464,116 +500,116 @@
 
         <!-- Pergunta 1 -->
         <label>Pergunta 1: Os móveis, materiais, máquinas e equipamentos estão em boas condições de limpeza?</label>
-        <div class="emoji-group" id="pergunta_6">
-            <input type="hidden" id="resposta_pergunta_6" name="pergunta_6">
+        <div class="emoji-group" id="pergunta_14">
+            <input type="hidden" id="resposta_pergunta_14" name="pergunta_14">
             <div class="emoji-btn emoji-bom" data-value="bom" onclick="toggleEmoji(this, 'bom')">😃 Bom</div>
             <div class="emoji-btn emoji-medio" data-value="medio" onclick="toggleEmoji(this, 'medio')">😐 Médio</div>
             <div class="emoji-btn emoji-ruim" data-value="ruim" onclick="toggleEmoji(this, 'ruim')">😟 Ruim</div>
             <div class="emoji-btn emoji-nsa" data-value="Não se aplica" onclick="toggleEmoji(this, 'Não se aplica')">😕 Não se aplica</div>
         </div>
         <!-- Restante da pergunta 1 (comentário e upload de fotos) -->
-        <div id="comentario_pergunta_6" class="comment-section hidden">
-            <label for="comentario_pergunta_6">Comentário (caso a resposta seja Médio ou Ruim - Pergunta 6):</label>
-            <textarea id="comentario_pergunta_6" name="comentario_pergunta_6"></textarea>
+        <div id="comentario_pergunta_14" class="comment-section hidden">
+            <label for="comentario_pergunta_14">Comentário (caso a resposta seja Médio ou Ruim - Pergunta 14):</label>
+            <textarea id="comentario_pergunta_14" name="comentario_pergunta_14"></textarea>
         </div>
-        <div id="upload_foto_pergunta_6" class="image-upload hidden">
-            <label for="upload_foto_pergunta_6">Faça o upload de fotos (caso necessário):</label>
-            <input type="file" id="upload_foto_pergunta_6" name="upload_foto_pergunta_6" accept="image/jpeg, image/png">
+        <div id="upload_foto_pergunta_14" class="image-upload hidden">
+            <label for="upload_foto_pergunta_14">Faça o upload de fotos (caso necessário):</label>
+            <input type="file" id="upload_foto_pergunta_14" name="upload_foto_pergunta_14" accept="image/jpeg, image/png">
         </div>
 
         <!-- Pergunta 2 -->
         <label>Pergunta 2: O chão está limpo? Há materiais jogados no chão?</label>
-        <div class="emoji-group" id="pergunta_7">
-            <input type="hidden" id="resposta_pergunta_7" name="pergunta_7">
+        <div class="emoji-group" id="pergunta_15">
+            <input type="hidden" id="resposta_pergunta_15" name="pergunta_15">
             <div class="emoji-btn emoji-bom" data-value="bom" onclick="toggleEmoji(this, 'bom')">😃 Bom</div>
             <div class="emoji-btn emoji-medio" data-value="medio" onclick="toggleEmoji(this, 'medio')">😐 Médio</div>
             <div class="emoji-btn emoji-ruim" data-value="ruim" onclick="toggleEmoji(this, 'ruim')">😟 Ruim</div>
             <div class="emoji-btn emoji-nsa" data-value="Não se aplica" onclick="toggleEmoji(this, 'Não se aplica')">😕 Não se aplica</div> 
         </div>
         <!-- Restante da pergunta 2 (comentário e upload de fotos) -->
-        <div id="comentario_pergunta_7" class="comment-section hidden">
-            <label for="comentario_pergunta_7">Comentário (caso a resposta seja Médio ou Ruim - Pergunta 7):</label>
-            <textarea id="comentario_pergunta_7" name="comentario_pergunta_7"></textarea>
+        <div id="comentario_pergunta_15" class="comment-section hidden">
+            <label for="comentario_pergunta_15">Comentário (caso a resposta seja Médio ou Ruim - Pergunta 15):</label>
+            <textarea id="comentario_pergunta_15" name="comentario_pergunta_15"></textarea>
         </div>
-        <div id="upload_foto_pergunta_7" class="image-upload hidden">
-            <label for="upload_foto_pergunta_7">Faça o upload de fotos (caso necessário):</label>
-            <input type="file" id="upload_foto_pergunta_7" name="upload_foto_pergunta_7" accept="image/jpeg, image/png">
+        <div id="upload_foto_pergunta_15" class="image-upload hidden">
+            <label for="upload_foto_pergunta_15">Faça o upload de fotos (caso necessário):</label>
+            <input type="file" id="upload_foto_pergunta_15" name="upload_foto_pergunta_15" accept="image/jpeg, image/png">
         </div>
         
         <!-- Pergunta 1 -->
         <label>Pergunta 1: A área de café encontra-se limpa, organizada e identificada?</label>
-        <div class="emoji-group" id="pergunta_6">
-            <input type="hidden" id="resposta_pergunta_6" name="pergunta_6">
+        <div class="emoji-group" id="pergunta_16">
+            <input type="hidden" id="resposta_pergunta_16" name="pergunta_16">
             <div class="emoji-btn emoji-bom" data-value="bom" onclick="toggleEmoji(this, 'bom')">😃 Bom</div>
             <div class="emoji-btn emoji-medio" data-value="medio" onclick="toggleEmoji(this, 'medio')">😐 Médio</div>
             <div class="emoji-btn emoji-ruim" data-value="ruim" onclick="toggleEmoji(this, 'ruim')">😟 Ruim</div>
             <div class="emoji-btn emoji-nsa" data-value="Não se aplica" onclick="toggleEmoji(this, 'Não se aplica')">😕 Não se aplica</div>
         </div>
         <!-- Restante da pergunta 1 (comentário e upload de fotos) -->
-        <div id="comentario_pergunta_6" class="comment-section hidden">
-            <label for="comentario_pergunta_6">Comentário (caso a resposta seja Médio ou Ruim - Pergunta 6):</label>
-            <textarea id="comentario_pergunta_6" name="comentario_pergunta_6"></textarea>
+        <div id="comentario_pergunta_16" class="comment-section hidden">
+            <label for="comentario_pergunta_16">Comentário (caso a resposta seja Médio ou Ruim - Pergunta 16):</label>
+            <textarea id="comentario_pergunta_16" name="comentario_pergunta_6"></textarea>
         </div>
-        <div id="upload_foto_pergunta_6" class="image-upload hidden">
-            <label for="upload_foto_pergunta_6">Faça o upload de fotos (caso necessário):</label>
-            <input type="file" id="upload_foto_pergunta_6" name="upload_foto_pergunta_6" accept="image/jpeg, image/png">
+        <div id="upload_foto_pergunta_16" class="image-upload hidden">
+            <label for="upload_foto_pergunta_16">Faça o upload de fotos (caso necessário):</label>
+            <input type="file" id="upload_foto_pergunta_1" name="upload_foto_pergunta_16" accept="image/jpeg, image/png">
         </div>
 
         <!-- Pergunta 2 -->
         <label>Pergunta 2: Computadores, teclados e mouses estão em boas condições de limpeza?</label>
-        <div class="emoji-group" id="pergunta_7">
-            <input type="hidden" id="resposta_pergunta_7" name="pergunta_7">
+        <div class="emoji-group" id="pergunta_17">
+            <input type="hidden" id="resposta_pergunta_17" name="pergunta_17">
             <div class="emoji-btn emoji-bom" data-value="bom" onclick="toggleEmoji(this, 'bom')">😃 Bom</div>
             <div class="emoji-btn emoji-medio" data-value="medio" onclick="toggleEmoji(this, 'medio')">😐 Médio</div>
             <div class="emoji-btn emoji-ruim" data-value="ruim" onclick="toggleEmoji(this, 'ruim')">😟 Ruim</div>
             <div class="emoji-btn emoji-nsa" data-value="Não se aplica" onclick="toggleEmoji(this, 'Não se aplica')">😕 Não se aplica</div> 
         </div>
         <!-- Restante da pergunta 2 (comentário e upload de fotos) -->
-        <div id="comentario_pergunta_7" class="comment-section hidden">
-            <label for="comentario_pergunta_7">Comentário (caso a resposta seja Médio ou Ruim - Pergunta 7):</label>
-            <textarea id="comentario_pergunta_7" name="comentario_pergunta_7"></textarea>
+        <div id="comentario_pergunta_17" class="comment-section hidden">
+            <label for="comentario_pergunta_17">Comentário (caso a resposta seja Médio ou Ruim - Pergunta 7):</label>
+            <textarea id="comentario_pergunta_17" name="comentario_pergunta_17"></textarea>
         </div>
-        <div id="upload_foto_pergunta_7" class="image-upload hidden">
-            <label for="upload_foto_pergunta_7">Faça o upload de fotos (caso necessário):</label>
-            <input type="file" id="upload_foto_pergunta_7" name="upload_foto_pergunta_7" accept="image/jpeg, image/png">
+        <div id="upload_foto_pergunta_17" class="image-upload hidden">
+            <label for="upload_foto_pergunta_17">Faça o upload de fotos (caso necessário):</label>
+            <input type="file" id="upload_foto_pergunta_17" name="upload_foto_pergunta_17" accept="image/jpeg, image/png">
         </div>
 
         <!-- Pergunta 1 -->
         <label>Pergunta 1: As paredes, janelas e teto estão limpos?</label>
-        <div class="emoji-group" id="pergunta_6">
-            <input type="hidden" id="resposta_pergunta_6" name="pergunta_6">
+        <div class="emoji-group" id="pergunta_18">
+            <input type="hidden" id="resposta_pergunta_18" name="pergunta_18">
             <div class="emoji-btn emoji-bom" data-value="bom" onclick="toggleEmoji(this, 'bom')">😃 Bom</div>
             <div class="emoji-btn emoji-medio" data-value="medio" onclick="toggleEmoji(this, 'medio')">😐 Médio</div>
             <div class="emoji-btn emoji-ruim" data-value="ruim" onclick="toggleEmoji(this, 'ruim')">😟 Ruim</div>
             <div class="emoji-btn emoji-nsa" data-value="Não se aplica" onclick="toggleEmoji(this, 'Não se aplica')">😕 Não se aplica</div>
         </div>
         <!-- Restante da pergunta 1 (comentário e upload de fotos) -->
-        <div id="comentario_pergunta_6" class="comment-section hidden">
-            <label for="comentario_pergunta_6">Comentário (caso a resposta seja Médio ou Ruim - Pergunta 6):</label>
-            <textarea id="comentario_pergunta_6" name="comentario_pergunta_6"></textarea>
+        <div id="comentario_pergunta_18" class="comment-section hidden">
+            <label for="comentario_pergunta_18">Comentário (caso a resposta seja Médio ou Ruim - Pergunta 6):</label>
+            <textarea id="comentario_pergunta_18" name="comentario_pergunta_18"></textarea>
         </div>
-        <div id="upload_foto_pergunta_6" class="image-upload hidden">
-            <label for="upload_foto_pergunta_6">Faça o upload de fotos (caso necessário):</label>
-            <input type="file" id="upload_foto_pergunta_6" name="upload_foto_pergunta_6" accept="image/jpeg, image/png">
+        <div id="upload_foto_pergunta_18" class="image-upload hidden">
+            <label for="upload_foto_pergunta_18">Faça o upload de fotos (caso necessário):</label>
+            <input type="file" id="upload_foto_pergunta_18" name="upload_foto_pergunta_18" accept="image/jpeg, image/png">
         </div>
 
         <!-- Pergunta 2 -->
         <label>Pergunta 2: No Geral o setor esta limpo? </label>
-        <div class="emoji-group" id="pergunta_7">
-            <input type="hidden" id="resposta_pergunta_7" name="pergunta_7">
+        <div class="emoji-group" id="pergunta_19">
+            <input type="hidden" id="resposta_pergunta_19" name="pergunta_19">
             <div class="emoji-btn emoji-bom" data-value="bom" onclick="toggleEmoji(this, 'bom')">😃 Bom</div>
             <div class="emoji-btn emoji-medio" data-value="medio" onclick="toggleEmoji(this, 'medio')">😐 Médio</div>
             <div class="emoji-btn emoji-ruim" data-value="ruim" onclick="toggleEmoji(this, 'ruim')">😟 Ruim</div>
             <div class="emoji-btn emoji-nsa" data-value="Não se aplica" onclick="toggleEmoji(this, 'Não se aplica')">😕 Não se aplica</div> 
         </div>
         <!-- Restante da pergunta 2 (comentário e upload de fotos) -->
-        <div id="comentario_pergunta_7" class="comment-section hidden">
-            <label for="comentario_pergunta_7">Comentário (caso a resposta seja Médio ou Ruim - Pergunta 7):</label>
-            <textarea id="comentario_pergunta_7" name="comentario_pergunta_7"></textarea>
+        <div id="comentario_pergunta_19" class="comment-section hidden">
+            <label for="comentario_pergunta_19">Comentário (caso a resposta seja Médio ou Ruim - Pergunta 19):</label>
+            <textarea id="comentario_pergunta_19" name="comentario_pergunta_19"></textarea>
         </div>
-        <div id="upload_foto_pergunta_7" class="image-upload hidden">
-            <label for="upload_foto_pergunta_7">Faça o upload de fotos (caso necessário):</label>
-            <input type="file" id="upload_foto_pergunta_7" name="upload_foto_pergunta_7" accept="image/jpeg, image/png">
+        <div id="upload_foto_pergunta_19" class="image-upload hidden">
+            <label for="upload_foto_pergunta_19">Faça o upload de fotos (caso necessário):</label>
+            <input type="file" id="upload_foto_pergunta_19" name="upload_foto_pergunta_19" accept="image/jpeg, image/png">
         </div>        
 
         <!-- Seção SENSO DE PADRONIZAÇÃO-->
@@ -581,288 +617,288 @@
 
         <!-- Pergunta 1 -->
         <label>Pergunta 1: As lâmpadas, luminárias estão limpas e em funcionamento?</label>
-        <div class="emoji-group" id="pergunta_8">
-            <input type="hidden" id="resposta_pergunta_8" name="pergunta_8">
+        <div class="emoji-group" id="pergunta_20">
+            <input type="hidden" id="resposta_pergunta_20" name="pergunta_20">
             <div class="emoji-btn emoji-bom" data-value="bom" onclick="toggleEmoji(this, 'bom')">😃 Bom</div>
             <div class="emoji-btn emoji-medio" data-value="medio" onclick="toggleEmoji(this, 'medio')">😐 Médio</div>
             <div class="emoji-btn emoji-ruim" data-value="ruim" onclick="toggleEmoji(this, 'ruim')">😟 Ruim</div>
             <div class="emoji-btn emoji-nsa" data-value="Não se aplica" onclick="toggleEmoji(this, 'Não se aplica')">😕 Não se aplica</div> 
         </div>
         <!-- Restante da pergunta 1 (comentário e upload de fotos) -->
-        <div id="comentario_pergunta_8" class="comment-section hidden">
-            <label for="comentario_pergunta_8">Comentário (caso a resposta seja Médio ou Ruim - Pergunta 8):</label>
-            <textarea id="comentario_pergunta_8" name="comentario_pergunta_8"></textarea>
+        <div id="comentario_pergunta_20" class="comment-section hidden">
+            <label for="comentario_pergunta_20">Comentário (caso a resposta seja Médio ou Ruim - Pergunta 8):</label>
+            <textarea id="comentario_pergunta_20" name="comentario_pergunta_20"></textarea>
         </div>
-        <div id="upload_foto_pergunta_8" class="image-upload hidden">
-            <label for="upload_foto_pergunta_8">Faça o upload de fotos (caso necessário):</label>
-            <input type="file" id="upload_foto_pergunta_8" name="upload_foto_pergunta_8" accept="image/jpeg, image/png">
+        <div id="upload_foto_pergunta_20" class="image-upload hidden">
+            <label for="upload_foto_pergunta_20">Faça o upload de fotos (caso necessário):</label>
+            <input type="file" id="upload_foto_pergunta_20" name="upload_foto_pergunta_20" accept="image/jpeg, image/png">
         </div>
 
         <!-- Pergunta 2 -->
         <label>Pergunta 2: Os banheiros encontram-se em bom estado de conservação por parte dos usuários?</label>
-        <div class="emoji-group" id="pergunta_9">
-            <input type="hidden" id="resposta_pergunta_9" name="pergunta_9">
+        <div class="emoji-group" id="pergunta_21">
+            <input type="hidden" id="resposta_pergunta_21" name="pergunta_21">
             <div class="emoji-btn emoji-bom" data-value="bom" onclick="toggleEmoji(this, 'bom')">😃 Bom</div>
             <div class="emoji-btn emoji-medio" data-value="medio" onclick="toggleEmoji(this, 'medio')">😐 Médio</div>
             <div class="emoji-btn emoji-ruim" data-value="ruim" onclick="toggleEmoji(this, 'ruim')">😟 Ruim</div>
             <div class="emoji-btn emoji-nsa" data-value="Não se aplica" onclick="toggleEmoji(this, 'Não se aplica')">😕 Não se aplica</div> 
         </div>
         <!-- Restante da pergunta 2 (comentário e upload de fotos) -->
-        <div id="comentario_pergunta_9" class="comment-section hidden">
-            <label for="comentario_pergunta_9">Comentário (caso a resposta seja Médio ou Ruim - Pergunta 9):</label>
-            <textarea id="comentario_pergunta_9" name="comentario_pergunta_9"></textarea>
+        <div id="comentario_pergunta_21" class="comment-section hidden">
+            <label for="comentario_pergunta_21">Comentário (caso a resposta seja Médio ou Ruim - Pergunta 9):</label>
+            <textarea id="comentario_pergunta_21" name="comentario_pergunta_21"></textarea>
         </div>
-        <div id="upload_foto_pergunta_9" class="image-upload hidden">
-            <label for="upload_foto_pergunta_9">Faça o upload de fotos (caso necessário):</label>
-            <input type="file" id="upload_foto_pergunta_9" name="upload_foto_pergunta_9" accept="image/jpeg, image/png">
+        <div id="upload_foto_pergunta_21" class="image-upload hidden">
+            <label for="upload_foto_pergunta_21">Faça o upload de fotos (caso necessário):</label>
+            <input type="file" id="upload_foto_pergunta_21" name="upload_foto_pergunta_21" accept="image/jpeg, image/png">
         </div>
         <!-- Pergunta 3 -->
         <label>Pergunta 3: A área de trabalho encontra-se organizada de acordo com o padrão 6S? Papel de parede Padrão?</label>
-        <div class="emoji-group" id="pergunta_10">
-            <input type="hidden" id="resposta_pergunta_10" name="pergunta_10">
+        <div class="emoji-group" id="pergunta_22">
+            <input type="hidden" id="resposta_pergunta_22" name="pergunta_22">
             <div class="emoji-btn emoji-bom" data-value="bom" onclick="toggleEmoji(this, 'bom')">😃 Bom</div>
             <div class="emoji-btn emoji-medio" data-value="medio" onclick="toggleEmoji(this, 'medio')">😐 Médio</div>
             <div class="emoji-btn emoji-ruim" data-value="ruim" onclick="toggleEmoji(this, 'ruim')">😟 Ruim</div>
             <div class="emoji-btn emoji-nsa" data-value="Não se aplica" onclick="toggleEmoji(this, 'Não se aplica')">😕 Não se aplica</div> 
         </div>
         <!-- Restante da pergunta 3 (comentário e upload de fotos) -->
-        <div id="comentario_pergunta_10" class="comment-section hidden">
-            <label for="comentario_pergunta_10">Comentário (caso a resposta seja Médio ou Ruim - Pergunta 10):</label>
-            <textarea id="comentario_pergunta_10" name="comentario_pergunta_10"></textarea>
+        <div id="comentario_pergunta_22" class="comment-section hidden">
+            <label for="comentario_pergunta_22">Comentário (caso a resposta seja Médio ou Ruim - Pergunta 22):</label>
+            <textarea id="comentario_pergunta_22" name="comentario_pergunta_22"></textarea>
         </div>
-        <div id="upload_foto_pergunta_10" class="image-upload hidden">
-            <label for="upload_foto_pergunta_10">Faça o upload de fotos (caso necessário):</label>
-            <input type="file" id="upload_foto_pergunta_10" name="upload_foto_pergunta_10" accept="image/jpeg, image/png">
+        <div id="upload_foto_pergunta_22" class="image-upload hidden">
+            <label for="upload_foto_pergunta_22">Faça o upload de fotos (caso necessário):</label>
+            <input type="file" id="upload_foto_pergunta_22" name="upload_foto_pergunta_22" accept="image/jpeg, image/png">
         </div>
         
         <!-- Pergunta 4 -->
         <label>Pergunta 4: Os equipamentos de combate à incêndios estão identificados, em boas condições e prontos para o uso?</label>
-        <div class="emoji-group" id="pergunta_10">
-            <input type="hidden" id="resposta_pergunta_10" name="pergunta_10">
+        <div class="emoji-group" id="pergunta_23">
+            <input type="hidden" id="resposta_pergunta_23" name="pergunta_23">
             <div class="emoji-btn emoji-bom" data-value="bom" onclick="toggleEmoji(this, 'bom')">😃 Bom</div>
             <div class="emoji-btn emoji-medio" data-value="medio" onclick="toggleEmoji(this, 'medio')">😐 Médio</div>
             <div class="emoji-btn emoji-ruim" data-value="ruim" onclick="toggleEmoji(this, 'ruim')">😟 Ruim</div>
             <div class="emoji-btn emoji-nsa" data-value="Não se aplica" onclick="toggleEmoji(this, 'Não se aplica')">😕 Não se aplica</div> 
         </div>
         <!-- Restante da pergunta 3 (comentário e upload de fotos) -->
-        <div id="comentario_pergunta_10" class="comment-section hidden">
-            <label for="comentario_pergunta_10">Comentário (caso a resposta seja Médio ou Ruim - Pergunta 10):</label>
-            <textarea id="comentario_pergunta_10" name="comentario_pergunta_10"></textarea>
+        <div id="comentario_pergunta_23" class="comment-section hidden">
+            <label for="comentario_pergunta_23">Comentário (caso a resposta seja Médio ou Ruim - Pergunta 23):</label>
+            <textarea id="comentario_pergunta_23" name="comentario_pergunta_23"></textarea>
         </div>
-        <div id="upload_foto_pergunta_10" class="image-upload hidden">
-            <label for="upload_foto_pergunta_10">Faça o upload de fotos (caso necessário):</label>
-            <input type="file" id="upload_foto_pergunta_10" name="upload_foto_pergunta_10" accept="image/jpeg, image/png">
+        <div id="upload_foto_pergunta_23" class="image-upload hidden">
+            <label for="upload_foto_pergunta_23">Faça o upload de fotos (caso necessário):</label>
+            <input type="file" id="upload_foto_pergunta_23" name="upload_foto_pergunta_23" accept="image/jpeg, image/png">
         </div>
 
         <h2>SENSO DE AUTO DISCIPLINA</h2>
 
         <!-- Pergunta 1 -->
         <label>Pergunta 1: Todos estão utilizando crachá?</label>
-        <div class="emoji-group" id="pergunta_11" >
-            <input type="hidden" id="resposta_pergunta_11" name="pergunta_11">
+        <div class="emoji-group" id="pergunta_24" >
+            <input type="hidden" id="resposta_pergunta_24" name="pergunta_24">
             <div class="emoji-btn emoji-bom" data-value="bom" onclick="toggleEmoji(this, 'bom')">😃 Bom</div>
             <div class="emoji-btn emoji-medio" data-value="medio" onclick="toggleEmoji(this, 'medio')">😐 Médio</div>
             <div class="emoji-btn emoji-ruim" data-value="ruim" onclick="toggleEmoji(this, 'ruim')">😟 Ruim</div>
             <div class="emoji-btn emoji-nsa" data-value="Não se aplica" onclick="toggleEmoji(this, 'Não se aplica')">😕 Não se aplica</div> 
         </div>
         <!-- Restante da pergunta 1 (comentário e upload de fotos) -->
-        <div id="comentario_pergunta_11" class="comment-section hidden">
-            <label for="comentario_pergunta_11">Comentário (caso a resposta seja Médio ou Ruim - Pergunta 11):</label>
-            <textarea id="comentario_pergunta_11" name="comentario_pergunta_11"></textarea>
+        <div id="comentario_pergunta_24" class="comment-section hidden">
+            <label for="comentario_pergunta_24">Comentário (caso a resposta seja Médio ou Ruim - Pergunta 24):</label>
+            <textarea id="comentario_pergunta_24" name="comentario_pergunta_24"></textarea>
         </div>
-        <div id="upload_foto_pergunta_11" class="image-upload hidden">
-            <label for="upload_foto_pergunta_11">Faça o upload de fotos (caso necessário):</label>
-            <input type="file" id="upload_foto_pergunta_11" name="upload_foto_pergunta_11" accept="image/jpeg, image/png">
+        <div id="upload_foto_pergunta_24" class="image-upload hidden">
+            <label for="upload_foto_pergunta_24">Faça o upload de fotos (caso necessário):</label>
+            <input type="file" id="upload_foto_pergunta_24" name="upload_foto_pergunta_24" accept="image/jpeg, image/png">
         </div>
 
         <!-- Pergunta 2 -->
         <label>Pergunta 2: Todos estão utilizando uniforme? (Área Administrativa de segunda a quinta-feira).</label>
-        <div class="emoji-group" id="pergunta_12">
-            <input type="hidden" id="resposta_pergunta_12" name="pergunta_12">
+        <div class="emoji-group" id="pergunta_25">
+            <input type="hidden" id="resposta_pergunta_25" name="pergunta_25">
             <div class="emoji-btn emoji-bom" data-value="bom" onclick="toggleEmoji(this, 'bom')">😃 Bom</div>
             <div class="emoji-btn emoji-medio" data-value="medio" onclick="toggleEmoji(this, 'medio')">😐 Médio</div>
             <div class="emoji-btn emoji-ruim" data-value="ruim" onclick="toggleEmoji(this, 'ruim')">😟 Ruim</div>
             <div class="emoji-btn emoji-nsa" data-value="Não se aplica" onclick="toggleEmoji(this, 'Não se aplica')">😕 Não se aplica</div>  
         </div>
         <!-- Restante da pergunta 2 (comentário e upload de fotos) -->
-        <div id="comentario_pergunta_12" class="comment-section hidden">
-            <label for="comentario_pergunta_12">Comentário (caso a resposta seja Médio ou Ruim - Pergunta 12):</label>
-            <textarea id="comentario_pergunta_12" name="comentario_pergunta_12"></textarea>
+        <div id="comentario_pergunta_25" class="comment-section hidden">
+            <label for="comentario_pergunta_25">Comentário (caso a resposta seja Médio ou Ruim - Pergunta 12):</label>
+            <textarea id="comentario_pergunta_25" name="comentario_pergunta_25"></textarea>
         </div>
-        <div id="upload_foto_pergunta_12" class="image-upload hidden">
-            <label for="upload_foto_pergunta_12">Faça o upload de fotos (caso necessário):</label>
-            <input type="file" id="upload_foto_pergunta_12" name="upload_foto_pergunta_12" accept="image/jpeg, image/png">
+        <div id="upload_foto_pergunta_25" class="image-upload hidden">
+            <label for="upload_foto_pergunta_25">Faça o upload de fotos (caso necessário):</label>
+            <input type="file" id="upload_foto_pergunta_25" name="upload_foto_pergunta_25" accept="image/jpeg, image/png">
         </div>
         <!-- Pergunta 3 -->
         <label>Pergunta 3: Os colaboradores conhecem o Programa 6S? (Compreendem os Sensos e objetivos do Programa?) (entrevistar colaboradores).</label>
-        <div class="emoji-group" id="pergunta_13">
-            <input type="hidden" id="resposta_pergunta_13" name="pergunta_13">
+        <div class="emoji-group" id="pergunta_26">
+            <input type="hidden" id="resposta_pergunta_26" name="pergunta_26">
             <div class="emoji-btn emoji-bom" data-value="bom" onclick="toggleEmoji(this, 'bom')">😃 Bom</div>
             <div class="emoji-btn emoji-medio" data-value="medio" onclick="toggleEmoji(this, 'medio')">😐 Médio</div>
             <div class="emoji-btn emoji-ruim" data-value="ruim" onclick="toggleEmoji(this, 'ruim')">😟 Ruim</div>
             <div class="emoji-btn emoji-nsa" data-value="Não se aplica" onclick="toggleEmoji(this, 'Não se aplica')">😕 Não se aplica</div>  
         </div>
         <!-- Restante da pergunta 3 (comentário e upload de fotos) -->
-        <div id="comentario_pergunta_13" class="comment-section hidden">
-            <label for="comentario_pergunta_3">Comentário (caso a resposta seja Médio ou Ruim - Pergunta 13):</label>
-            <textarea id="comentario_pergunta_13" name="comentario_pergunta_13"></textarea>
+        <div id="comentario_pergunta_26" class="comment-section hidden">
+            <label for="comentario_pergunta_26">Comentário (caso a resposta seja Médio ou Ruim - Pergunta 26):</label>
+            <textarea id="comentario_pergunta_26" name="comentario_pergunta_26"></textarea>
         </div>
-        <div id="upload_foto_pergunta_13" class="image-upload hidden">
-            <label for="upload_foto_pergunta_13">Faça o upload de fotos (caso necessário):</label>
-            <input type="file" id="upload_foto_pergunta_13" name="upload_foto_pergunta_13" accept="image/jpeg, image/png">
+        <div id="upload_foto_pergunta_26" class="image-upload hidden">
+            <label for="upload_foto_pergunta_26">Faça o upload de fotos (caso necessário):</label>
+            <input type="file" id="upload_foto_pergunta_26" name="upload_foto_pergunta_26" accept="image/jpeg, image/png">
         </div>
          
             <!-- Pergunta 2 -->
             <label>Pergunta 4: A auditoria foi acompanhada na íntegra pelo supervisor ou representante do setor?</label>
-        <div class="emoji-group" id="pergunta_12">
-            <input type="hidden" id="resposta_pergunta_12" name="pergunta_12">
+        <div class="emoji-group" id="pergunta_27">
+            <input type="hidden" id="resposta_pergunta_27 name="pergunta_27">
             <div class="emoji-btn emoji-bom" data-value="bom" onclick="toggleEmoji(this, 'bom')">😃 Bom</div>
             <div class="emoji-btn emoji-medio" data-value="medio" onclick="toggleEmoji(this, 'medio')">😐 Médio</div>
             <div class="emoji-btn emoji-ruim" data-value="ruim" onclick="toggleEmoji(this, 'ruim')">😟 Ruim</div>
             <div class="emoji-btn emoji-nsa" data-value="Não se aplica" onclick="toggleEmoji(this, 'Não se aplica')">😕 Não se aplica</div>  
         </div>
         <!-- Restante da pergunta 2 (comentário e upload de fotos) -->
-        <div id="comentario_pergunta_12" class="comment-section hidden">
-            <label for="comentario_pergunta_12">Comentário (caso a resposta seja Médio ou Ruim - Pergunta 12):</label>
-            <textarea id="comentario_pergunta_12" name="comentario_pergunta_12"></textarea>
+        <div id="comentario_pergunta_27" class="comment-section hidden">
+            <label for="comentario_pergunta_27">Comentário (caso a resposta seja Médio ou Ruim - Pergunta 27):</label>
+            <textarea id="comentario_pergunta_27" name="comentario_pergunta_27"></textarea>
         </div>
-        <div id="upload_foto_pergunta_12" class="image-upload hidden">
-            <label for="upload_foto_pergunta_12">Faça o upload de fotos (caso necessário):</label>
-            <input type="file" id="upload_foto_pergunta_12" name="upload_foto_pergunta_12" accept="image/jpeg, image/png">
+        <div id="upload_foto_pergunta_27" class="image-upload hidden">
+            <label for="upload_foto_pergunta_27">Faça o upload de fotos (caso necessário):</label>
+            <input type="file" id="upload_foto_pergunta_27" name="upload_foto_pergunta_27" accept="image/jpeg, image/png">
         </div>
         <!-- Pergunta 3 -->
         <label>Pergunta 5: O ambiente reflete a essência do Programa 6S? A área causa impacto, admiração? O setor cumpre com os demais Sensos?</label>
-        <div class="emoji-group" id="pergunta_13">
-            <input type="hidden" id="resposta_pergunta_13" name="pergunta_13">
+        <div class="emoji-group" id="pergunta_28">
+            <input type="hidden" id="resposta_pergunta_28" name="pergunta_28">
             <div class="emoji-btn emoji-bom" data-value="bom" onclick="toggleEmoji(this, 'bom')">😃 Bom</div>
             <div class="emoji-btn emoji-medio" data-value="medio" onclick="toggleEmoji(this, 'medio')">😐 Médio</div>
             <div class="emoji-btn emoji-ruim" data-value="ruim" onclick="toggleEmoji(this, 'ruim')">😟 Ruim</div>
             <div class="emoji-btn emoji-nsa" data-value="Não se aplica" onclick="toggleEmoji(this, 'Não se aplica')">😕 Não se aplica</div>  
         </div>
         <!-- Restante da pergunta 3 (comentário e upload de fotos) -->
-        <div id="comentario_pergunta_13" class="comment-section hidden">
-            <label for="comentario_pergunta_3">Comentário (caso a resposta seja Médio ou Ruim - Pergunta 13):</label>
-            <textarea id="comentario_pergunta_13" name="comentario_pergunta_13"></textarea>
+        <div id="comentario_pergunta_28" class="comment-section hidden">
+            <label for="comentario_pergunta_28">Comentário (caso a resposta seja Médio ou Ruim - Pergunta 28):</label>
+            <textarea id="comentario_pergunta_28" name="comentario_pergunta_28"></textarea>
         </div>
-        <div id="upload_foto_pergunta_13" class="image-upload hidden">
-            <label for="upload_foto_pergunta_13">Faça o upload de fotos (caso necessário):</label>
-            <input type="file" id="upload_foto_pergunta_13" name="upload_foto_pergunta_13" accept="image/jpeg, image/png">
+        <div id="upload_foto_pergunta_28" class="image-upload hidden">
+            <label for="upload_foto_pergunta_28">Faça o upload de fotos (caso necessário):</label>
+            <input type="file" id="upload_foto_pergunta_28" name="upload_foto_pergunta_28" accept="image/jpeg, image/png">
         </div>
 
         <h2>SENSO DE SEGURANÇA DO ALIMENTO</h2>
 
         <!-- Pergunta 14 -->
         <label>Pergunta 1: São deixadas portas de armários e gavetas abertas?</label>
-        <div class="emoji-group" id="pergunta_14">
-            <input type="hidden" id="resposta_pergunta_14" name="pergunta_14">
+        <div class="emoji-group" id="pergunta_29">
+            <input type="hidden" id="resposta_pergunta_29" name="pergunta_29">
             <div class="emoji-btn emoji-bom" data-value="bom" onclick="toggleEmoji(this, 'bom')">😃 Bom</div>
             <div class="emoji-btn emoji-medio" data-value="medio" onclick="toggleEmoji(this, 'medio')">😐 Médio</div>
             <div class="emoji-btn emoji-ruim" data-value="ruim" onclick="toggleEmoji(this, 'ruim')">😟 Ruim</div>
             <div class="emoji-btn emoji-nsa" data-value="Não se aplica" onclick="toggleEmoji(this, 'Não se aplica')">😕 Não se aplica</div> 
         </div>
         <!-- Restante da pergunta 14 (comentário e upload de fotos) -->
-        <div id="comentario_pergunta_14" class="comment-section hidden">
-            <label for="comentario_pergunta_14">Comentário (caso a resposta seja Médio ou Ruim - Pergunta 14):</label>
-            <textarea id="comentario_pergunta_14" name="comentario_pergunta_14"></textarea>
+        <div id="comentario_pergunta_29" class="comment-section hidden">
+            <label for="comentario_pergunta_29">Comentário (caso a resposta seja Médio ou Ruim - Pergunta 29):</label>
+            <textarea id="comentario_pergunta_ " name="comentario_pergunta_29"></textarea>
         </div>
-        <div id="upload_foto_pergunta_14" class="image-upload hidden">
-            <label for="upload_foto_pergunta_1">Faça o upload de fotos (caso necessário):</label>
-            <input type="file" id="upload_foto_pergunta_14" name="upload_foto_pergunta_14" accept="image/jpeg, image/png">
+        <div id="upload_foto_pergunta_29" class="image-upload hidden">
+            <label for="upload_foto_pergunta_29">Faça o upload de fotos (caso necessário):</label>
+            <input type="file" id="upload_foto_pergunta_29" name="upload_foto_pergunta_29" accept="image/jpeg, image/png">
         </div>
 
-        <!-- Pergunta 15 -->
+        <!-- Pergunta 30 -->
         <label>Pergunta 2: Durante a auditoria foi observado algum ato que vai contra a política da cultura da empresa?
              (Colabordores ajustando o ambiente na chegada do auditor, escondendo materiais, iniciando limpeza, etc.)</label>
-        <div class="emoji-group" id="pergunta_15">
-            <input type="hidden" id="resposta_pergunta_15" name="pergunta_15">
+        <div class="emoji-group" id="pergunta_30">
+            <input type="hidden" id="resposta_pergunta_30" name="pergunta_30">
             <div class="emoji-btn emoji-bom" data-value="bom" onclick="toggleEmoji(this, 'bom')">😃 Bom</div>
             <div class="emoji-btn emoji-medio" data-value="medio" onclick="toggleEmoji(this, 'medio')">😐 Médio</div>
             <div class="emoji-btn emoji-ruim" data-value="ruim" onclick="toggleEmoji(this, 'ruim')">😟 Ruim</div>
             <div class="emoji-btn emoji-nsa" data-value="Não se aplica" onclick="toggleEmoji(this, 'Não se aplica')">😕 Não se aplica</div>  
         </div>
-        <!-- Restante da pergunta 15 (comentário e upload de fotos) -->
-        <div id="comentario_pergunta_15" class="comment-section hidden">
-            <label for="comentario_pergunta_15">Comentário (caso a resposta seja Médio ou Ruim - Pergunta 15):</label>
-            <textarea id="comentario_pergunta_15" name="comentario_pergunta_15"></textarea>
+        <!-- Restante da pergunta 30 (comentário e upload de fotos) -->
+        <div id="comentario_pergunta_30" class="comment-section hidden">
+            <label for="comentario_pergunta_30">Comentário (caso a resposta seja Médio ou Ruim - Pergunta 30):</label>
+            <textarea id="comentario_pergunta_30" name="comentario_pergunta_30"></textarea>
         </div>
-        <div id="upload_foto_pergunta_15" class="image-upload hidden">
-            <label for="upload_foto_pergunta_15">Faça o upload de fotos (caso necessário):</label>
-            <input type="file" id="upload_foto_pergunta_15" name="upload_foto_pergunta_15" accept="image/jpeg, image/png">
+        <div id="upload_foto_pergunta_30" class="image-upload hidden">
+            <label for="upload_foto_pergunta_30">Faça o upload de fotos (caso necessário):</label>
+            <input type="file" id="upload_foto_pergunta_30" name="upload_foto_pergunta_30" accept="image/jpeg, image/png">
         </div>
-        <!-- Pergunta 16 -->
+        <!-- Pergunta 31 -->
         <label>Pergunta 3: Os colaboradores conhecem a Política da Qualidade? (Entrevistar colaboradores).</label>
-        <div class="emoji-group" id="pergunta_16" name="pergunta_16">
-            <input type="hidden" id="resposta_pergunta_16" name="pergunta_16">
+        <div class="emoji-group" id="pergunta_31" name="pergunta_31">
+            <input type="hidden" id="resposta_pergunta_31" name="pergunta_31">
             <div class="emoji-btn emoji-bom" data-value="bom" onclick="toggleEmoji(this, 'bom')">😃 Bom</div>
             <div class="emoji-btn emoji-medio" data-value="medio" onclick="toggleEmoji(this, 'medio')">😐 Médio</div>
             <div class="emoji-btn emoji-ruim" data-value="ruim" onclick="toggleEmoji(this, 'ruim')">😟 Ruim</div>
             <div class="emoji-btn emoji-nsa" data-value="Não se aplica" onclick="toggleEmoji(this, 'Não se aplica')">😕 Não se aplica</div> 
         </div>
-        <!-- Restante da pergunta 16 (comentário e upload de fotos) -->
-        <div id="comentario_pergunta_16" class="comment-section hidden">
-            <label for="comentario_pergunta_16">Comentário (caso a resposta seja Médio ou Ruim - Pergunta 16):</label>
-            <textarea id="comentario_pergunta_16" name="comentario_pergunta_16"></textarea>
+        <!-- Restante da pergunta 31 (comentário e upload de fotos) -->
+        <div id="comentario_pergunta_31" class="comment-section hidden">
+            <label for="comentario_pergunta_31">Comentário (caso a resposta seja Médio ou Ruim - Pergunta 31):</label>
+            <textarea id="comentario_pergunta_31" name="comentario_pergunta_31"></textarea>
         </div>
-        <div id="upload_foto_pergunta_16" class="image-upload hidden">
-            <label for="upload_foto_pergunta_16">Faça o upload de fotos (caso necessário):</label>
-            <input type="file" id="upload_foto_pergunta_16" name="upload_foto_pergunta_16" accept="image/jpeg, image/png">
+        <div id="upload_foto_pergunta_31" class="image-upload hidden">
+            <label for="upload_foto_pergunta_31">Faça o upload de fotos (caso necessário):</label>
+            <input type="file" id="upload_foto_pergunta_31" name="upload_foto_pergunta_31" accept="image/jpeg, image/png">
         </div>
 
-        <!-- Pergunta 14 -->
+        <!-- Pergunta 32 -->
         <label>Pergunta 4: Bancadas, mesas, armários, estantes, gavetas são mantidas organizadas durante a execução das tarefas?</label>
-        <div class="emoji-group" id="pergunta_14">
-            <input type="hidden" id="resposta_pergunta_14" name="pergunta_14">
+        <div class="emoji-group" id="pergunta_32">
+            <input type="hidden" id="resposta_pergunta_32" name="pergunta_32">
             <div class="emoji-btn emoji-bom" data-value="bom" onclick="toggleEmoji(this, 'bom')">😃 Bom</div>
             <div class="emoji-btn emoji-medio" data-value="medio" onclick="toggleEmoji(this, 'medio')">😐 Médio</div>
             <div class="emoji-btn emoji-ruim" data-value="ruim" onclick="toggleEmoji(this, 'ruim')">😟 Ruim</div>
             <div class="emoji-btn emoji-nsa" data-value="Não se aplica" onclick="toggleEmoji(this, 'Não se aplica')">😕 Não se aplica</div> 
         </div>
-        <!-- Restante da pergunta 14 (comentário e upload de fotos) -->
-        <div id="comentario_pergunta_14" class="comment-section hidden">
-            <label for="comentario_pergunta_14">Comentário (caso a resposta seja Médio ou Ruim - Pergunta 14):</label>
-            <textarea id="comentario_pergunta_14" name="comentario_pergunta_14"></textarea>
+        <!-- Restante da pergunta 32 (comentário e upload de fotos) -->
+        <div id="comentario_pergunta_32" class="comment-section hidden">
+            <label for="comentario_pergunta_32">Comentário (caso a resposta seja Médio ou Ruim - Pergunta 32):</label>
+            <textarea id="comentario_pergunta_32" name="comentario_pergunta_32"></textarea>
         </div>
-        <div id="upload_foto_pergunta_14" class="image-upload hidden">
-            <label for="upload_foto_pergunta_1">Faça o upload de fotos (caso necessário):</label>
-            <input type="file" id="upload_foto_pergunta_14" name="upload_foto_pergunta_14" accept="image/jpeg, image/png">
+        <div id="upload_foto_pergunta_32" class="image-upload hidden">
+            <label for="upload_foto_pergunta_32">Faça o upload de fotos (caso necessário):</label>
+            <input type="file" id="upload_foto_pergunta_32" name="upload_foto_pergunta_32" accept="image/jpeg, image/png">
         </div>
 
-        <!-- Pergunta 15 -->
+        <!-- Pergunta 33 -->
         <label>Pergunta 5: Os colaboradores entendem e praticam as Boas Práticas de Fabricação(BPF), 
             (Colaborador com roupa civil por baixo do uniforme, usando adornos ou maquiagem, não fazendo uso das barreiras sanitárias, etc.).</label>
-        <div class="emoji-group" id="pergunta_15">
-            <input type="hidden" id="resposta_pergunta_15" name="pergunta_15">
+        <div class="emoji-group" id="pergunta_33">
+            <input type="hidden" id="resposta_pergunta_33" name="pergunta_33">
             <div class="emoji-btn emoji-bom" data-value="bom" onclick="toggleEmoji(this, 'bom')">😃 Bom</div>
             <div class="emoji-btn emoji-medio" data-value="medio" onclick="toggleEmoji(this, 'medio')">😐 Médio</div>
             <div class="emoji-btn emoji-ruim" data-value="ruim" onclick="toggleEmoji(this, 'ruim')">😟 Ruim</div>
             <div class="emoji-btn emoji-nsa" data-value="Não se aplica" onclick="toggleEmoji(this, 'Não se aplica')">😕 Não se aplica</div>  
         </div>
-        <!-- Restante da pergunta 15 (comentário e upload de fotos) -->
-        <div id="comentario_pergunta_15" class="comment-section hidden">
-            <label for="comentario_pergunta_15">Comentário (caso a resposta seja Médio ou Ruim - Pergunta 15):</label>
-            <textarea id="comentario_pergunta_15" name="comentario_pergunta_15"></textarea>
+        <!-- Restante da pergunta 33 (comentário e upload de fotos) -->
+        <div id="comentario_pergunta_33" class="comment-section hidden">
+            <label for="comentario_pergunta_33">Comentário (caso a resposta seja Médio ou Ruim - Pergunta 33):</label>
+            <textarea id="comentario_pergunta_33" name="comentario_pergunta_33"></textarea>
         </div>
-        <div id="upload_foto_pergunta_15" class="image-upload hidden">
-            <label for="upload_foto_pergunta_15">Faça o upload de fotos (caso necessário):</label>
-            <input type="file" id="upload_foto_pergunta_15" name="upload_foto_pergunta_15" accept="image/jpeg, image/png">
+        <div id="upload_foto_pergunta_33" class="image-upload hidden">
+            <label for="upload_foto_pergunta_33">Faça o upload de fotos (caso necessário):</label>
+            <input type="file" id="upload_foto_pergunta_33" name="upload_foto_pergunta_33" accept="image/jpeg, image/png">
         </div>
-        <!-- Pergunta 16 -->
+        <!-- Pergunta 34 -->
         <label>Pergunta 6: As lixeiras estão sendo utilizadas corretamente? (Todo lixo dentro da lixeira, lixeira padrão, resíduos separados corretamente).</label>
-        <div class="emoji-group" id="pergunta_16" name="pergunta_16">
-            <input type="hidden" id="resposta_pergunta_16" name="pergunta_16">
+        <div class="emoji-group" id="pergunta_34" name="pergunta_34">
+            <input type="hidden" id="resposta_pergunta_34" name="pergunta_34">
             <div class="emoji-btn emoji-bom" data-value="bom" onclick="toggleEmoji(this, 'bom')">😃 Bom</div>
             <div class="emoji-btn emoji-medio" data-value="medio" onclick="toggleEmoji(this, 'medio')">😐 Médio</div>
             <div class="emoji-btn emoji-ruim" data-value="ruim" onclick="toggleEmoji(this, 'ruim')">😟 Ruim</div>
             <div class="emoji-btn emoji-nsa" data-value="Não se aplica" onclick="toggleEmoji(this, 'Não se aplica')">😕 Não se aplica</div> 
         </div>
-        <!-- Restante da pergunta 16 (comentário e upload de fotos) -->
-        <div id="comentario_pergunta_16" class="comment-section hidden">
-            <label for="comentario_pergunta_16">Comentário (caso a resposta seja Médio ou Ruim - Pergunta 16):</label>
-            <textarea id="comentario_pergunta_16" name="comentario_pergunta_16"></textarea>
+        <!-- Restante da pergunta 34 (comentário e upload de fotos) -->
+        <div id="comentario_pergunta_34" class="comment-section hidden">
+            <label for="comentario_pergunta_34">Comentário (caso a resposta seja Médio ou Ruim - Pergunta 34):</label>
+            <textarea id="comentario_pergunta_34" name="comentario_pergunta_34"></textarea>
         </div>
-        <div id="upload_foto_pergunta_16" class="image-upload hidden">
-            <label for="upload_foto_pergunta_16">Faça o upload de fotos (caso necessário):</label>
-            <input type="file" id="upload_foto_pergunta_16" name="upload_foto_pergunta_16" accept="image/jpeg, image/png">
+        <div id="upload_foto_pergunta_34" class="image-upload hidden">
+            <label for="upload_foto_pergunta_34">Faça o upload de fotos (caso necessário):</label>
+            <input type="file" id="upload_foto_pergunta_34" name="upload_foto_pergunta_34" accept="image/jpeg, image/png">
         </div>        
         <!-- Adicione as perguntas para as outras seções aqui -->
 
