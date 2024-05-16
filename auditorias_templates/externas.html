@@ -80,6 +80,12 @@
             border-color: red;
             color: white; /* Altere a cor do texto, se necessário */
         }
+        .emoji-nsa-selected {
+            background-color: rgb(0, 0, 0);
+            border-color: rgb(0, 0, 0);
+            color: white;
+            /* Altere a cor do texto, se necessário */
+        }
 
         .hidden {
             display: none;
@@ -404,7 +410,7 @@
                     <div class="emoji-btn emoji-bom" data-value="bom" onclick="toggleEmoji(this, 'bom')">😃 Bom</div>
                     <div class="emoji-btn emoji-medio" data-value="medio" onclick="toggleEmoji(this, 'medio')">😐 Médio</div>
                     <div class="emoji-btn emoji-ruim" data-value="ruim" onclick="toggleEmoji(this, 'ruim')">😟 Ruim</div>
-                    <div class="emoji-btn emoji-nsa" data-value="Não se aplica" onclick="toggleEmoji(this, 'Não se aplica')">😕 Não se aplica</div>>
+                    <div class="emoji-btn emoji-nsa" data-value="Não se aplica" onclick="toggleEmoji(this, 'Não se aplica')">😕 Não se aplica</div>
                 </div>
                 <!-- Restante da pergunta 1 (comentário e upload de fotos) -->
                 <div id="comentario_pergunta_11" class="comment-section hidden">
@@ -443,7 +449,7 @@
         <!-- Pergunta 1 -->
         <label>Pergunta 1: As lâmpadas, luminárias estão limpas e em funcionamento?</label>
         <div class="emoji-group" id="pergunta_13">
-            <input type="hidden" id="resposta_pergunta_19" name="pergunta_19">
+            <input type="hidden" id="resposta_pergunta_13" name="pergunta_13">
             <div class="emoji-btn emoji-bom" data-value="bom" onclick="toggleEmoji(this, 'bom')">😃 Bom</div>
             <div class="emoji-btn emoji-medio" data-value="medio" onclick="toggleEmoji(this, 'medio')">😐 Médio</div>
             <div class="emoji-btn emoji-ruim" data-value="ruim" onclick="toggleEmoji(this, 'ruim')">😟 Ruim</div>
